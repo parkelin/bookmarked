@@ -1,2 +1,2 @@
 # bookmarked
-The Canvas for StoryTellers
+The Canvas for Storytellers
