@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome.js";
@@ -34,6 +33,10 @@ export default function App() {
             <WritingDoc />
           </Route>
 
+          <Route path="/glossary/:characterName">
+            <Character />
+          </Route>
+          
         </Switch>
       </div>
     </div>
