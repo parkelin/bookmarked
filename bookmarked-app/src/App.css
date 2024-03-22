@@ -6,32 +6,6 @@
   display: flex;
 }
 
-.navbar {
-  width: 20%;
-  background-color: #FCFBF4;
-  padding: 20px;
-  transition: width 0.3s ease-in-out;
-  position: relative;
-}
-
-.navbar.closed {
-  width: 1%;
-}
-
-.navbar-toggle {
-  cursor: pointer;
-  text-align: center;
-  margin-bottom: 10px;
-  position: absolute;
-  top:2;
-  right:0;
-}
-
-.navbar a {
-  display: block;
-  margin-bottom: 10px;
-}
-
 .main-content {
   flex-grow: 1;
   padding: 20px;
