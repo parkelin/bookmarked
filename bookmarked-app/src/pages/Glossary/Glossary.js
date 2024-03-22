@@ -1,8 +1,10 @@
 import React from 'react'
 import './Glossary.css'
+import '../../App.css';
 import CharacterIcon from '../../components/CharacterIcon'
 import PlusSign from '../../components/PlusSign'
 import RoundedRectangle from '../../components/RoundedRectangle'
+import Navbar from '../../components/Navbar';
 
 const characterList = [
     {
@@ -33,6 +35,8 @@ const characterList = [
 const Glossary = () => {
 
     return (
+      <div>
+        <Navbar />
         <div >
             <h1 className='glossary-title'>Glossary</h1>
             <div className='glossary-container'>
@@ -47,6 +51,7 @@ const Glossary = () => {
                 </RoundedRectangle>
             </div>
         </div>
+      </div>
     )
 }
 
