@@ -1,0 +1,64 @@
+body {    
+    background-color: #EDEDED
+}
+.glossary-title {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    font-style: normal;
+    font-size: 40px;
+    color: #000000;
+}
+.glossary-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 30px; 
+    padding: 20px; 
+    justify-content: start; 
+  }
+.character-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+.rounded-rectangle {
+    position: relative;
+    width: 180px;
+    height: 228px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF; 
+  }
+.character-name {
+    font-weight: 400;
+    font-size: 22px;
+    color: #000000;
+    margin-top: 8px;
+    text-align: center;
+
+}
+.plus-icon {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+.character-image {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+.three-dots {
+    position: absolute;
+    left: 88.71%;
+    right: 0.70%;
+    top: 5%;
+    bottom: 77.21%;
+    width: 24px; 
+    height: 24px; 
+    background-size: cover;
+}
