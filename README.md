@@ -12,8 +12,8 @@ v5
 
 # Branch instructions:
 
-git branch <branchname>\
-git checkout <branchname>\
+git branch branchname\
+git checkout branchname\
 git branch ##just to check that ur on the right branch\
 git add, commit, etc. \
-git push ## it give u an error about setting an upstream, just do what it says (i think like git push --set-upstream origin/<branchname>
+git push ## it give u an error about setting an upstream, just do what it says (i think like git push --set-upstream origin/branchname
