@@ -10,7 +10,7 @@ https://quilljs.com/docs/quickstart
 v5
 
 
-Branch instructions:
+# Branch instructions:
 
 git branch <branchname>\
 git checkout <branchname>\
