@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome.js";
 import LoadingScreen from "./pages/LoadingScreen/LoadingScreen.js";
 import Character from "./pages/Character/Character.js";
@@ -9,6 +9,7 @@ import WritingDoc from "./pages/WritingDoc/WritingDoc.js";
 
 export default function App() {
   return (
+    <Router>
     <div className="global-container">
       <div className="content-container">
         <Switch>
@@ -16,7 +17,7 @@ export default function App() {
           <Route exact path="/welcome">
             <Welcome />
           </Route>
-
+          
           <Route exact path="/loading">
             <LoadingScreen />
           </Route>
@@ -36,5 +37,6 @@ export default function App() {
         </Switch>
       </div>
     </div>
+    </Router>
   );
 }
