@@ -1,0 +1,53 @@
+/* Welcome.css */
+.welcome-page {
+    min-height: 200vh; /* Ensures there's enough height to scroll */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    transition: opacity 0.5s ease-out;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  .welcome-text {
+    padding-top: 25%;
+  }
+
+  .logo {
+    padding-bottom: 10%;
+  }
+  /* Loading animation */
+  /* @keyframes blinkCursor {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .cursor {
+    animation: blinkCursor 1s infinite;
+    padding-left: 2px; 
+  }
+  
+  .typing-animation {
+    display: inline-block;
+    font-family: monospace; 
+  }
+
+  @keyframes fadeEffect {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  } */
+  
+  /* Apply the animation to your image, adjust as needed */
+  /* .loading-image {
+    animation: fadeEffect 1.5s infinite;
+  } */
