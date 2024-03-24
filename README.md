@@ -15,6 +15,6 @@ v5
 git branch branchname\
 git checkout branchname\
 git branch ##just to check that ur on the right branch\
-git pull origin main ##might have to resolve conflicts
+git pull origin main ##might have to resolve conflicts\
 git add, commit, etc. \
 git push ## it give u an error about setting an upstream, just do what it says (i think like git push --set-upstream origin/branchname
