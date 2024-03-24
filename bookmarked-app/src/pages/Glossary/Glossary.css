@@ -48,8 +48,8 @@ body {
     color: #000000;
 }
 .character-image {
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
 }
 .three-dots {
