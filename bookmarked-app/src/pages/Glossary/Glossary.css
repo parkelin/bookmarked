@@ -2,12 +2,14 @@ body {
     background-color: #EDEDED
 }
 .glossary-title {
+    font-family: 'DM Sans';
     display: flex;
     justify-content: center; 
     align-items: center;
     font-style: normal;
     font-size: 40px;
     color: #000000;
+    margin-bottom: 40px;
 }
 .glossary-container {
     display: grid;
@@ -31,10 +33,12 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #FFFFFF; 
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
   }
 .character-name {
     font-weight: 400;
     font-size: 22px;
+    font-family: 'DM Sans';
     color: #000000;
     margin-top: 8px;
     text-align: center;
