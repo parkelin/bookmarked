@@ -7,11 +7,10 @@ import Navbar from '../../components/Navbar';
 function WritingDoc() {
   return (
      <>
-      <TextEditor />
       <div className="welcome">
         <Navbar />
         <div className="main-content">
-          <h1>Writing Doc</h1>
+          <TextEditor />
         </div>
       </div>
     </>

@@ -1,0 +1,39 @@
+.navbar {
+    top: 50%;
+    left: 2%;
+    transform: translate(0, 50%); 
+    width: 15%;
+    height: 10%;
+    background-color: #EDEDED;
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
+    position: relative;
+    border-radius: 20px;
+
+  }
+  
+  .navbar.closed {
+    top: 50%;
+    left: 2%;
+    width: 1%;
+    transform: translate(0, 50%); 
+  }
+  
+  .navbar-toggle {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    position: absolute;
+    top:2;
+    right:0;
+  }
+  
+  .navbar a {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .text {
+    text-decoration: none;
+    color: black;
+  }
