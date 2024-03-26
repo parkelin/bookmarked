@@ -1,11 +1,12 @@
-import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { CharacterProvider } from './pages/Character/CharacterContext'; 
 import Welcome from "./pages/Welcome/Welcome.js";
 import LoadingScreen from "./pages/LoadingScreen/LoadingScreen.js";
 import Character from "./pages/Character/Character.js";
 import Glossary from "./pages/Glossary/Glossary.js";
 import WritingDoc from "./pages/WritingDoc/WritingDoc.js";
+
 
 export default function App() {
   return (
@@ -18,12 +19,22 @@ export default function App() {
           
           <Route exact path="/loading" component={LoadingScreen} />
 
-          <Route exact path="/glossary" component={Glossary} />
+          <Route exact path="/glossary">
+            <CharacterProvider>
+              <Glossary />
+            </CharacterProvider>
+          </Route>
+          
+          <Route exact path="/writingdoc">
+            <WritingDoc />
+          </Route>
 
-          <Route exact path="/glossary/character" component={Character} />
-
-          <Route exact path="/writing" component={WritingDoc} />
-
+          <Route path="/glossary/:characterId">
+            <CharacterProvider>
+              <Character />
+            </ CharacterProvider>
+          </Route>
+          
         </Switch>
       </div>
     </div>

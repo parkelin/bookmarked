@@ -1,1 +1,32 @@
-// "Character Index"
+import React from 'react'
+import './Glossary.css'
+import '../../App.css';
+import CharacterIcon from '../../components/CharacterIcon'
+import Navbar from '../../components/Navbar';
+import NewCharacterRectangle from '../../components/NewCharacterRectangle';
+import { useCharacters } from '../Character/CharacterContext';
+
+const Glossary = () => {
+    const { characters } = useCharacters();
+
+    return (
+      <div className='welcome'> 
+        <Navbar />
+        <div className='glossary-section'>
+            <h1 className='glossary-title'>Glossary</h1>
+            <div className='characters-container'>
+                {characters.map((character) => (
+                    <CharacterIcon 
+                        key={character.id} 
+                        id={character.id}
+                        name={character.characterName} 
+                        iconImage={character.imageName}/>
+                ))}
+                <NewCharacterRectangle newId={characters.length + 1} />
+            </div>
+        </div>
+      </div>
+    )
+}
+
+export default Glossary

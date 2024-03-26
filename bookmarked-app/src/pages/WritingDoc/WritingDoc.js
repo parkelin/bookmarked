@@ -1,8 +1,19 @@
 // Writing Doc + Sidebar
-import React, { useEffect } from 'react';
-
-export default function LoadingScreen() {
+import React from 'react';
+import '../../App.css';
+import TextEditor from './TextEditor'
+import Navbar from '../../components/Navbar';
+function WritingDoc() {
   return (
-    <h1>writing</h1>
+     <>
+      <div className="welcome">
+        <Navbar />
+        <div className="main-content">
+          <TextEditor />
+        </div>
+      </div>
+    </>
   );
 }
+
+export default WritingDoc
