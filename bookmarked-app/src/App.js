@@ -7,7 +7,6 @@ import Character from "./pages/Character/Character.js";
 import Glossary from "./pages/Glossary/Glossary.js";
 import WritingDoc from "./pages/WritingDoc/WritingDoc.js";
 
-
 export default function App() {
   return (
     <Router>
@@ -15,7 +14,7 @@ export default function App() {
       <div className="content-container">
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
-          <Route exact path="/">
+          <Route exact path="/" component={Welcome}>
             <Welcome />
           </Route>
           
