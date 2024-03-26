@@ -1,16 +1,10 @@
 // sidebar on the main page
 
-import React, { useState } from 'react';
+import React from 'react';
 import {Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(true);
-
-    const toggleNavbar = () => {
-        console.log('Toggling sidebar');
-        setIsOpen(!isOpen);
-    };
+const Navbar = ({ isOpen, toggleNavbar }) => {
 
     return (
         <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>

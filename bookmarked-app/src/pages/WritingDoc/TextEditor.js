@@ -16,7 +16,7 @@ const TOOLBAR_OPTIONS = [
 ]
 
 
-export default function TextEditor() {
+export default function TextEditor({ isEditorMoved }) {
 
     const wrapperRef = useCallback(wrapper => {
         if (wrapper == null) return
@@ -25,6 +25,9 @@ export default function TextEditor() {
         wrapper.append(editor)
         new Quill (editor, {theme: "snow", modules: { toolbar: TOOLBAR_OPTIONS} })
     }, [])
-    return <div className="container" ref = {wrapperRef}></div>
+
+    const editorClass = isEditorMoved ? "container editor-moved" : "container";
+
+    return <div className={editorClass} ref = {wrapperRef}></div>
     
 }
