@@ -22,6 +22,11 @@ body {
     justify-content: center;
 }
 
+.container.left .ql-editor {
+    /* TODO: push editor and toolbar to left */
+    margin-right: 0; 
+}
+
 .container .ql-toolbar.ql-snow {
     display: flex;
     justify-content: center;

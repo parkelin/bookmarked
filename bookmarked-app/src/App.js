@@ -26,7 +26,9 @@ export default function App() {
           </Route>
           
           <Route exact path="/writingdoc">
-            <WritingDoc />
+            <CharacterProvider>
+              <WritingDoc />
+            </CharacterProvider>
           </Route>
 
           <Route path="/glossary/:characterId">
