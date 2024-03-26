@@ -15,9 +15,13 @@ export default function App() {
       <div className="content-container">
         <Switch>
           {/* The Switch decides which component to show based on the current URL.*/}
-          <Route exact path="/" component={Welcome} />
+          <Route exact path="/">
+            <Welcome />
+          </Route>
           
-          <Route exact path="/loading" component={LoadingScreen} />
+          <Route exact path="/loading">
+            <LoadingScreen />
+          </Route>
 
           <Route exact path="/glossary">
             <CharacterProvider>

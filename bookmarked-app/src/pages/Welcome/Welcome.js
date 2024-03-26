@@ -28,7 +28,7 @@ export default function Welcome() {
   // Calculate opacity based on scroll position
   // Adjust these calculations as needed based on your page's design
   const welcomeOpacity = Math.max(1 - scrollPosition / 400, 0); // Fades out as you scroll
-  const loadingOpacity = Math.min(scrollPosition / 500, 1); // Fades in as you scroll down
+  const loadingOpacity = Math.min(scrollPosition / 2000, 1); // Fades in as you scroll down
 
   return (
     <div className="welcome-page">
