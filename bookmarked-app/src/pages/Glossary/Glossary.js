@@ -2,28 +2,27 @@ import React from 'react'
 import './Glossary.css'
 import '../../App.css';
 import CharacterIcon from '../../components/CharacterIcon'
-import PlusSign from '../../components/PlusSign'
-import RoundedRectangle from '../../components/RoundedRectangle'
 import Navbar from '../../components/Navbar';
+import NewCharacterRectangle from '../../components/NewCharacterRectangle';
+import { useCharacters } from '../Character/CharacterContext';
 
-const Glossary = ({ characterList }) => {
+const Glossary = () => {
+    const { characters } = useCharacters();
 
     return (
-      <div>
+      <div className='welcome'> 
         <Navbar />
-        <div >
+        <div className='glossary-section'>
             <h1 className='glossary-title'>Glossary</h1>
-            <div className='glossary-container'>
-                {characterList.map((character) => (
+            <div className='characters-container'>
+                {characters.map((character) => (
                     <CharacterIcon 
                         key={character.id} 
                         id={character.id}
                         name={character.characterName} 
                         iconImage={character.imageName}/>
                 ))}
-                <RoundedRectangle>
-                    <PlusSign />
-                </RoundedRectangle>
+                <NewCharacterRectangle newId={characters.length + 1} />
             </div>
         </div>
       </div>

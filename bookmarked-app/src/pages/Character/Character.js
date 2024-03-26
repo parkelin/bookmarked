@@ -1,14 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Character.css'
 import Navbar from '../../components/Navbar';
 import { useParams } from 'react-router-dom';
 import RoundedRectangle from '../../components/RoundedRectangle';
+import { useCharacters } from './CharacterContext';
 
-const Character = ({ characterList }) => {
+
+
+const Character = () => {
     let { characterId} = useParams(); 
     characterId = parseInt(decodeURIComponent(characterId)); 
 
-    const characterData = characterList[characterId - 1]
+    const { addCharacter, getCharacter } = useCharacters();
+
+    var characterData = getCharacter(characterId)
+
+    useEffect(() => {
+        const newCharacterTemplate = {
+            id: characterId,
+            characterName: "New Character",
+            imageName: "EmptyImageIcon.png", 
+            caption: "Add caption here",
+        };
+
+        if (!characterData) {
+            addCharacter(newCharacterTemplate);
+            characterData = newCharacterTemplate
+        }
+    }, [characterData, characterId, addCharacter]);
+
+    if (!characterData) {
+        return <div>Loading or create a new character...</div>;
+    }
 
     return (
         <div>

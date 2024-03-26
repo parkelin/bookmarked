@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const CharacterIcon = ({ name, id, iconImage}) => {
     const characterPagePath = `/glossary/${encodeURIComponent(id)}`
     return (
-        <Link to={characterPagePath}>
+        <Link className='no-underline' to={characterPagePath}>
             <div className="character-icon-container">
                 <RoundedRectangle>
                     <ThreeDotsIcon />
