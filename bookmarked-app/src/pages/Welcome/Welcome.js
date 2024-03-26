@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import './Welcome.css'; // Ensure you have the corresponding CSS
+import './Welcome.css'; 
 
 export default function Welcome() {
   const history = useHistory();
@@ -13,15 +13,42 @@ export default function Welcome() {
   };
 
   useEffect(() => {
+    let timeoutId = null; // Initialize a variable to keep track of the timeout
+  
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollPosition(position);
+  
+      // Check if scrolled more than halfway
+      if (position >= maxScroll / 2) {
+        // Clear any existing timeout to avoid multiple redirects
+        if (timeoutId !== null) {
+          clearTimeout(timeoutId);
+        }
+        // Set a new timeout to redirect after 2000 milliseconds (2 seconds)
+        timeoutId = setTimeout(() => {
+          history.push("/writingdoc");
+        }, 2000); // Adjust the time as needed
+      } else {
+        // If user scrolls away from the halfway point, clear the timeout
+        if (timeoutId !== null) {
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+      }
+    };
+  
     window.addEventListener('scroll', handleScroll);
-
-    // Navigate when "Loading..." becomes fully visible
-    if (scrollPosition > 1800) {
-      history.push("/loading");
-    }
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollPosition, history]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // Ensure to clear the timeout when the component unmounts to prevent memory leaks
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [history]);
+  
 
   // Calculate opacity based on scroll position
   const welcomeOpacity = Math.max(1 - scrollPosition / 400, 0); // Fades out as you scroll
