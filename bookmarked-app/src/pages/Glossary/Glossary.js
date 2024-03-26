@@ -7,7 +7,7 @@ import NewCharacterRectangle from '../../components/NewCharacterRectangle';
 import { useCharacters } from '../Character/CharacterContext';
 
 const Glossary = () => {
-    const { characters } = useCharacters();
+    const { characters, generateCharacterId } = useCharacters();
 
     return (
       <div className='welcome'> 
@@ -22,7 +22,7 @@ const Glossary = () => {
                         name={character.characterName} 
                         iconImage={character.imageName}/>
                 ))}
-                <NewCharacterRectangle newId={characters.length + 1} />
+                <NewCharacterRectangle newId={generateCharacterId()} />
             </div>
         </div>
       </div>

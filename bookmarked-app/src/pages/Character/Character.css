@@ -35,5 +35,61 @@ h1 {
 .caption {
     font-family: 'DM Sans';
     margin-left: 50px;
-    font-weight: 300;   
+    font-weight: 400;   
+    font-size: 30px;
 }
+.character-description-section {
+    position: relative;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+.character-description {
+    width: 1000px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #000000;
+}
+.divider {
+    margin-left: 50px;
+    margin-top: 40px;
+    width: 1000px;
+    border: 1px solid #C4C4C4;
+}
+.close {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 15px;
+    font-size: 20px; 
+    font-weight: 300px;
+    color: #000000;
+}
+.delete-current-character {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 45px;
+}
+.edit-button {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-right: 75px;
+}
+#connections-title {
+    font-family: 'DM Sans';
+    margin-left: 50px;
+    font-weight: 600;   
+    font-size: 20px;
+}
+
+
+  
