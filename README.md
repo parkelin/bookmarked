@@ -6,6 +6,8 @@ npm install quill\
 npm install @types/quill\
 background-color: #f3f3f3\
 https://quilljs.com/docs/quickstart
+
+font: DM Sans
 # react-router-dom
 v5
 
