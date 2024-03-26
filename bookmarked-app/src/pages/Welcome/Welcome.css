@@ -1,0 +1,59 @@
+/* Welcome.css */
+.welcome-page {
+    min-height: 200vh; /* Ensures there's enough height to scroll */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    transition: opacity 0.5s ease-out;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  .welcome-text {
+    padding-top: 25%;
+  }
+
+  .logo {
+    padding-bottom: 10%;
+  }
+
+  /* Three Dots Animation */
+  /* Define a class for the loading dots */
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Define styles for each dot */
+  .loading-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000; /* Adjust color as needed */
+    margin: 0 5px; /* Adjust spacing between dots */
+  }
+  
+  /* Define keyframes animation for fading effect */
+  @keyframes fadeDots {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+  }
+  
+  /* Apply animation to the loading dots */
+  .loading-dot {
+    animation: fadeDots 1.5s infinite; /* Adjust duration as needed */
+  }
+  
