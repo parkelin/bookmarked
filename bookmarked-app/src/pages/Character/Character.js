@@ -49,8 +49,9 @@ const Character = () => {
     };
 
     if (!characterData) {
-      addCharacter(newCharacterTemplate);
-      characterData = newCharacterTemplate;
+        setIsEditing(true)
+        addCharacter(newCharacterTemplate);
+        characterData = newCharacterTemplate;
     }
   }, [characterData, characterId, addCharacter]);
 
