@@ -24,30 +24,36 @@
   .logo {
     padding-bottom: 10%;
   }
-  /* Loading animation */
-  /* @keyframes blinkCursor {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  .cursor {
-    animation: blinkCursor 1s infinite;
-    padding-left: 2px; 
-  }
-  
-  .typing-animation {
-    display: inline-block;
-    font-family: monospace; 
-  }
 
-  @keyframes fadeEffect {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-  } */
+  /* Three Dots Animation */
+  /* Define a class for the loading dots */
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+  }
   
-  /* Apply the animation to your image, adjust as needed */
-  /* .loading-image {
-    animation: fadeEffect 1.5s infinite;
-  } */
+  /* Define styles for each dot */
+  .loading-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000; /* Adjust color as needed */
+    margin: 0 5px; /* Adjust spacing between dots */
+  }
+  
+  /* Define keyframes animation for fading effect */
+  @keyframes fadeDots {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+  }
+  
+  /* Apply animation to the loading dots */
+  .loading-dot {
+    animation: fadeDots 1.5s infinite; /* Adjust duration as needed */
+  }
+  
