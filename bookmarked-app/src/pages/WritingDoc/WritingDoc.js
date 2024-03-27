@@ -6,11 +6,13 @@ import TextEditor from "./TextEditor";
 import Navbar from "../../components/Navbar";
 import { useCharacters } from "../Character/CharacterContext";
 import CharacterShortcut from "./CharacterShortcut";
+import EditCharacter from "./EditCharacterShortcut";
 
 const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
   const [isShortcutOpened, setIsShortcutOpened] = useState(false);
   const [isEmptyShortcutOpened, setIsEmptyShortcutOpened] = useState(false);
+  const [isCreateShortcutOpened, setIsCreateShortcutOpened] = useState(false);
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
 
@@ -21,21 +23,10 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
     else setIsEditorMoved(true);
   };
 
-  const toggleShortcut = () => {
-    if (isShortcutOpened) setIsShortcutOpened(false);
-    else setIsShortcutOpened(true);
-  };
-
   const handleOpenShortcut = () => {
     toggleNavbar();
     moveEditor();
-    const currentCharacter = getCharacter(highlightedText);
-    setCurrentCharacterData(currentCharacter);
-    if (currentCharacter !== undefined) {
-      toggleShortcut();
-    } else {
-      setIsEmptyShortcutOpened(true);
-    }
+    handleChangeToShortcut();
   };
 
   const handleCloseShortcut = () => {
@@ -43,6 +34,25 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
     moveEditor();
     setIsShortcutOpened(false);
     setIsEmptyShortcutOpened(false);
+    setIsCreateShortcutOpened(false);
+  };
+
+  const handleCreateShortcut = () => {
+    toggleNavbar();
+    moveEditor();
+    setIsCreateShortcutOpened(true);
+  };
+
+  const handleChangeToShortcut = () => {
+    const currentCharacter = getCharacter(highlightedText);
+    setCurrentCharacterData(currentCharacter);
+    if (currentCharacter !== undefined) {
+      setIsCreateShortcutOpened(false)
+      setIsEmptyShortcutOpened(false)
+      setIsShortcutOpened(true)
+    } else {
+      setIsEmptyShortcutOpened(true);
+    }
   };
 
   return (
@@ -54,6 +64,7 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
             isEditorMoved={isEditorMoved}
             onClickFindShortcut={handleOpenShortcut}
             setHighlightedText={setHighlightedText}
+            onClickCreateShortcut={handleCreateShortcut}
           />
         </div>
         {isShortcutOpened && (
@@ -69,6 +80,13 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
             </button>
             <h1 className="no-character-found-text">No character found.</h1>
           </div>
+        )}
+        {isCreateShortcutOpened && (
+          <EditCharacter
+            handleCancel={handleCloseShortcut}
+            handleFinishChangesClick={handleChangeToShortcut}
+            highlightedText={highlightedText}
+          />
         )}
       </div>
     </>
