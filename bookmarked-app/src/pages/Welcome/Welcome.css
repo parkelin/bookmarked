@@ -23,6 +23,12 @@
   
   .welcome-text {
     padding-top: 25%;
+    font-size: 70px;
+  }
+
+  .arrow {
+    padding-top: 2%;
+    font-size: 48px;
   }
 
   .logo {
