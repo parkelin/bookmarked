@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { useCharacters } from "./CharacterContext";
+import EditCharacter from "./EditCharacter";
 
 const Character = () => {
   let { characterId } = useParams();
@@ -65,48 +66,16 @@ const Character = () => {
       <Navbar />
       <div className="big-rounded-rectangle">
         {isEditing ? (
-          <>
-            <div>
-              <button className="edit-button" onClick={handleUpdateChanges}>
-                Finish editing
-              </button>
-            </div>
-            <div>
-            <RoundedRectangle>
-              <img
-                src={require(`../../images/${characterData.imageName}`)}
-                className="character-image-big"
-                alt={`${characterData.characterName} icon`}
-              />
-            </RoundedRectangle>
-            <div className="character-main-info">
-              <div className="character-heading-text">
-                <input
-                  type="text"
-                  className="character-name-big"
-                  placeholder="Character Name"
-                  value={characterName}
-                  onChange={(e) => setCharacterName(e.target.value)}
-                />
-                <input
-                  type="text"
-                  className="caption"
-                  placeholder="Enter caption"
-                  value={caption}
-                  onChange={(e) => setCaption(e.target.value)}
-                />
-              </div>
-              <div className="character-description-section">
-                <textarea
-                  className="character-description"
-                  value={description}
-                  placeholder="Enter description"
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
-            </div>
-            </div>
-          </>
+          <EditCharacter
+            characterData={characterData}
+            characterName={characterName}
+            setCharacterName={setCharacterName}
+            caption={caption}
+            setCaption={setCaption}
+            description={description}
+            setDescription={setDescription}
+            handleUpdateChanges={handleUpdateChanges}
+          />
         ) : (
           <>
             <div>

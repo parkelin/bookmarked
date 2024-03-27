@@ -28,6 +28,17 @@ h1 {
     font-weight: 600;
     font-size: 40px;
 }
+.input-name-small {
+    font-family: 'DM Sans';
+    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-y: auto; /* Add vertical scroll if needed */
+    margin-left: 20px;
+    margin-top: 10px;
+    max-width: 320px;
+    max-height: 45px;
+    font-weight: 600;
+    font-size: 40px;
+}
 .character-image-big {
     width: 90%;
     height: 90%;
@@ -49,6 +60,17 @@ h1 {
     font-weight: 400;   
     font-size: 20px;
 }
+.input-caption-small {
+    font-family: 'DM Sans';
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    max-width: 200px;
+    max-height: 25px;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 400;   
+    font-size: 20px;
+}
 .character-description-section {
     position: relative;
     margin-top: 40px;
@@ -67,6 +89,7 @@ h1 {
 }
 .character-description-small {
     width: 500px;
+    height: 500px;
     max-height: 200px;
     overflow-y: auto;
     font-family: 'DM Sans';
@@ -115,7 +138,16 @@ h1 {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
-    margin-right: 75px;
+    margin-left: 990px;
+    margin-top: 10px;
+}
+.edit-button-small {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-left: 410px;
 }
 #connections-title {
     font-family: 'DM Sans';
