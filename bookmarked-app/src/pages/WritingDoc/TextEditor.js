@@ -21,6 +21,7 @@ export default function TextEditor({
   onClickFindShortcut,
   setHighlightedText,
   onClickCreateShortcut,
+  setEditorContent
 }) {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
@@ -51,7 +52,13 @@ export default function TextEditor({
 
     editor.addEventListener("contextmenu", handleRightClick);
     editor.addEventListener("mousedown", handleMouseDown);
-  }, []);
+
+    quill.on("text-change", function () {
+      const editorContent = quill.getText();
+      setEditorContent(editorContent); // Update editor content
+    });
+
+  }, [setEditorContent, setHighlightedText]);
 
   const handleRightClick = (e) => {
     e.preventDefault();

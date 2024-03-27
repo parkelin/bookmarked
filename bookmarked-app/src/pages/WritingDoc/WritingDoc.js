@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar";
 import { useCharacters } from "../Character/CharacterContext";
 import CharacterShortcut from "./CharacterShortcut";
 import EditCharacter from "./EditCharacterShortcut"; 
+import InconsistencyPopup from './InconsistencyPopup';
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
@@ -13,6 +14,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isCreateShortcutOpened, setIsCreateShortcutOpened] = useState(false);
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
+  const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
+  const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+
 
   const { getCharacter } = useCharacters();
 
@@ -52,6 +56,25 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     }
   };
 
+  const handleCheckInconsistencies = () => {
+    // Implement logic to check inconsistencies here
+    if(editorContent.trim() !== "") {
+      toggleNavbar();
+      moveEditor();
+      setShowInconsistencyPopup(true); 
+    } else {
+      // TODO no consistency/no text in editor
+    }
+    
+  };
+
+  // Function to close inconsistency popup
+  const handleCloseInconsistencyPopup = () => {
+    toggleNavbar();
+    moveEditor();
+    setShowInconsistencyPopup(false);
+  };
+
   // load in the top of the page - elin
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,11 +85,23 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       <div className="welcome">
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className="main-content">
+        <div className="inconsistency-button-container">
+            <button className="inconsistency-button" onClick = {handleCheckInconsistencies}>
+              Inconsistency Check
+            </button>
+          </div>
+          {showInconsistencyPopup && (
+          <InconsistencyPopup
+            handleCloseInconsistencyPopup = {handleCloseInconsistencyPopup}
+            editorContent= {editorContent}
+          />
+        )}
           <TextEditor
             isEditorMoved={isEditorMoved}
             onClickFindShortcut={handleOpenShortcut}
             setHighlightedText={setHighlightedText}
             onClickCreateShortcut={handleCreateShortcut}
+            setEditorContent={setEditorContent}
           />
         </div>
         {isShortcutOpened && (
