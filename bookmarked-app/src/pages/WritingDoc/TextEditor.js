@@ -42,6 +42,7 @@ export default function TextEditor() {
         });
 
         editor.addEventListener('contextmenu', handleRightClick);
+        editor.addEventListener('mousedown', handleMouseDown);
 
     }, []);
 
@@ -51,7 +52,14 @@ export default function TextEditor() {
         setContextMenuPos({ x: e.clientX, y: e.clientY });
     };
 
+    const handleMouseDown = (e) => {
+        if (e.button !== 2) { 
+            setShowContextMenu(false);
+        }
+    };
+
     const handleCloseContextMenu = () => {
+        console.log("closing")
         setShowContextMenu(false);
     }
 
