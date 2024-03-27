@@ -10,7 +10,8 @@ const Character = () => {
   let { characterId } = useParams();
   characterId = parseInt(decodeURIComponent(characterId));
 
-  const { addCharacter, getCharacter, removeCharacter, updateCharacter } = useCharacters();
+  const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter } =
+    useCharacters();
 
   const [isEditing, setIsEditing] = useState(false);
   const [characterName, setCharacterName] = useState("");
@@ -19,25 +20,25 @@ const Character = () => {
 
   const handleUpdateChanges = () => {
     const updatedCharacterData = {
-        id: characterId,
-        characterName: characterName,
-        imageName: characterData.imageName,
-        caption: caption,
-        description: description,
-    }
-    setIsEditing(false)
-    updateCharacter(updatedCharacterData)
-    characterData = updatedCharacterData
-  }
+      id: characterId,
+      characterName: characterName,
+      imageName: characterData.imageName,
+      caption: caption,
+      description: description,
+    };
+    setIsEditing(false);
+    updateCharacter(updatedCharacterData);
+    characterData = updatedCharacterData;
+  };
 
   const handleClickEditMode = () => {
-    setIsEditing(true)
-    setCharacterName(characterData.characterName)
-    setCaption(characterData.caption)
-    setDescription(characterData.description)
-  }
+    setIsEditing(true);
+    setCharacterName(characterData.characterName);
+    setCaption(characterData.caption);
+    setDescription(characterData.description);
+  };
 
-  var characterData = getCharacter(characterId);
+  var characterData = getCharacterWithId(characterId);
 
   useEffect(() => {
     const newCharacterTemplate = {
@@ -49,9 +50,9 @@ const Character = () => {
     };
 
     if (!characterData) {
-        setIsEditing(true)
-        addCharacter(newCharacterTemplate);
-        characterData = newCharacterTemplate;
+      setIsEditing(true);
+      addCharacter(newCharacterTemplate);
+      characterData = newCharacterTemplate;
     }
   }, [characterData, characterId, addCharacter]);
 
@@ -66,13 +67,11 @@ const Character = () => {
         {isEditing ? (
           <>
             <div>
-              <button
-                className="edit-button"
-                onClick={handleUpdateChanges}
-              >
+              <button className="edit-button" onClick={handleUpdateChanges}>
                 Finish editing
               </button>
             </div>
+            <div>
             <RoundedRectangle>
               <img
                 src={require(`../../images/${characterData.imageName}`)}
@@ -85,20 +84,27 @@ const Character = () => {
                 <input
                   type="text"
                   className="character-name-big"
+                  placeholder="Character Name"
                   value={characterName}
                   onChange={(e) => setCharacterName(e.target.value)}
                 />
-                <input 
-                type="text"
-                className="caption"
-                value={caption}
-                onChange={(e) => setCaption(e.target.value)}
+                <input
+                  type="text"
+                  className="caption"
+                  placeholder="Enter caption"
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
                 />
               </div>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
+              <div className="character-description-section">
+                <textarea
+                  className="character-description"
+                  value={description}
+                  placeholder="Enter description"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+            </div>
             </div>
           </>
         ) : (
@@ -142,11 +148,11 @@ const Character = () => {
                 {characterData.description}
               </p>
             </div>
-            <div className="divider" />
-            <h2 id="connections-title">Connections</h2>
-            <div className="divider" />
           </>
         )}
+        <div className="divider" />
+        <h2 id="connections-title">Connections</h2>
+        <div className="divider" />
       </div>
     </div>
   );
