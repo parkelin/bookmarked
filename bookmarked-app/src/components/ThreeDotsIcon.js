@@ -7,23 +7,28 @@ const ThreeDotsIcon = ( { onClick } ) => {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     }
-
     const handleEdit = () => {
         console.log("edit");
     }
-
     const handleDelete = () => {
         console.log("delete");
+    }
+    const handleIconClick = (e) => {
+        e.stopPropagation();
+        toggleDropdown();
+    }
+    const handleMenuClick = (e) => {
+        e.stopPropagation();
     }
 
     return (
         <div className="three-dots">
             <img src={require(`../images/ThreeDots.png`)}
                  alt={"three dots icon"}
-                 onClick={toggleDropdown}
+                 onClick={handleIconClick}
             />
             {isOpen && (
-                <div className="dropdown">
+                <div className="dropdown" onClick={handleMenuClick}>
                     <button onClick={handleEdit}>Edit</button>
                     <button onClick={handleDelete}>Delete</button>
                 </div>
