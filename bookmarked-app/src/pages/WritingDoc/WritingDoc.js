@@ -4,14 +4,9 @@ import TextEditor from "./TextEditor";
 import Navbar from "../../components/Navbar";
 import { useCharacters } from "../Character/CharacterContext";
 import CharacterShortcut from "./CharacterShortcut";
-import EditCharacter from "./EditCharacterShortcut";
+import EditCharacter from "./EditCharacterShortcut"; 
 
-function WritingDoc() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
+function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
   const [isShortcutOpened, setIsShortcutOpened] = useState(false);
   const [isEmptyShortcutOpened, setIsEmptyShortcutOpened] = useState(false);
@@ -22,8 +17,7 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
   const { getCharacter } = useCharacters();
 
   const moveEditor = () => {
-    if (isEditorMoved) setIsEditorMoved(false);
-    else setIsEditorMoved(true);
+    setIsEditorMoved(!isEditorMoved);
   };
 
   const handleOpenShortcut = () => {
@@ -50,13 +44,18 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
     const currentCharacter = getCharacter(highlightedText);
     setCurrentCharacterData(currentCharacter);
     if (currentCharacter !== undefined) {
-      setIsCreateShortcutOpened(false)
-      setIsEmptyShortcutOpened(false)
-      setIsShortcutOpened(true)
+      setIsShortcutOpened(true);
+      setIsEmptyShortcutOpened(false);
+      setIsCreateShortcutOpened(false);
     } else {
       setIsEmptyShortcutOpened(true);
     }
   };
+
+  // load in the top of the page - elin
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -94,6 +93,6 @@ const WritingDoc = ({ navbarIsOpen, toggleNavbar }) => {
       </div>
     </>
   );
-};
 }
+
 export default WritingDoc;
