@@ -79,6 +79,7 @@ Link {
     width: 24px; 
     height: 24px; 
     background-size: cover;
+    z-index: 999;
 }
 .no-underline {
     text-decoration: none;
