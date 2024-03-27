@@ -63,7 +63,6 @@ export const CharacterProvider = ({ children }) => {
 
   const getCharacter = (id) => characters.find(c => c.id === id);
 
-  // Ensure the value provided to CharacterContext.Provider is correct
   return (
     <CharacterContext.Provider value={{ characters, addCharacter, getCharacter, removeCharacter, generateCharacterId, updateCharacter }}>
       {children}
