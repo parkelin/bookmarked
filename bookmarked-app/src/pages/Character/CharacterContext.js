@@ -61,10 +61,12 @@ export const CharacterProvider = ({ children }) => {
     );
   };
 
-  const getCharacter = (id) => characters.find(c => c.id === id);
+  const getCharacter = (name) => characters.find(character => character.characterName.toLowerCase() === name.toLowerCase());
+
+  const getCharacterWithId =  (id) => characters.find(character => character.id === id);
 
   return (
-    <CharacterContext.Provider value={{ characters, addCharacter, getCharacter, removeCharacter, generateCharacterId, updateCharacter }}>
+    <CharacterContext.Provider value={{ characters, addCharacter, getCharacter, getCharacterWithId, removeCharacter, generateCharacterId, updateCharacter }}>
       {children}
     </CharacterContext.Provider>
   );

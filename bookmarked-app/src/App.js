@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CharacterProvider } from "./pages/Character/CharacterContext";
 import Welcome from "./pages/Welcome/Welcome.js";
-import LoadingScreen from "./pages/LoadingScreen/LoadingScreen.js";
 import Character from "./pages/Character/Character.js";
 import Glossary from "./pages/Glossary/Glossary.js";
 import WritingDoc from "./pages/WritingDoc/WritingDoc.js";
 
 export default function App() {
+  const [navbarIsOpen, setNavbarIsOpen] = useState(true);
+
+  const toggleNavbar = () => {
+    // console.log('Toggling sidebar');
+    if (navbarIsOpen) setNavbarIsOpen(false);
+    else setNavbarIsOpen(true);
+  };
+
   return (
     <CharacterProvider>
       <Router>
@@ -19,8 +26,18 @@ export default function App() {
                 <Welcome />
               </Route>
 
-              <Route exact path="/loading">
-                <LoadingScreen />
+              <Route exact path="/glossary">
+                  <Glossary
+                    navbarIsOpen={navbarIsOpen}
+                    toggleNavbar={toggleNavbar}
+                  />
+              </Route>
+              
+              <Route exact path="/writingdoc">
+                <WritingDoc
+                  navbarIsOpen={navbarIsOpen}
+                  toggleNavbar={toggleNavbar}
+                />
               </Route>
 
               <Route exact path="/glossary">

@@ -6,12 +6,12 @@ import Navbar from '../../components/Navbar';
 import NewCharacterRectangle from '../../components/NewCharacterRectangle';
 import { useCharacters } from '../Character/CharacterContext';
 
-const Glossary = () => {
+const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
     const { characters, generateCharacterId } = useCharacters();
 
     return (
       <div className='welcome'> 
-        <Navbar />
+        <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className='glossary-section'>
             <h1 className='glossary-title'>Glossary</h1>
             <div className='characters-container'>

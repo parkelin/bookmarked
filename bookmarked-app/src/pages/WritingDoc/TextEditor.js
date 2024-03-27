@@ -17,7 +17,7 @@ const TOOLBAR_OPTIONS = [
 ]
 
 
-export default function TextEditor() {
+export default function TextEditor({ isEditorMoved, onClickFindShortcut, setHighlightedText }) {
     const [contextMenuPos, setContextMenuPos] = useState({x:0, y:0});
     const [showContextMenu, setShowContextMenu] = useState(false);
 
@@ -31,8 +31,9 @@ export default function TextEditor() {
 
         quill.on('selection-change', function(range) {
             if(range) {
-                const selection = quill.getText(range.index, range.length)
-                console.log('selection change:', selection);
+                const highlightedSelection = quill.getText(range.index, range.length)
+                setHighlightedText(highlightedSelection)
+                console.log('selection change:', highlightedSelection);
                 const bounds = quill.getBounds(range.index, range.length);
                 setContextMenuPos({x:bounds.left, y:bounds.bottom});
             } else {
@@ -63,10 +64,12 @@ export default function TextEditor() {
         setShowContextMenu(false);
     }
 
+    const editorClass = isEditorMoved ? "container editor-moved" : "container";
+
     return (
-        <div className="container" ref={wrapperRef}>
+        <div className={editorClass} ref = {wrapperRef}>
             {showContextMenu && (
-                <ContextMenu x={contextMenuPos.x} y={contextMenuPos.y} onClose={handleCloseContextMenu} />
+                <ContextMenu x={contextMenuPos.x} y={contextMenuPos.y} onClose={handleCloseContextMenu} onClickFindShortcut={onClickFindShortcut}/>
             )}
         </div>
     );

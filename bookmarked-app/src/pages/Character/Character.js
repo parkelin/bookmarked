@@ -10,7 +10,7 @@ const Character = () => {
   let { characterId } = useParams();
   characterId = parseInt(decodeURIComponent(characterId));
 
-  const { addCharacter, getCharacter, removeCharacter, updateCharacter } =
+  const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter } =
     useCharacters();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -38,7 +38,7 @@ const Character = () => {
     setDescription(characterData.description);
   };
 
-  var characterData = getCharacter(characterId);
+  var characterData = getCharacterWithId(characterId);
 
   useEffect(() => {
     const newCharacterTemplate = {
