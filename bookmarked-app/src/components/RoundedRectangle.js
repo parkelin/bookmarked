@@ -9,7 +9,7 @@ const RoundedRectangle = ({ onRectangleClick, onThreeDotsClick, children }) => {
                 {children}
             </div>
             <div className="3-dots" onClick={onThreeDotsClick}>
-                <ThreeDotsIcon/>
+                <ThreeDotsIcon onClick={onThreeDotsClick}/>
             </div>  
          </div>        
     )

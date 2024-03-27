@@ -10,8 +10,7 @@ const CharacterIcon = ({ name, id, iconImage}) => {
     const handleRectangleClick = () => {
         console.log("rectangle");
     }
-    const handleThreeDotsClick = (e) => {
-        e.stopPropogation();
+    const handleThreeDotsClick = () => {
         console.log("clicked");
     }
     return (
