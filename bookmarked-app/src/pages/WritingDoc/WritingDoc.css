@@ -50,3 +50,22 @@ body {
         display: none;
     }
 }
+.editor-moved {
+    transform: translateX(-300px); /* Adjust the value based on how much you want to move it */
+  }
+
+.shortcut-rounded-rectangle {
+    position: absolute;
+    width: 550px;
+    height: 720px;
+    left: 875px;
+    top: 40px;
+    background: #F7F7F7;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.no-character-found-text {
+    font-family: 'DM Sans';
+    margin-left: 50px;
+    color: grey;
+}

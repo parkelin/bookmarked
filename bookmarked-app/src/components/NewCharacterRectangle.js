@@ -13,7 +13,6 @@ const NewCharacterRectangle = ({ newId }) => {
                     <PlusSign />
                 </RoundedRectangle>
             </Link>
-            
         </div>
     )
 }
