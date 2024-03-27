@@ -12,6 +12,10 @@
     transition: opacity 0.5s ease-out;
   }
 
+  /* .arrow {
+    font-family: "DM Sans";
+  } */
+
   @keyframes fadeInOut {
     0%, 100% { opacity: 0; }
     50% { opacity: 1; }

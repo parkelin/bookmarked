@@ -6,7 +6,7 @@ import './Welcome.css';
 export default function Welcome() {
   const history = useHistory();
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
