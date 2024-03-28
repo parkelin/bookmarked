@@ -1,15 +1,19 @@
 import {React, useState} from 'react'
 import { useCharacters} from '../pages/Character/CharacterContext';
+import { Link, useHistory } from "react-router-dom";
 import '../pages/Glossary/Glossary.css'
 
 const ThreeDotsIcon = ({id}) => {
     const {removeCharacter}  = useCharacters();
     const [isOpen, setIsOpen] = useState(false);
+    const history = useHistory();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     }
     const handleEdit = () => {
+        const characterPagePath = `/glossary/${encodeURIComponent(id)}`;
+        history.push(characterPagePath);
         console.log("edit");
     }
     const handleDelete = () => {
