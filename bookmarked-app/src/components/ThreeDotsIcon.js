@@ -1,7 +1,9 @@
 import {React, useState} from 'react'
+import { useCharacters} from '../pages/Character/CharacterContext';
 import '../pages/Glossary/Glossary.css'
 
-const ThreeDotsIcon = ( {onClick} ) => {
+const ThreeDotsIcon = ({id}) => {
+    const {removeCharacter}  = useCharacters();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -11,6 +13,7 @@ const ThreeDotsIcon = ( {onClick} ) => {
         console.log("edit");
     }
     const handleDelete = () => {
+        removeCharacter(id); 
         console.log("delete");
     }
     const handleIconClick = (e) => {
@@ -19,12 +22,8 @@ const ThreeDotsIcon = ( {onClick} ) => {
         toggleDropdown();
     }
 
-    const handleDropdownClick = (e) => {
-        e.stopPropagation();
-    }
-
     return (
-        <div className="three-dots" onClick={handleDropdownClick}>
+        <div className="three-dots">
             <img src={require(`../images/ThreeDots.png`)}
                  alt={"three dots icon"}
                  onClick={handleIconClick}

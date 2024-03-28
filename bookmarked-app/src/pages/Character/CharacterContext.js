@@ -47,7 +47,6 @@ export const CharacterProvider = ({ children }) => {
   const removeCharacter = (id) => {
     setShowConfirmed(true);
     setCharToRemove(id);
-    //setCharacters(prevCharacters => prevCharacters.filter(character => character.id !== id));
   };
 
   const confirmRemove = () => {
