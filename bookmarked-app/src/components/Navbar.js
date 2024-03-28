@@ -15,8 +15,8 @@ const Navbar = ({ isOpen, toggleNavbar }) => {
                 <div>
                     <div><Link to="/writingdoc" className="text">Writing Document</Link></div>
                     <div><Link to="/glossary" className="text">Glossary</Link></div>
-                    <div><Link to="/loading" className="text">Map Maker</Link></div>
-                    <div><Link to="/loading" className="text">Plot Planner</Link></div>
+                    {/* <div><Link to="/loading" className="text">Map Maker</Link></div>
+                    <div><Link to="/loading" className="text">Plot Planner</Link></div> */}
                 </div>
             )}
         </div>
