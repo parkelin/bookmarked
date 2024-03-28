@@ -6,7 +6,7 @@ const RoundedRectangle = ({ onRectangleClick, children }) => {
         <div className="rounded-rectangle" onClick={onRectangleClick}>
             <div className="rectangle-content">
                 {children}
-            </div> 
+            </div>  
          </div>        
     )
 }

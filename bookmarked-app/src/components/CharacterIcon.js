@@ -15,15 +15,18 @@ const CharacterIcon = ({ name, id, iconImage}) => {
     }
     return (
         <div className="character-icon-container">
-        <ThreeDotsIcon onClick={handleThreeDotsClick} />
-        <Link className='no-underline' to={characterPagePath}>
-            <RoundedRectangle
-                onRectangleClick={handleRectangleClick}
-            >
-                <img src={require(`../images/${iconImage}`)} className="character-image" alt={`${name} icon`} />
-            </RoundedRectangle>
-        </Link>
+        <div className="bigger-rectangle">
+            <ThreeDotsIcon onClick={handleThreeDotsClick} />
+            <Link className='no-underline' to={characterPagePath}>
+                <RoundedRectangle
+                    onRectangleClick={handleRectangleClick}
+                >
+                    <img src={require(`../images/${iconImage}`)} className="character-image" alt={`${name} icon`} />
+                </RoundedRectangle>
+            </Link>
+        </div>
         <h3 className="character-name">{name}</h3>
+        
         
     </div>
         
