@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <CharacterProvider>
-      <Router>
+      <Router basename="/bookmarked" >
         <div className="global-container">
           <div className="content-container">
             <Switch>
