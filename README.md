@@ -1,9 +1,9 @@
 # bookmarked
 The Canvas for Storytellers
 # Features
-Glossary - Character tracking with built in create, edit, and delete options
-Writing - Preview your characters by highlighting the text, right clicking, and choosing 'Find Character Page'
-Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page' 
+Glossary - Character tracking with built in create, edit, and delete options\
+Writing - Preview your characters by highlighting the text, right clicking, and choosing 'Find Character Page'\
+Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page'\
 
 
 # writing doc
