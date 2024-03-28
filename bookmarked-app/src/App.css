@@ -14,3 +14,32 @@
 .temporary-trigger {
   height: 20px;
 }
+
+.confirm-delete-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.confirm-delete-popup p {
+  margin: 0 0 10px 0;
+}
+
+.confirm-delete-popup button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.confirm-delete-popup button:hover {
+  background-color: #e0e0e0;
+}
+
+

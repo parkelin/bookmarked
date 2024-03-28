@@ -28,6 +28,10 @@ Link {
     align-items: center;
     margin-bottom: 20px; 
 }
+
+.bigger-rectangle {
+    position: relative;
+}
 .rounded-rectangle {
     position: relative;
     width: 180px;
@@ -72,13 +76,13 @@ Link {
 }
 .three-dots {
     position: absolute;
-    left: 88.71%;
     right: 0.70%;
     top: 5%;
     bottom: 77.21%;
     width: 24px; 
     height: 24px; 
     background-size: cover;
+    z-index: 999;
 }
 .no-underline {
     text-decoration: none;

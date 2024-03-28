@@ -1,10 +1,12 @@
 import React from 'react'
 import '../pages/Glossary/Glossary.css'
 
-const RoundedRectangle = ({ onClick, children }) => {
+const RoundedRectangle = ({ onRectangleClick, children }) => {
     return (
-        <div className="rounded-rectangle" onClick={() => onClick}>
+        <div className="rounded-rectangle" onClick={onRectangleClick}>
+            <div className="rectangle-content">
                 {children}
+            </div>  
          </div>        
     )
 }

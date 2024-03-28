@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import ConfirmDelete from '../../components/ConfirmDelete';
 
 const CharacterContext = createContext(); // Ensure this is not undefined
 
@@ -35,14 +36,27 @@ export const CharacterProvider = ({ children }) => {
         description: '',
       }
   ]);
+
+  const [showConfirmed, setShowConfirmed] = useState(false);
+  const [charToRemove, setCharToRemove] = useState(null);
   
   const addCharacter = (character) => {
     setCharacters(prevCharacters => [...prevCharacters, character]);
   };
 
   const removeCharacter = (id) => {
-    setCharacters(prevCharacters => prevCharacters.filter(character => character.id !== id));
+    setShowConfirmed(true);
+    setCharToRemove(id);
   };
+
+  const confirmRemove = () => {
+    setCharacters(prevCharacters => prevCharacters.filter(character => character.id !== charToRemove));
+    setShowConfirmed(false);
+  }
+
+  const cancelRemove = () => {
+    setShowConfirmed(false);
+  }
 
   const generateCharacterId = () => {
     const existingIds = characters.map(character => character.id);
@@ -68,6 +82,12 @@ export const CharacterProvider = ({ children }) => {
   return (
     <CharacterContext.Provider value={{ characters, addCharacter, getCharacter, getCharacterWithId, removeCharacter, generateCharacterId, updateCharacter }}>
       {children}
+      {showConfirmed && (
+        <ConfirmDelete
+          onConfirm={confirmRemove}
+          onCancel={cancelRemove}
+          />
+      )}
     </CharacterContext.Provider>
   );
 }
