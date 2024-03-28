@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/bookmarked/static/css/main.a7b806b6.css",
-    "main.js": "/bookmarked/static/js/main.78c4c142.js",
+    "main.js": "/bookmarked/static/js/main.e414171a.js",
     "static/media/HermioneGrangerIcon.png": "/bookmarked/static/media/HermioneGrangerIcon.b565519e7412e963456f.png",
     "static/media/harryPotterIcon.png": "/bookmarked/static/media/harryPotterIcon.47b60dcb8e06d2ca651e.png",
     "static/media/logo.png": "/bookmarked/static/media/logo.49ee5702cfd5a4dcd619.png",
     "index.html": "/bookmarked/index.html",
     "main.a7b806b6.css.map": "/bookmarked/static/css/main.a7b806b6.css.map",
-    "main.78c4c142.js.map": "/bookmarked/static/js/main.78c4c142.js.map"
+    "main.e414171a.js.map": "/bookmarked/static/js/main.e414171a.js.map"
   },
   "entrypoints": [
     "static/css/main.a7b806b6.css",
-    "static/js/main.78c4c142.js"
+    "static/js/main.e414171a.js"
   ]
 }
