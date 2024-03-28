@@ -1,7 +1,7 @@
 import React from 'react'
 import '../pages/Glossary/Glossary.css'
 import RoundedRectangle from './RoundedRectangle'
-//import ThreeDotsIcon from './ThreeDotsIcon'
+import ThreeDotsIcon from './ThreeDotsIcon'
 import { Link } from 'react-router-dom';
 
 const CharacterIcon = ({ name, id, iconImage}) => {
@@ -14,18 +14,18 @@ const CharacterIcon = ({ name, id, iconImage}) => {
         console.log("clicked");
     }
     return (
+        <div className="character-icon-container">
+        <ThreeDotsIcon onClick={handleThreeDotsClick} />
         <Link className='no-underline' to={characterPagePath}>
-            <div className="character-icon-container">
-                <RoundedRectangle
-                    onRectangleClick={handleRectangleClick}
-                    onThreeDotsClick={handleThreeDotsClick}>
-
-                    <img src={require(`../images/${iconImage}`)} className="character-image" alt={`${name} icon`}/>
-                    {/* <ThreeDotsIcon onClick={handleThreeDotsClick}/> */}
-                </RoundedRectangle>
-                <h3 className="character-name">{name}</h3>
-            </div>
+            <RoundedRectangle
+                onRectangleClick={handleRectangleClick}
+            >
+                <img src={require(`../images/${iconImage}`)} className="character-image" alt={`${name} icon`} />
+            </RoundedRectangle>
         </Link>
+        <h3 className="character-name">{name}</h3>
+        
+    </div>
         
     )
 }

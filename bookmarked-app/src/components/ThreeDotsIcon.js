@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 import '../pages/Glossary/Glossary.css'
 
-const ThreeDotsIcon = ( { onEdit, onDelete, onClick} ) => {
+const ThreeDotsIcon = ( {onClick} ) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -9,29 +9,22 @@ const ThreeDotsIcon = ( { onEdit, onDelete, onClick} ) => {
     }
     const handleEdit = () => {
         console.log("edit");
-        if(onEdit) {
-            onEdit();
-        }
-        setIsOpen(false);
     }
     const handleDelete = () => {
         console.log("delete");
-        if(onDelete) {
-            onDelete();
-        }
-        setIsOpen(false);
     }
     const handleIconClick = (e) => {
         e.stopPropagation();
         console.log("3 dots")
         toggleDropdown();
-        if(onClick) {
-            onClick();
-        }
+    }
+
+    const handleDropdownClick = (e) => {
+        e.stopPropagation();
     }
 
     return (
-        <div className="three-dots">
+        <div className="three-dots" onClick={handleDropdownClick}>
             <img src={require(`../images/ThreeDots.png`)}
                  alt={"three dots icon"}
                  onClick={handleIconClick}
