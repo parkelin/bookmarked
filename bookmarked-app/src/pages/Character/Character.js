@@ -4,7 +4,7 @@ import "./Character.css";
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import RoundedRectangle from "../../components/RoundedRectangle";
-import { useCharacters } from "./CharacterContext";
+import { useCharacters } from "../../context/CharacterContext";
 import EditCharacter from "./EditCharacter";
 
 const Character = () => {

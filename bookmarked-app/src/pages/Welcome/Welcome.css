@@ -41,7 +41,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 340px; /* Adjust as needed */
+    bottom: 180px; /* Adjust as needed, originally 340px */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -66,4 +66,36 @@
   .loading-dot {
     animation: fadeDots 1.5s infinite; /* Adjust duration as needed */
   }
-  
+
+  /* login CSS */
+  .login-section {
+    margin-top: 200px;
+    margin-bottom: 200px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-logo {
+    width: 50%;
+    height: 50%;
+  }
+  .login-header {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  color: #000000;
+  }
+  .login-instructions {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 50px;
+  color: #878787;
+  }
+  .google-login-logo {
+  width: 80px;
+  height: 80px;
+  }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "../../App.css";
 import TextEditor from "./TextEditor";
 import Navbar from "../../components/Navbar";
-import { useCharacters } from "../Character/CharacterContext";
+import { useCharacters } from "../../context/CharacterContext";
 import CharacterShortcut from "./CharacterShortcut";
 import EditCharacter from "./EditCharacterShortcut"; 
 import InconsistencyPopup from './InconsistencyPopup';

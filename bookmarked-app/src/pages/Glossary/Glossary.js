@@ -4,7 +4,7 @@ import '../../App.css';
 import CharacterIcon from '../../components/CharacterIcon'
 import Navbar from '../../components/Navbar';
 import NewCharacterRectangle from '../../components/NewCharacterRectangle';
-import { useCharacters } from '../Character/CharacterContext';
+import { useCharacters } from '../../context/CharacterContext';
 
 const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
     const { characters, generateCharacterId } = useCharacters();

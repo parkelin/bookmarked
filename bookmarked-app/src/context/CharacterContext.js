@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import ConfirmDelete from '../../components/ConfirmDelete';
+import ConfirmDelete from '../components/ConfirmDelete';
 
 const CharacterContext = createContext(); // Ensure this is not undefined
 

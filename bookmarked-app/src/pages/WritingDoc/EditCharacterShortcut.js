@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useCharacters } from "../Character/CharacterContext";
+import { useCharacters } from "../../context/CharacterContext";
 import "../Character/Character.css";
 
 const EditCharacterShortcut = ({

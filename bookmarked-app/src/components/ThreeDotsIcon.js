@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import { useCharacters} from '../pages/Character/CharacterContext';
+import { useCharacters} from '../context/CharacterContext';
 import { Link, useHistory } from "react-router-dom";
 import '../pages/Glossary/Glossary.css'
 
