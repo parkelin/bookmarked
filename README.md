@@ -1,7 +1,12 @@
 # bookmarked
 The Canvas for Storytellers
+# Features
+Glossary - Character tracking with built in create, edit, and delete options\
+Writing - Preview your characters by highlighting the text, right clicking, and choosing 'Find Character Page'\
+Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page'
 
-# writing doc
+
+# Writing Doc
 npm install quill\
 npm install @types/quill\
 background-color: #f3f3f3\
@@ -10,6 +15,9 @@ https://quilljs.com/docs/quickstart
 font: DM Sans
 # react-router-dom
 v5
+
+# Google Firebase
+npm install firebase
 
 
 # Branch instructions:
