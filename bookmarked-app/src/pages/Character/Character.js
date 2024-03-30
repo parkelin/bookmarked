@@ -7,7 +7,7 @@ import RoundedRectangle from "../../components/RoundedRectangle";
 import { useCharacters } from "../../context/CharacterContext";
 import EditCharacter from "./EditCharacter";
 
-const Character = () => {
+const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
   characterId = parseInt(decodeURIComponent(characterId));
 
@@ -63,7 +63,7 @@ const Character = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar isOpen={navBarisOpen} toggleNavbar={toggleNavBar} />
       <div className="big-rounded-rectangle">
         {isEditing ? (
           <EditCharacter

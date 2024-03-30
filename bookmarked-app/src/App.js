@@ -20,7 +20,7 @@ export default function App() {
   return (
     <AuthProvider>
       <CharacterProvider>
-        <Router>
+        <Router basename="/bookmarked">
           <div className="global-container">
             <div className="content-container">
               <Switch>
@@ -40,20 +40,22 @@ export default function App() {
                   )}
                 />
 
-                <ProtectedRoute
-                  exact
-                  path="/writingdoc"
-                  component={() => (
-                    <WritingDoc
-                      navbarIsOpen={navbarIsOpen}
-                      toggleNavbar={toggleNavbar}
-                    />
-                  )}
-                />
+{/* protectedRoute affecting shortcuts */}
+                <Route exact path="/writingdoc">
+                  <WritingDoc
+                    navbarIsOpen={navbarIsOpen}
+                    toggleNavbar={toggleNavbar}
+                  />
+                </Route>
 
                 <ProtectedRoute
                   path="/glossary/:characterId"
-                  component={Character}
+                  component={() => (
+                    <Character
+                      navBarisOpen={navbarIsOpen}
+                      toggleNavBar={toggleNavbar}
+                    />
+                  )}
                 />
               </Switch>
             </div>
