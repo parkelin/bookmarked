@@ -30,9 +30,8 @@ export default function App() {
                 </Route>
 
                 <ProtectedRoute
-                  exact
-                  path="/glossary"
-                  component={() => (
+                  exact path="/glossary"
+                  render={(props) => (
                     <Glossary
                       navbarIsOpen={navbarIsOpen}
                       toggleNavbar={toggleNavbar}
@@ -40,18 +39,28 @@ export default function App() {
                   )}
                 />
 
-{/* protectedRoute affecting shortcuts */}
-                <Route exact path="/writingdoc">
+                {/* protectedRoute affecting shortcuts */}
+                {/* <Route exact path="/writingdoc">
                   <WritingDoc
                     navbarIsOpen={navbarIsOpen}
                     toggleNavbar={toggleNavbar}
                   />
-                </Route>
+                </Route> */}
+                <ProtectedRoute
+                  exact path="/writingdoc"
+                  render={(props) => (
+                    <WritingDoc
+                    navbarIsOpen={navbarIsOpen}
+                    toggleNavbar={toggleNavbar}
+                  />
+                  )}
+                  />
 
                 <ProtectedRoute
                   path="/glossary/:characterId"
-                  component={() => (
+                  render={(props) => (
                     <Character
+                      {...props} // Pass down route props (match, location, history)
                       navBarisOpen={navbarIsOpen}
                       toggleNavBar={toggleNavbar}
                     />
