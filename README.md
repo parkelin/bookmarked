@@ -17,11 +17,15 @@ font: DM Sans
 v5
 
 # Google Firebase
-npm install firebase
-
+npm install firebase 
 
 # Branch instructions:
 
+## Pulling eachother's branch
+git fetch
+git checkout branch_name
+
+## Pushing Code
 git branch branchname\
 git checkout branchname\
 git branch ##just to check that ur on the right branch\
