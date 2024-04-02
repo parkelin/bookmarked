@@ -22,7 +22,7 @@ npm install firebase
 # Branch instructions:
 
 ## Pulling eachother's branch
-git fetch
+git fetch\
 git checkout branch_name
 
 ## Pushing Code
