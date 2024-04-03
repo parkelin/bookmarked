@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../../App.css";
+import "../Welcome/Welcome.css"
 import TextEditor from "./TextEditor";
 import Navbar from "../../components/Navbar";
 import { useCharacters } from "../../context/CharacterContext";
@@ -17,7 +18,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
   const [editorContent, setEditorContent] = useState(""); // State to store current editor content
 
-
+  const [isLoading, setIsLoading] = useState(false)
+  
   const { getCharacter } = useCharacters();
 
   const moveEditor = () => {
@@ -27,7 +29,15 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const handleOpenShortcut = () => {
     toggleNavbar();
     moveEditor();
-    handleChangeToShortcut();
+    const currentCharacter = getCharacter(highlightedText);
+    setCurrentCharacterData(currentCharacter);
+    if (currentCharacter !== undefined) {
+      setIsShortcutOpened(true);
+      setIsEmptyShortcutOpened(false);
+      setIsCreateShortcutOpened(false);
+    } else {
+      setIsEmptyShortcutOpened(true);
+    }
   };
 
   const handleCloseShortcut = () => {
@@ -47,13 +57,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const handleChangeToShortcut = () => {
     const currentCharacter = getCharacter(highlightedText);
     setCurrentCharacterData(currentCharacter);
-    if (currentCharacter !== undefined) {
-      setIsShortcutOpened(true);
-      setIsEmptyShortcutOpened(false);
-      setIsCreateShortcutOpened(false);
-    } else {
-      setIsEmptyShortcutOpened(true);
-    }
+
+    handleCloseShortcut()
   };
 
   const handleCheckInconsistencies = () => {
@@ -104,6 +109,15 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             setEditorContent={setEditorContent}
           />
         </div>
+        {isLoading && (
+          <div className="shortcut-rounded-rectangle">
+            <div className="loading-dots">
+              <div className="loading-dot"></div>
+              <div className="loading-dot"></div>
+              <div className="loading-dot"></div>
+            </div>
+        </div>
+        )}
         {isShortcutOpened && (
           <CharacterShortcut
             characterData={currentCharacterData}

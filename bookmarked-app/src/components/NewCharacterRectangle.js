@@ -4,7 +4,7 @@ import RoundedRectangle from './RoundedRectangle'
 import PlusSign from './PlusSign'
 
 const NewCharacterRectangle = ({ newId }) => {
-    const characterPagePath = `/glossary/${encodeURIComponent(newId)}`
+    const characterPagePath = `/glossary/${newId}`
 
     return (
         <div>

@@ -4,25 +4,25 @@ import RoundedRectangle from './RoundedRectangle'
 import ThreeDotsIcon from './ThreeDotsIcon'
 import { Link } from 'react-router-dom';
 
-const CharacterIcon = ({ name, id, iconImage}) => {
-    const characterPagePath = `/glossary/${encodeURIComponent(id)}`;
+const CharacterIcon = ({ character }) => {
+    const characterPagePath = `/glossary/${character.id}`;
     
     return (
         <div className="character-icon-container">
             <div className="bigger-rectangle">
-                <ThreeDotsIcon id={id}/>
+                <ThreeDotsIcon id={character.id}/>
                     <Link className="no-underline" to={characterPagePath}>
                         <RoundedRectangle>
                             <img
-                                src={require(`../images/${iconImage}`)}
+                                src={require(`../images/${character.image}`)}
                                 className="character-image"
-                                alt={`${name} icon`}
+                                alt={`${character.name} icon`}
                             />
                         </RoundedRectangle>
                     </Link>
             
             </div>
-            <h3 className="character-name">{name}</h3>
+            <h3 className="character-name">{character.name}</h3>
         </div>
     )
 }

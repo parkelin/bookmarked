@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Character.css";
+import "../Welcome/Welcome.css"
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import RoundedRectangle from "../../components/RoundedRectangle";
@@ -9,7 +10,7 @@ import EditCharacter from "./EditCharacter";
 
 const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
-  characterId = parseInt(decodeURIComponent(characterId));
+
 
   const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter } =
     useCharacters();
@@ -18,47 +19,59 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
   const [characterName, setCharacterName] = useState("");
   const [caption, setCaption] = useState("");
   const [description, setDescription] = useState("");
+  const [characterData, setCharacterData] = useState(getCharacterWithId(characterId))
+  const [needsAdding, setNeedsAdding] = useState(false)
 
   const handleUpdateChanges = () => {
     const updatedCharacterData = {
       id: characterId,
-      characterName: characterName,
-      imageName: characterData.imageName,
+      name: characterName,
+      image: characterData.image,
       caption: caption,
       description: description,
     };
     setIsEditing(false);
-    updateCharacter(updatedCharacterData);
-    characterData = updatedCharacterData;
+    if (needsAdding) {
+      addCharacter(updatedCharacterData)
+    } else {
+      updateCharacter(updatedCharacterData);
+    }
+    setCharacterData(updatedCharacterData)
   };
 
   const handleClickEditMode = () => {
     setIsEditing(true);
-    setCharacterName(characterData.characterName);
+    setCharacterName(characterData.name);
     setCaption(characterData.caption);
     setDescription(characterData.description);
   };
 
-  var characterData = getCharacterWithId(characterId);
-
   useEffect(() => {
     const newCharacterTemplate = {
-      id: characterId, // change to generateId
-      characterName: "New Character",
-      imageName: "EmptyImageIcon.png",
+      id: characterId, 
+      name: "New Character",
+      image: "EmptyImageIcon.png",
       caption: "Add caption here",
       description: "Add detailed descriptions here",
     };
 
     if (!characterData) {
+      console.log("identified new character edit page")
       setIsEditing(true);
-      addCharacter(newCharacterTemplate);
-      characterData = newCharacterTemplate;
+      // addCharacter(newCharacterTemplate);
+      setCharacterData(newCharacterTemplate)
+      setNeedsAdding(true)
     }
   }, [characterData, characterId, addCharacter]);
 
   if (!characterData) {
-    return <div></div>;
+    return <div>
+      <div className="loading-dots">
+              <div className="loading-dot"></div>
+              <div className="loading-dot"></div>
+              <div className="loading-dot"></div>
+            </div>
+    </div>;
   }
 
   return (
@@ -87,7 +100,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
                 className="delete-current-character"
                 onClick={() => removeCharacter(characterData.id)}
               >
-                delete
+                Delete
               </Link>
               <button
                 className="edit-button"
@@ -99,14 +112,14 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             <div className="character-main-info">
               <RoundedRectangle>
                 <img
-                  src={require(`../../images/${characterData.imageName}`)}
+                  src={require(`../../images/${characterData.image}`)}
                   className="character-image-big"
-                  alt={`${characterData.characterName} icon`}
+                  alt={`${characterData.name} icon`}
                 />
               </RoundedRectangle>
               <div className="character-heading-text">
                 <h1 className="character-name-big">
-                  {characterData.characterName}
+                  {characterData.name}
                 </h1>
                 <h3 className="caption">{characterData.caption}</h3>
               </div>

@@ -11,13 +11,13 @@ const CharacterShortcut = ({ handleCloseShortcut, characterData }) => {
         <div className='small-character-main-info'>
             <div className='small-rounded-rectangle'>
                 <img
-                  src={require(`../../images/${characterData.imageName}`)}
+                  src={require(`../../images/${characterData.image}`)}
                   className="character-image-big"
-                  alt={`${characterData.characterName} icon`}
+                  alt={`${characterData.name} icon`}
                 />
             </div>
             <div className="character-heading-text">
-                <h1 className="character-name-small">{characterData.characterName}</h1>
+                <h1 className="character-name-small">{characterData.name}</h1>
                 <h3 className="caption-small">{characterData.caption}</h3>
             </div>
         </div>
