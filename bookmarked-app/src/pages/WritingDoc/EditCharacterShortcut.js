@@ -7,10 +7,10 @@ const EditCharacterShortcut = ({
   handleCancel,
   highlightedText,
 }) => {
-  const { addCharacter, updateCharacter, getCharacter, generateCharacterId } = useCharacters();
+  const { addCharacter, updateCharacter, getCharacter } = useCharacters();
 
   const [isUpdating, setIsUpdating] = useState(false)
-  const [id, setId] = useState(generateCharacterId())
+  const [id, setId] = useState('NewCharacter')
   const [image, setImage] = useState("EmptyImageIcon.png")
   const [name, setName] = useState(highlightedText)
   const [caption, setCaption] = useState("");
@@ -23,26 +23,26 @@ const EditCharacterShortcut = ({
     if (character !== undefined) {
         setIsUpdating(true)
         setId(character.id)
-        setImage(character.imageName)
+        setImage(character.image)
         setCaption(character.caption);
         setDescription(character.description);
-        setName(character.characterName)
+        setName(character.name)
     }
   }, [highlightedText, getCharacter])
 
 
-  const handleAddCharacter = () => {
+  const handleAddCharacter = async () => {
     const updatedCharacterData = {
       id: id,
-      characterName: name,
-      imageName: image,
+      name: name,
+      image: image,
       caption: caption,
       description: description,
     };
     if (isUpdating)
-        updateCharacter(updatedCharacterData)
+        await updateCharacter(updatedCharacterData)
     else
-        addCharacter(updatedCharacterData);
+        await addCharacter(updatedCharacterData);
     handleFinishChangesClick();
   };
 

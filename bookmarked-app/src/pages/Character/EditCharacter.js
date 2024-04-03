@@ -22,9 +22,9 @@ const EditCharacter = ({
       <div className="character-main-info">
         <RoundedRectangle>
           <img
-            src={require(`../../images/${characterData.imageName}`)}
+            src={require(`../../images/${characterData.image}`)}
             className="character-image-big"
-            alt={`${characterData.characterName} icon`}
+            alt={`${characterData.name} icon`}
           />
         </RoundedRectangle>
           <div className="character-heading-text">

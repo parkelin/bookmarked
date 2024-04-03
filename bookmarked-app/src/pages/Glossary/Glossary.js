@@ -7,7 +7,7 @@ import NewCharacterRectangle from '../../components/NewCharacterRectangle';
 import { useCharacters } from '../../context/CharacterContext';
 
 const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
-    const { characters, generateCharacterId } = useCharacters();
+    const { characters } = useCharacters();
 
     return (
       <div className='welcome'> 
@@ -18,11 +18,9 @@ const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
                 {characters.map((character) => (
                     <CharacterIcon 
                         key={character.id} 
-                        id={character.id}
-                        name={character.characterName} 
-                        iconImage={character.imageName}/>
+                        character={character}/>
                 ))}
-                <NewCharacterRectangle newId={generateCharacterId()} />
+                <NewCharacterRectangle newId={'NewCharacter'} />
             </div>
         </div>
       </div>
