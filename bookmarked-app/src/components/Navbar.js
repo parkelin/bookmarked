@@ -8,13 +8,13 @@ const Navbar = ({ isOpen, toggleNavbar }) => {
 
     return (
         <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
-            <div className="navbar-toggle" onClick={toggleNavbar}>
+            {/* <div className="navbar-toggle" onClick={toggleNavbar}>
             {isOpen ? <span>&lt;</span> : <span>&gt;</span>}
-            </div>
+            </div> */}
             {isOpen && (
                 <div>
-                    <div><Link to="/writingdoc" className="text">Writing Document</Link></div>
-                    <div><Link to="/glossary" className="text">Glossary</Link></div>
+                    <div><Link to="/writingdoc" className="navbar-text-regular">Writing Document</Link></div>
+                    <div><Link to="/glossary" className="navbar-text-regular">Glossary</Link></div>
                     {/* <div><Link to="/loading" className="text">Map Maker</Link></div>
                     <div><Link to="/loading" className="text">Plot Planner</Link></div> */}
                 </div>

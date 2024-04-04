@@ -8,6 +8,7 @@ import CharacterShortcut from "./CharacterShortcut";
 import EditCharacter from "./EditCharacterShortcut"; 
 import InconsistencyPopup from './InconsistencyPopup';
 import LogOutButton from '../../components/LogoutButton';
+import { CgClose } from "react-icons/cg";
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
@@ -92,11 +93,11 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
         <LogOutButton />
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className="main-content">
-        <div className="inconsistency-button-container">
+        {/* <div className="inconsistency-button-container">
             <button className="inconsistency-button" onClick = {handleCheckInconsistencies}>
               Inconsistency Check
             </button>
-          </div>
+          </div> */}
           {showInconsistencyPopup && (
           <InconsistencyPopup
             handleCloseInconsistencyPopup = {handleCloseInconsistencyPopup}
@@ -128,10 +129,13 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
         )}
         {isEmptyShortcutOpened && (
           <div className="shortcut-rounded-rectangle">
-            <button className="close" onClick={handleCloseShortcut}>
-              X
+            <button className="close" onClick={handleCloseShortcut}
+            style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer', marginTop: '5px', left: '94%'}}>
+              <CgClose size={'20px'}/>
             </button>
-            <h1 className="no-character-found-text">No character found.</h1>
+            <h1 className="no-character-found-text"
+            style={{ marginTop: '20px'}}>
+            No character found.</h1>
           </div>
         )}
         {isCreateShortcutOpened && (

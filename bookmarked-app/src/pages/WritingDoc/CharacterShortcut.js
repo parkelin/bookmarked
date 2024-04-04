@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { CiMaximize1 } from "react-icons/ci";
+import { CgClose } from "react-icons/cg";
 import '../Character/Character.css'
 import './WritingDoc.css'
 
 const CharacterShortcut = ({ handleCloseShortcut, characterData }) => {
     return (
     <div className='shortcut-rounded-rectangle'>  
-        <button className='small-close' onClick={handleCloseShortcut}>X</button>
-        <Link className='full-screen' to={`/glossary/${characterData.id}`} onClick={() => handleCloseShortcut}>Full Screen</Link>
+        <button className='small-close' onClick={handleCloseShortcut} style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}><CgClose size={'23px'}/></button>
+        <Link className='full-screen' to={`/glossary/${characterData.id}`} >
+            <CiMaximize1 size={'21px'} style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer' }}/>
+        </Link>
         <div className='small-character-main-info'>
             <div className='small-rounded-rectangle'>
                 <img
