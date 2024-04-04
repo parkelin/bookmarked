@@ -19,6 +19,9 @@ v5
 # Google Firebase
 npm install firebase 
 
+# React Icons 
+npm install react-icons --save
+
 # Branch instructions:
 
 ## Pulling eachother's branch
