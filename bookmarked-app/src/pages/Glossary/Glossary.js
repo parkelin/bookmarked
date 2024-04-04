@@ -5,12 +5,14 @@ import CharacterIcon from '../../components/CharacterIcon'
 import Navbar from '../../components/Navbar';
 import NewCharacterRectangle from '../../components/NewCharacterRectangle';
 import { useCharacters } from '../../context/CharacterContext';
+import LogOutButton from '../../components/LogoutButton';
 
 const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
     const { characters } = useCharacters();
 
     return (
       <div className='welcome'> 
+        <LogOutButton />
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className='glossary-section'>
             <h1 className='glossary-title'>Glossary</h1>

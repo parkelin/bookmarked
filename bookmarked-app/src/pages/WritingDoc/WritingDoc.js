@@ -7,6 +7,7 @@ import { useCharacters } from "../../context/CharacterContext";
 import CharacterShortcut from "./CharacterShortcut";
 import EditCharacter from "./EditCharacterShortcut"; 
 import InconsistencyPopup from './InconsistencyPopup';
+import LogOutButton from '../../components/LogoutButton';
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
@@ -88,6 +89,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   return (
     <>
       <div className="welcome">
+        <LogOutButton />
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className="main-content">
         <div className="inconsistency-button-container">
