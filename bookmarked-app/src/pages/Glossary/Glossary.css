@@ -4,6 +4,15 @@ body {
 Link {
     text-decoration: none;
 }
+.glossary {
+    display: flex;
+    margin: 0;
+}
+.glossary-section {
+    max-width: 1200px;
+    position: relative;
+    left: 5%
+}
 .glossary-title {
     font-family: 'DM Sans';
     display: flex;
@@ -12,15 +21,13 @@ Link {
     font-style: normal;
     font-size: 40px;
     color: #000000;
+    margin-top: 20px;
     margin-bottom: 40px;
-    margin-left: 100px;
 }
 .characters-container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    margin-left: 100px;
-
   }
 .character-icon-container {
     display: flex;

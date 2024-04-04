@@ -7,6 +7,10 @@ import { useParams } from "react-router-dom";
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { useCharacters } from "../../context/CharacterContext";
 import EditCharacter from "./EditCharacter";
+import { CgClose } from "react-icons/cg";
+import { RiEditLine } from "react-icons/ri";
+import { CgTrashEmpty } from "react-icons/cg";
+
 
 const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
@@ -76,7 +80,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
 
   return (
     <div>
-      <Navbar isOpen={navBarisOpen} toggleNavbar={toggleNavBar} />
+      <Navbar isOpen={true} toggleNavbar={toggleNavBar} />
       <div className="big-rounded-rectangle">
         {isEditing ? (
           <EditCharacter
@@ -90,24 +94,27 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             handleUpdateChanges={handleUpdateChanges}
           />
         ) : (
-          <>
+          <div>
             <div>
-              <Link to="/glossary" className="close">
-                X
-              </Link>
+              <Link to="/glossary" className="close" style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}>
+              <CgClose size={'30px'} />
+              </Link> 
+              <button
+                className="edit-button"
+                onClick={() => handleClickEditMode()}
+                style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}
+              >
+                <RiEditLine size={'30px'}/>
+              </button>
               <Link
                 to="/glossary"
                 className="delete-current-character"
                 onClick={() => removeCharacter(characterData.id)}
+                style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}
               >
-                Delete
+                <CgTrashEmpty size={'30px'}/>
               </Link>
-              <button
-                className="edit-button"
-                onClick={() => handleClickEditMode()}
-              >
-                Edit
-              </button>
+             
             </div>
             <div className="character-main-info">
               <RoundedRectangle>
@@ -130,7 +137,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
                 {characterData.description}
               </p>
             </div>
-          </>
+          </div>
         )}
         <div className="divider" />
         <h2 id="connections-title">Connections</h2>

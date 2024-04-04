@@ -1,5 +1,6 @@
 import React from "react";
 import RoundedRectangle from "../../components/RoundedRectangle";
+import { CgCheck } from "react-icons/cg";
 
 const EditCharacter = ({
   characterData,
@@ -14,19 +15,28 @@ const EditCharacter = ({
   return (
     <>
       <div>
-        <button className="edit-button" onClick={handleUpdateChanges}>
-          Finish editing
+        <button
+          className="edit-button"
+          onClick={handleUpdateChanges}
+          style={{
+            border: "none",
+            color: "#000",
+            background: "none",
+            cursor: "pointer",
+          }}
+        >
+          <CgCheck size={"59px"} />
         </button>
       </div>
       <div>
-      <div className="character-main-info">
-        <RoundedRectangle>
-          <img
-            src={require(`../../images/${characterData.image}`)}
-            className="character-image-big"
-            alt={`${characterData.name} icon`}
-          />
-        </RoundedRectangle>
+        <div className="character-main-info">
+          <RoundedRectangle>
+            <img
+              src={require(`../../images/${characterData.image}`)}
+              className="character-image-big"
+              alt={`${characterData.name} icon`}
+            />
+          </RoundedRectangle>
           <div className="character-heading-text">
             <input
               type="text"
@@ -43,16 +53,16 @@ const EditCharacter = ({
               onChange={(e) => setCaption(e.target.value)}
             />
           </div>
-          </div>
-          <div className="character-description-section">
-            <textarea
-              className="character-description"
-              value={description}
-              placeholder="Enter description"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
         </div>
+        <div className="character-description-section">
+          <textarea
+            className="character-description"
+            value={description}
+            placeholder="Enter description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+      </div>
     </>
   );
 };
