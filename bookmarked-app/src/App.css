@@ -41,5 +41,9 @@
 .confirm-delete-popup button:hover {
   background-color: #e0e0e0;
 }
-
-
+.logout-button {
+  position: fixed;
+  z-index: 9998;
+  top: 10px; 
+  right: 10px;
+}
