@@ -1,6 +1,7 @@
 import React from "react";
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { CgCheck } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const EditCharacter = ({
   characterData,
@@ -11,22 +12,39 @@ const EditCharacter = ({
   description,
   setDescription,
   handleUpdateChanges,
+  isNew,
 }) => {
   return (
     <>
       <div>
-        <button
-          className="edit-button"
-          onClick={handleUpdateChanges}
-          style={{
-            border: "none",
-            color: "#000",
-            background: "none",
-            cursor: "pointer",
-          }}
-        >
-          <CgCheck size={"59px"} />
-        </button>
+        {isNew ? (
+          <Link
+            to={"/glossary"}
+            className="edit-button"
+            onClick={handleUpdateChanges}
+            style={{
+              border: "none",
+              color: "#000",
+              background: "none",
+              cursor: "pointer",
+            }}
+          >
+            <CgCheck size={"59px"} />
+          </Link>
+        ) : (
+          <button
+            className="edit-button"
+            onClick={handleUpdateChanges}
+            style={{
+              border: "none",
+              color: "#000",
+              background: "none",
+              cursor: "pointer",
+            }}
+          >
+            <CgCheck size={"59px"} />
+          </button>
+        )}
       </div>
       <div>
         <div className="character-main-info">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Character.css";
-import "../Welcome/Welcome.css"
+import "../Welcome/Welcome.css";
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import RoundedRectangle from "../../components/RoundedRectangle";
@@ -11,20 +11,21 @@ import { CgClose } from "react-icons/cg";
 import { RiEditLine } from "react-icons/ri";
 import { CgTrashEmpty } from "react-icons/cg";
 
-
 const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
-
 
   const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter } =
     useCharacters();
 
+  const [isNew, setIsNew] = useState(false)
   const [isEditing, setIsEditing] = useState(false);
   const [characterName, setCharacterName] = useState("");
   const [caption, setCaption] = useState("");
   const [description, setDescription] = useState("");
-  const [characterData, setCharacterData] = useState(getCharacterWithId(characterId))
-  const [needsAdding, setNeedsAdding] = useState(false)
+  const [characterData, setCharacterData] = useState(
+    getCharacterWithId(characterId)
+  );
+  const [needsAdding, setNeedsAdding] = useState(false);
 
   const handleUpdateChanges = () => {
     const updatedCharacterData = {
@@ -34,13 +35,13 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
       caption: caption,
       description: description,
     };
-    setIsEditing(false);
     if (needsAdding) {
-      addCharacter(updatedCharacterData)
+      addCharacter(updatedCharacterData);
     } else {
+      setIsEditing(false);
       updateCharacter(updatedCharacterData);
     }
-    setCharacterData(updatedCharacterData)
+    setCharacterData(updatedCharacterData);
   };
 
   const handleClickEditMode = () => {
@@ -52,7 +53,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
 
   useEffect(() => {
     const newCharacterTemplate = {
-      id: characterId, 
+      id: characterId,
       name: "New Character",
       image: "EmptyImageIcon.png",
       caption: "Add caption here",
@@ -60,22 +61,25 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
     };
 
     if (!characterData) {
-      console.log("identified new character edit page")
+      console.log("identified new character edit page");
       setIsEditing(true);
+      setIsNew(true)
       // addCharacter(newCharacterTemplate);
-      setCharacterData(newCharacterTemplate)
-      setNeedsAdding(true)
+      setCharacterData(newCharacterTemplate);
+      setNeedsAdding(true);
     }
   }, [characterData, characterId, addCharacter]);
 
   if (!characterData) {
-    return <div>
-      <div className="loading-dots">
-              <div className="loading-dot"></div>
-              <div className="loading-dot"></div>
-              <div className="loading-dot"></div>
-            </div>
-    </div>;
+    return (
+      <div>
+        <div className="loading-dots">
+          <div className="loading-dot"></div>
+          <div className="loading-dot"></div>
+          <div className="loading-dot"></div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -92,29 +96,48 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             description={description}
             setDescription={setDescription}
             handleUpdateChanges={handleUpdateChanges}
+            isNew={isNew}
           />
         ) : (
           <div>
             <div>
-              <Link to="/glossary" className="close" style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}>
-              <CgClose size={'30px'} />
-              </Link> 
+              <Link
+                to="/glossary"
+                className="close"
+                style={{
+                  border: "none",
+                  color: "#000",
+                  background: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <CgClose size={"30px"} />
+              </Link>
               <button
                 className="edit-button"
                 onClick={() => handleClickEditMode()}
-                style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}
+                style={{
+                  border: "none",
+                  color: "#000",
+                  background: "none",
+                  cursor: "pointer",
+                }}
               >
-                <RiEditLine size={'30px'}/>
+                <RiEditLine size={"30px"} />
               </button>
               <Link
                 to="/glossary"
                 className="delete-current-character"
                 onClick={() => removeCharacter(characterData.id)}
-                style={{ border: 'none', color: '#000', background: 'none', cursor: 'pointer'}}
+                style={{
+                  border: "none",
+                  color: "#000",
+                  background: "none",
+                  cursor: "pointer",
+                }}
               >
-                <CgTrashEmpty size={'30px'}/>
+                <CgTrashEmpty size={"30px"} />
               </Link>
-             
             </div>
             <div className="character-main-info">
               <RoundedRectangle>
@@ -125,9 +148,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
                 />
               </RoundedRectangle>
               <div className="character-heading-text">
-                <h1 className="character-name-big">
-                  {characterData.name}
-                </h1>
+                <h1 className="character-name-big">{characterData.name}</h1>
                 <h3 className="caption">{characterData.caption}</h3>
               </div>
               {/* need to add location section here */}
