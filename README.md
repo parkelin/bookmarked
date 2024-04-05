@@ -20,6 +20,11 @@ v5
 # Google Firebase
 npm install firebase 
 
+## Google Firebase Cloud Functions (ChatGPT API)
+npm install -g firebase-tools
+firebase login
+firebase init functions
+
 # React Icons 
 npm install react-icons --save\
 Find Icons Here:\
