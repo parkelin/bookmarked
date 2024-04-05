@@ -28,6 +28,9 @@ firebase init functions
 In functions folder:
 npm install node-fetch
 
+# ChatGPT API
+npm install openai@^4.0.0
+
 # React Icons 
 npm install react-icons --save\
 Find Icons Here:\
