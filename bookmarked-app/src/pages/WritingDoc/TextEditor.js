@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./WritingDoc.css";
 import ContextMenu from "../../components/ContextMenu";
+import { useEditor } from "../../context/EditorContext"; 
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -21,10 +22,11 @@ export default function TextEditor({
   onClickFindShortcut,
   setHighlightedText,
   onClickCreateShortcut,
-  setEditorContent
+  setEditorContent 
 }) {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
+  const { editorContent} = useEditor(); 
 
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
@@ -36,6 +38,11 @@ export default function TextEditor({
       theme: "snow",
       modules: { toolbar: TOOLBAR_OPTIONS },
     });
+
+    if (editorContent) {
+      console.log(editorContent);
+      quill.setText(editorContent);
+    }
 
     quill.on("selection-change", function (range) {
       if (range) {
@@ -58,7 +65,8 @@ export default function TextEditor({
       setEditorContent(editorContent); // Update editor content
     });
 
-  }, [setEditorContent, setHighlightedText]);
+  }, [setEditorContent, setHighlightedText, editorContent]);
+
 
   const handleRightClick = (e) => {
     e.preventDefault();
@@ -78,6 +86,7 @@ export default function TextEditor({
   };
 
   const editorClass = isEditorMoved ? "container editor-moved" : "container";
+
 
   return (
     <div className={editorClass} ref={wrapperRef}>
