@@ -9,6 +9,7 @@ import EditCharacter from "./EditCharacterShortcut";
 import InconsistencyPopup from './InconsistencyPopup';
 import LogOutButton from '../../components/LogoutButton';
 import { CgClose } from "react-icons/cg";
+import { useEditor } from "../../context/EditorContext"; 
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
@@ -19,6 +20,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
   const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+  
+  const { saveEditorContent } = useEditor(); 
 
   const [isLoading, setIsLoading] = useState(false)
   
@@ -59,7 +62,6 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const handleChangeToShortcut = () => {
     const currentCharacter = getCharacter(highlightedText);
     setCurrentCharacterData(currentCharacter);
-
     handleCloseShortcut()
   };
 
@@ -98,6 +100,11 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               Inconsistency Check
             </button>
           </div> */}
+          <div className="navbar-text-regular">
+            <button className="save-button" onClick = {() => saveEditorContent(editorContent)}>
+              Save
+            </button>
+          </div>
           {showInconsistencyPopup && (
           <InconsistencyPopup
             handleCloseInconsistencyPopup = {handleCloseInconsistencyPopup}
