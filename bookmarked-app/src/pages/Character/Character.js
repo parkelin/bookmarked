@@ -12,6 +12,7 @@ import { RiEditLine } from "react-icons/ri";
 import { CgTrashEmpty } from "react-icons/cg";
 
 
+
 const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
 
@@ -23,22 +24,27 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
   const [characterName, setCharacterName] = useState("");
   const [caption, setCaption] = useState("");
   const [description, setDescription] = useState("");
+  const [characterImage, setCharacterImage] = useState(null);
   const [characterData, setCharacterData] = useState(getCharacterWithId(characterId))
   const [needsAdding, setNeedsAdding] = useState(false)
+  const [imagePreview, setImagePreview] = useState("");
 
-  const handleUpdateChanges = () => {
+  const handleUpdateChanges = async () => {
     const updatedCharacterData = {
       id: characterId,
       name: characterName,
-      image: characterData.image,
+      image: characterImage,
       caption: caption,
       description: description,
     };
+
     setIsEditing(false);
     if (needsAdding) {
       addCharacter(updatedCharacterData)
     } else {
+      console.log("helloo", updatedCharacterData.image);
       updateCharacter(updatedCharacterData);
+      console.log("hello", updatedCharacterData.image);
     }
     setCharacterData(updatedCharacterData)
   };
@@ -48,6 +54,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
     setCharacterName(characterData.name);
     setCaption(characterData.caption);
     setDescription(characterData.description);
+    setImagePreview(characterData.image);
   };
 
   useEffect(() => {
@@ -67,6 +74,15 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
       setNeedsAdding(true)
     }
   }, [characterData, characterId, addCharacter]);
+
+  useEffect(() => {
+    // Set image preview when characterData changes
+    if (characterData && characterData.image) {
+      setImagePreview(require(`../../images/${characterData.image}`));
+      console.log("Image preview set:", require(`../../images/${characterData.image}`));
+    }
+  }, [characterData]);
+  
 
   if (!characterData) {
     return <div>
@@ -92,7 +108,13 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             description={description}
             setDescription={setDescription}
             handleUpdateChanges={handleUpdateChanges}
+            characterImage={characterImage}
+            setCharacterImage={setCharacterImage}
+
+            
           />
+
+          
         ) : (
           <div>
             <div>
@@ -119,7 +141,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             <div className="character-main-info">
               <RoundedRectangle>
                 <img
-                  src={require(`../../images/${characterData.image}`)}
+                  src={imagePreview}
                   className="character-image-big"
                   alt={`${characterData.name} icon`}
                 />

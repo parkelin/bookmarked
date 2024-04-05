@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import RoundedRectangle from "../../components/RoundedRectangle";
-import { CgCheck } from "react-icons/cg";
+import { CgCheck, CgAdd } from "react-icons/cg";
 
 const EditCharacter = ({
   characterData,
@@ -11,7 +11,21 @@ const EditCharacter = ({
   description,
   setDescription,
   handleUpdateChanges,
+  characterImage, // New prop for managing character image
+  setCharacterImage, // New function to update character image
 }) => {
+  const [imagePreview, setImagePreview] = useState(""); // State to hold image preview
+  const fileInputRef = useRef(null);
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setCharacterImage(file); // Update character image state
+      const imageUrl = URL.createObjectURL(file); // Get image URL for preview
+      setImagePreview(imageUrl); // Update image preview
+    }
+  };
+
   return (
     <>
       <div>
@@ -31,11 +45,32 @@ const EditCharacter = ({
       <div>
         <div className="character-main-info">
           <RoundedRectangle>
-            <img
-              src={require(`../../images/${characterData.image}`)}
-              className="character-image-big"
-              alt={`${characterData.name} icon`}
+          {imagePreview ? (
+              <img
+                src={imagePreview}
+                className="character-image-big"
+                alt={`${characterName} icon`}
+              />
+            ) : (
+              <img
+                src={require(`../../images/${characterData.image}`)}
+                className="character-image-big"
+                alt={`${characterName} icon`}
+              />
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
+              ref={fileInputRef}
             />
+             <div
+              className="upload-icon"
+              onClick={() => fileInputRef.current.click()} // Use ref to trigger file input click
+            >
+              <CgAdd size={24} />
+            </div>
           </RoundedRectangle>
           <div className="character-heading-text">
             <input
