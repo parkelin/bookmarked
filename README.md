@@ -23,7 +23,7 @@ npm install firebase
 ## Google Firebase Cloud Functions (ChatGPT API)
 npm install -g firebase-tools\
 firebase login\
-firebase init functions\
+firebase init functions
 
 In functions folder:
 npm install node-fetch
