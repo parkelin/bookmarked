@@ -18,7 +18,7 @@ function ContextMenu({ x, y, onClose, onClickFindShortcut, onClickCreateShortcut
         
           <button className='drop-down-option' onClick={handleFindClick}>Find Character Page</button>
           <button className='drop-down-option' onClick={handleCreateClick}>Create Character Page</button>
-        
+          {/* elin todo: add inconsistency button? */}
       </div>
     );
   }
