@@ -78,7 +78,7 @@ export default function TextEditor({
     console.log("Sending highlighted text to ChatGPT:", highlightedText);
 
     // Simulated API response handling
-    const response = await sendHighlightedTextToYourBackend(highlightedText);
+    // const response = await sendHighlightedTextToYourBackend(highlightedText);
     // console.log("ChatGPT response:", response);
   };
   
