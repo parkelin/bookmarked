@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import ConfirmDelete from '../components/ConfirmDelete';
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, query, where } from 'firebase/firestore';
-import { database } from '../firebase-config';
+import { database} from '../firebase-config';
 import { useAuth } from './AuthContext'
+import { getStorage } from 'firebase/storage';
 
 const CharacterContext = createContext(); 
-
+const storage = getStorage();
 export const useCharacters = () => useContext(CharacterContext);
 
 export const CharacterProvider = ({ children }) => {
@@ -46,6 +47,14 @@ export const CharacterProvider = ({ children }) => {
   
   const addCharacter = async (characterData) => {
       if (currentUser) {
+        const storageRef = getStorage();
+        const imageRef = storageRef.child(`images/${characterData.image.name}`);
+        
+        // Upload image to Firebase Storage
+        await imageRef.put(characterData.image);
+        
+        // Get download URL of the uploaded image
+        const imageUrl = await imageRef.getDownloadURL();
         const docId = await addDoc(collection(database, 'characters'), {
           Name: characterData.name,
           Caption: characterData.caption,
@@ -93,12 +102,21 @@ export const CharacterProvider = ({ children }) => {
       if (user) {
         const characterRef = doc(database, 'characters', updatedCharacter.id);
         console.log(`updating character id ${updatedCharacter.id}`)
+
+        if (updatedCharacter.image && typeof updatedCharacter.image !== "string") {
+          const imageRef = storage.ref().child(`characterImages/${updatedCharacter.id}`);
+
+          await imageRef.put(updatedCharacter.image);
+          updatedCharacter.image = await imageRef.getDownloadURL();
+        }
+
         await updateDoc(characterRef, {
           Name: updatedCharacter.name,
           Caption: updatedCharacter.caption,
           Description: updatedCharacter.description,
           image: updatedCharacter.image
         })
+        console.log("update completed", updateCharacter.image);
 
         // update in local state
         setCharacters((prevCharacters) =>

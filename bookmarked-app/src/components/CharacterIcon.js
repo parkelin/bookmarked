@@ -13,11 +13,20 @@ const CharacterIcon = ({ character }) => {
                 <ThreeDotsIcon id={character.id}/>
                     <Link className="no-underline" to={characterPagePath}>
                         <RoundedRectangle>
-                            <img
+                            { character.image == 'EmptyImageIcon.png' ? (
+                                <img
                                 src={require(`../images/${character.image}`)}
                                 className="character-image"
                                 alt={`${character.name} icon`}
-                            />
+                                />
+                            ): (
+                                <img
+                                src={character.image}
+                                className="character-image"
+                                alt={`${character.name} icon`}
+                                />
+                            )}
+                            
                         </RoundedRectangle>
                     </Link>
             
