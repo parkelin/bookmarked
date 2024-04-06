@@ -83,6 +83,7 @@ Link {
 }
 .three-dots {
     position: absolute;
+    display: inline-block;
     right: 0.70%;
     top: 5%;
     bottom: 77.21%;
@@ -101,4 +102,31 @@ Link {
 }
 .no-underline {
     text-decoration: none;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ccc; /* Add a border for better visibility */
+}
+
+.dropdown button {
+    color: #333;
+    padding: 8px 12px;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown button:hover {
+    background-color: #f1f1f1;
+}
+
+.three-dots:hover .dropdown {
+    display: block;
 }

@@ -1,9 +1,10 @@
 # bookmarked
 The Canvas for Storytellers
 # Features
+Account Workspace - Personalized boomarked space using Google Authentification and Google Firestore Database\
 Glossary - Character tracking with built in create, edit, and delete options\
 Writing - Preview your characters by highlighting the text, right clicking, and choosing 'Find Character Page'\
-Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page'
+Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page'\
 
 
 # Writing Doc
@@ -19,8 +20,21 @@ v5
 # Google Firebase
 npm install firebase 
 
+## Google Firebase Cloud Functions (ChatGPT API)
+npm install -g firebase-tools\
+firebase login\
+firebase init functions
+
+In functions folder:
+npm install node-fetch
+
+# ChatGPT API
+npm install openai@^4.0.0
+
 # React Icons 
-npm install react-icons --save
+npm install react-icons --save\
+Find Icons Here:\
+https://react-icons.github.io/react-icons/
 
 # Branch instructions:
 

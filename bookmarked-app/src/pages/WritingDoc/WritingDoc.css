@@ -75,6 +75,16 @@ body {
     left: 5%; /* Adjust this value to move the button more to the left */
 }
 
+.save-button {
+    font-family: 'DM Sans';
+    background-color: #EDEDED;
+    border-radius: 20px;
+    border:none;
+    position: fixed;
+    z-index: 9998;
+    top: 15px; 
+    right: 65px;
+}
 
 .inconsistency-popup {
     position: absolute;
