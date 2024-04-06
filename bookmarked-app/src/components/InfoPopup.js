@@ -45,6 +45,15 @@ const InfoPopup = () => {
             src={require("../images/DropdownMenuExample.png")}
             alt="Demo example"
           />
+          <p className="info-caption2">
+            We'll match your characters precisely to their profile name.
+            Don't worry <br /> about capitalizations!
+          </p>
+          <img
+          className="demo-image2"
+          src={require("../images/CharacterShortcutExample.png")}
+          alt={"Character shortcut example"}
+          />
         </div>
       )}
     </div>

@@ -38,7 +38,6 @@
   /* Three Dots Animation */
   /* Define a class for the loading dots */
 .loading-dots {
-  margin-bottom: 150px;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -71,7 +70,7 @@
   /* login CSS */
   .login-section {
     margin-top: 200px;
-    margin-bottom: 370px;
+    margin-bottom: 220px;
     flex-direction: column;
     justify-content: center;
     display: flex;
