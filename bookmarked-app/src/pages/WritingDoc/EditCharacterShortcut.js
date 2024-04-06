@@ -60,7 +60,7 @@ const EditCharacterShortcut = ({
         </button>
         <button
           className="small-close"
-          onClick={handleAddCharacter}
+          onClick={handleCancel}
           style={{
             border: "none",
             color: "#000",

@@ -92,6 +92,14 @@ Link {
     background-size: cover;
     z-index: 999;
 }
+.dropdown-container {
+    position: relative;
+    border-radius: 5px;
+    width: 55px;
+    height: 25px;
+    background-color: #FFFFFF;
+    border: 2px solid #EDEDED;
+}
 .no-underline {
     text-decoration: none;
 }
