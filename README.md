@@ -44,6 +44,11 @@ git checkout branch_name
 
 ## Pushing Code
 git branch branchname\
+
+## using chatgpt api
+
+npm install axios
+npm install dotenv (if ur using a .env file)
 git checkout branchname\
 git branch ##just to check that ur on the right branch\
 git pull origin main ##might have to resolve conflicts\
