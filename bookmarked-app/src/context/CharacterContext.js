@@ -3,7 +3,7 @@ import ConfirmDelete from '../components/ConfirmDelete';
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, query, where } from 'firebase/firestore';
 import { database} from '../firebase-config';
 import { useAuth } from './AuthContext'
-import { getStorage } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 
 const CharacterContext = createContext(); 
 const storage = getStorage();
@@ -47,26 +47,31 @@ export const CharacterProvider = ({ children }) => {
   
   const addCharacter = async (characterData) => {
       if (currentUser) {
-        const storageRef = getStorage();
-        const imageRef = storageRef.child(`images/${characterData.image.name}`);
+        // const storageRef = storage.ref();
+        console.log(characterData.image);
+        const imageRef = ref(storage, `images/${characterData.name}`);
+        await uploadBytes(imageRef, characterData.image);
+
+      // Upload image to Firebase Storage
+      // await imageRef.put(characterData.image);
+        console.log('uploaded');
+      
+      // Get download URL of the uploaded image
+        const imageUrl = await getDownloadURL(imageRef);
+        console.log(imageUrl);
         
-        // Upload image to Firebase Storage
-        await imageRef.put(characterData.image);
-        
-        // Get download URL of the uploaded image
-        const imageUrl = await imageRef.getDownloadURL();
         const docId = await addDoc(collection(database, 'characters'), {
           Name: characterData.name,
           Caption: characterData.caption,
           Description: characterData.description,
-          image: "EmptyImageIcon.png",
+          image: imageUrl,
           uid: currentUser.uid,
         });
         console.log("Character added successfully.");
         setCharacters(prevCharacters => [...prevCharacters, {
           id: docId.id,
           name: characterData.name,
-          image: characterData.image || "EmptyImageIcon.png",
+          image: imageUrl || "EmptyImageIcon.png",
           caption: characterData.caption || "",
           description: characterData.description || ""
         }]);
@@ -104,10 +109,11 @@ export const CharacterProvider = ({ children }) => {
         console.log(`updating character id ${updatedCharacter.id}`)
 
         if (updatedCharacter.image && typeof updatedCharacter.image !== "string") {
-          const imageRef = storage.ref().child(`characterImages/${updatedCharacter.id}`);
+          const imageRef = storage.ref().child(`images/${updatedCharacter.name}`);
 
-          await imageRef.put(updatedCharacter.image);
-          updatedCharacter.image = await imageRef.getDownloadURL();
+          // await imageRef.put(updatedCharacter.image);
+          await uploadBytes(imageRef, updatedCharacter.image);
+          updatedCharacter.image = await getDownloadURL(imageRef);
         }
 
         await updateDoc(characterRef, {
