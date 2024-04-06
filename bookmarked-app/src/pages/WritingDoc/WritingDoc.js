@@ -9,6 +9,8 @@ import EditCharacter from "./EditCharacterShortcut";
 import InconsistencyPopup from './InconsistencyPopup';
 import LogOutButton from '../../components/LogoutButton';
 import { CgClose } from "react-icons/cg";
+import InfoPopup from '../../components/InfoPopup';
+
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isEditorMoved, setIsEditorMoved] = useState(false);
@@ -19,6 +21,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
   const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+  const [infoShowing, setInfoShowing] = useState(false)
 
   const [isLoading, setIsLoading] = useState(false)
   
@@ -91,6 +94,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     <>
       <div className="welcome">
         <LogOutButton />
+       <InfoPopup />
+        
+        
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
         <div className="main-content">
         {/* <div className="inconsistency-button-container">

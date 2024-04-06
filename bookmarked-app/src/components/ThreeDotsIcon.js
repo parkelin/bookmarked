@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { useCharacters} from '../context/CharacterContext';
 import { Link, useHistory } from "react-router-dom";
 import '../pages/Glossary/Glossary.css'
@@ -26,6 +26,21 @@ const ThreeDotsIcon = ({id}) => {
         toggleDropdown();
     }
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isOpen) {
+                setIsOpen(false);
+            }
+        };
+        // when the dropdown is open, any clicks closes it
+        if (isOpen) {
+            document.addEventListener('click', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isOpen]);
+
     return (
         <div className="three-dots">
             <img src={require(`../images/ThreeDots.png`)}
@@ -33,9 +48,9 @@ const ThreeDotsIcon = ({id}) => {
                  onClick={handleIconClick}
             />
             {isOpen && (
-                <div className="dropdown">
-                    <button onClick={handleEdit}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                <div className="dropdown-container">
+                    {/* <button onClick={handleEdit}>Edit</button> */}
+                    <button style={{background: 'none', cursor: 'pointer', border: 'none', fontFamily: 'DM Sans'}}onClick={handleDelete}>Delete</button>
                 </div>
             )}
         </div>
