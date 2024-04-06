@@ -13,8 +13,10 @@ const EditCharacter = ({
   handleUpdateChanges,
   characterImage, // New prop for managing character image
   setCharacterImage, // New function to update character image
+  imagePreview,
+  setImagePreview,
 }) => {
-  const [imagePreview, setImagePreview] = useState(""); // State to hold image preview
+  // const [imagePreview, setImagePreview] = useState(""); // State to hold image preview
   const fileInputRef = useRef(null);
 
   const handleImageChange = async (e) => {

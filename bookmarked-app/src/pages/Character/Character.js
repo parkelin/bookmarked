@@ -33,7 +33,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
     const updatedCharacterData = {
       id: characterId,
       name: characterName,
-      image: characterImage,
+      image: imagePreview,
       caption: caption,
       description: description,
     };
@@ -77,9 +77,9 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
 
   useEffect(() => {
     // Set image preview when characterData changes
-    if (characterData && characterData.image) {
-      setImagePreview(require(`../../images/${characterData.image}`));
-      console.log("Image preview set:", require(`../../images/${characterData.image}`));
+    if (characterData && characterData.image != null) {
+      setImagePreview(characterData.image);
+      // console.log("Image preview set:", require(`../../images/${characterData.image}`));
     }
   }, [characterData]);
   
@@ -110,11 +110,10 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             handleUpdateChanges={handleUpdateChanges}
             characterImage={characterImage}
             setCharacterImage={setCharacterImage}
-
-            
+            imagePreview={imagePreview}
+            setImagePreview={setImagePreview}
           />
 
-          
         ) : (
           <div>
             <div>
