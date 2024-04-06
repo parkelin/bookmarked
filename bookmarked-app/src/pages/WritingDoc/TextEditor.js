@@ -1,8 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./WritingDoc.css";
 import ContextMenu from "../../components/ContextMenu";
+import { useEditor } from "../../context/EditorContext"; 
+
+// elin todo: potentially pull higlighted text to send in as input into chatgpt
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -21,10 +24,12 @@ export default function TextEditor({
   onClickFindShortcut,
   setHighlightedText,
   onClickCreateShortcut,
-  setEditorContent
+  setEditorContent 
 }) {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
+  const { editorContent} = useEditor(); 
+  const [highlightedText, setInternalHighlightedText] = useState(""); // elin
 
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
@@ -37,11 +42,16 @@ export default function TextEditor({
       modules: { toolbar: TOOLBAR_OPTIONS },
     });
 
+    if (editorContent) {
+      console.log(editorContent);
+      quill.setText(editorContent);
+    }
+
     quill.on("selection-change", function (range) {
       if (range) {
         const highlightedSelection = quill.getText(range.index, range.length);
         setHighlightedText(highlightedSelection);
-        console.log("selection change:", highlightedSelection);
+        console.log("selection change:", highlightedSelection); 
         const bounds = quill.getBounds(range.index, range.length);
         setContextMenuPos({ x: bounds.left, y: bounds.bottom });
       } else {
@@ -58,8 +68,20 @@ export default function TextEditor({
       setEditorContent(editorContent); // Update editor content
     });
 
-  }, [setEditorContent, setHighlightedText]);
+  }, [setEditorContent, setHighlightedText, editorContent]);
 
+
+  // elin code
+  // Assuming your ContextMenu component can accept an onClickSendToChatGPT prop:
+  const handleSendToChatGPT = async () => {
+    // This is where you would make an API call to your backend, which then calls the OpenAI API.
+    console.log("Sending highlighted text to ChatGPT:", highlightedText);
+
+    // Simulated API response handling
+    // const response = await sendHighlightedTextToYourBackend(highlightedText);
+    // console.log("ChatGPT response:", response);
+  };
+  
   const handleRightClick = (e) => {
     e.preventDefault();
     setShowContextMenu(true);
@@ -79,6 +101,7 @@ export default function TextEditor({
 
   const editorClass = isEditorMoved ? "container editor-moved" : "container";
 
+
   return (
     <div className={editorClass} ref={wrapperRef}>
       {showContextMenu && (
@@ -88,6 +111,7 @@ export default function TextEditor({
           onClose={handleCloseContextMenu}
           onClickFindShortcut={onClickFindShortcut}
           onClickCreateShortcut={onClickCreateShortcut}
+          onClickSendToChatGPT={handleSendToChatGPT} // elin
         />
       )}
     </div>

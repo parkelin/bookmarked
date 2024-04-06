@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { CgCheck, CgAdd } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const EditCharacter = ({
   characterData,
@@ -15,6 +16,7 @@ const EditCharacter = ({
   setCharacterImage, // New function to update character image
   imagePreview,
   setImagePreview,
+  isNew,
 }) => {
   // const [imagePreview, setImagePreview] = useState(""); // State to hold image preview
   const fileInputRef = useRef(null);
@@ -31,18 +33,34 @@ const EditCharacter = ({
   return (
     <>
       <div>
-        <button
-          className="edit-button"
-          onClick={handleUpdateChanges}
-          style={{
-            border: "none",
-            color: "#000",
-            background: "none",
-            cursor: "pointer",
-          }}
-        >
-          <CgCheck size={"59px"} />
-        </button>
+        {isNew ? (
+          <Link
+            to={"/glossary"}
+            className="edit-button"
+            onClick={handleUpdateChanges}
+            style={{
+              border: "none",
+              color: "#000",
+              background: "none",
+              cursor: "pointer",
+            }}
+          >
+            <CgCheck size={"59px"} />
+          </Link>
+        ) : (
+          <button
+            className="edit-button"
+            onClick={handleUpdateChanges}
+            style={{
+              border: "none",
+              color: "#000",
+              background: "none",
+              cursor: "pointer",
+            }}
+          >
+            <CgCheck size={"59px"} />
+          </button>
+        )}
       </div>
       <div>
         <div className="character-main-info">

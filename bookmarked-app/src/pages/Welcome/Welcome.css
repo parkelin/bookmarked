@@ -70,8 +70,9 @@
   /* login CSS */
   .login-section {
     margin-top: 200px;
-    margin-bottom: 200px;
+    margin-bottom: 220px;
     flex-direction: column;
+    justify-content: center;
     display: flex;
     align-items: center;
     justify-content: center;

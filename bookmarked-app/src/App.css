@@ -22,11 +22,13 @@
   transform: translate(-50%, -50%);
   background-color: white;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 20px;
   z-index: 9999;
 }
 
 .confirm-delete-popup p {
+  font-family: 'DM Sans';
   margin: 0 0 10px 0;
 }
 
@@ -36,6 +38,9 @@
   border: 1px solid #ccc;
   background-color: #f0f0f0;
   cursor: pointer;
+}
+.confirm-button {
+  background-color: #242424;
 }
 
 .confirm-delete-popup button:hover {

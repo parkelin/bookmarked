@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CharacterProvider } from "./context/CharacterContext.js";
+import { EditorProvider } from "./context/EditorContext.js";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Welcome from "./pages/Welcome/Welcome.js";
@@ -18,7 +19,9 @@ export default function App() {
   };
 
   return (
+   
     <AuthProvider>
+      <EditorProvider>
       <CharacterProvider>
         <Router basename="/bookmarked">
           <div className="global-container">
@@ -71,6 +74,7 @@ export default function App() {
           </div>
         </Router>
       </CharacterProvider>
+      </EditorProvider>
     </AuthProvider>
   );
 }
