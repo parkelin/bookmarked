@@ -180,9 +180,6 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             </div>
           </div>
         )}
-        <div className="divider" />
-        <h2 id="connections-title">Connections</h2>
-        <div className="divider" />
       </div>
     </div>
   );
