@@ -3,7 +3,7 @@ import axios from 'axios'
 const getInconsistency = async (payload) => {
 
     // PUT IN API KEY BELOW!!!!!!!!!!!!
-    const apiKey = "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";
+    const apiKey = process.env.REACT_APP_OPENAI_KEY;
     const apiMsg = `I will give you a block of narrative input. \
                     If there are no inconsistencies in the input, respond with only the phrase "None Found". \
                     Else, respond with any inconsistencies found in less than 100 words. \
