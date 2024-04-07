@@ -3,7 +3,7 @@ import "./Glossary.css";
 import CharacterIcon from "../../components/CharacterIcon";
 import Navbar from "../../components/Navbar";
 import NewCharacterRectangle from "../../components/NewCharacterRectangle";
-import { useCharacters } from "../../context/CharacterContext";
+import { useCharacters } from "../../context/CharacterContext"
 import LogOutButton from "../../components/LogoutButton";
 
 const Glossary = ({ navbarIsOpen, toggleNavbar }) => {
