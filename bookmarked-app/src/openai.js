@@ -2,8 +2,12 @@ import axios from 'axios'
 
 const getInconsistency = async (payload) => {
 
+    // PUT IN API KEY BELOW!!!!!!!!!!!!
     const apiKey = "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";
-    const apiMsg = "Find the inconsistencies in this text:" + payload.highlightedText;
+    const apiMsg = `I will give you a block of narrative input. \
+                    If there are no inconsistencies in the input, respond with only the phrase "None Found". \
+                    Else, respond with any inconsistencies found in less than 100 words. \
+                    Here is the text: ${payload.highlightedText}`;
 
     axios.post('https://api.openai.com/v1/chat/completions', {
         model: 'gpt-3.5-turbo',

@@ -25,7 +25,8 @@ export default function TextEditor({
   highlightedText,
   setHighlightedText,
   onClickCreateShortcut,
-  setEditorContent 
+  setEditorContent,
+  handleCheckInconsistencies
 }) {
 const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
 const [showContextMenu, setShowContextMenu] = useState(false);
@@ -94,7 +95,10 @@ const { editorContent} = useEditor();
       // Process the response (e.g., alert the user, display a modal, etc.)
       if (response) {
           console.log("Response from backend:", response.message);
+          if (response.message !== "None found") // Replace 
+            handleCheckInconsistencies(highlightedText);
       }
+
   };
   
   const handleRightClick = (e) => {

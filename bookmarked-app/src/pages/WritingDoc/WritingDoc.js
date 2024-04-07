@@ -79,6 +79,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setShowInconsistencyPopup(true);
     } else {
       // TODO no consistency/no text in editor
+
     }
   };
 
@@ -101,6 +102,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
         <InfoPopup />
 
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
+
         <div className="main-content">
           {/* <div className="inconsistency-button-container">
             <button className="inconsistency-button" onClick = {handleCheckInconsistencies}>
@@ -116,12 +118,14 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               <AiOutlineSave size={"24px"} />
             </button>
           </div>
+
           {showInconsistencyPopup && (
             <InconsistencyPopup
               handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
               editorContent={editorContent}
             />
           )}
+
           <TextEditor
             isEditorMoved={isEditorMoved}
             onClickFindShortcut={handleOpenShortcut}
@@ -129,8 +133,10 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             setHighlightedText={setHighlightedText}
             onClickCreateShortcut={handleCreateShortcut}
             setEditorContent={setEditorContent}
+            handleCheckInconsistencies={handleCheckInconsistencies}
           />
         </div>
+
         {isLoading && (
           <div className="shortcut-rounded-rectangle">
             <div className="loading-dots">
@@ -140,12 +146,14 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             </div>
           </div>
         )}
+
         {isShortcutOpened && (
           <CharacterShortcut
             characterData={currentCharacterData}
             handleCloseShortcut={handleCloseShortcut}
           />
         )}
+
         {isEmptyShortcutOpened && (
           <div className="shortcut-rounded-rectangle">
             <button
@@ -170,6 +178,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             </h1>
           </div>
         )}
+
         {isCreateShortcutOpened && (
           <EditCharacter
             handleCancel={handleCloseShortcut}
