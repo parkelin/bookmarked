@@ -24,7 +24,6 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
   const [description, setDescription] = useState("");
   const [characterImage, setCharacterImage] = useState(null);
   const [characterData, setCharacterData] = useState(getCharacterWithId(characterId))
-  const [needsAdding, setNeedsAdding] = useState(false)
   const [imagePreview, setImagePreview] = useState("");
 
   const handleUpdateChanges = async () => {
@@ -37,12 +36,10 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
     };
 
     setIsEditing(false);
-    if (needsAdding) {
+    if (isNew) {
       addCharacter(updatedCharacterData);
     } else {
-      console.log("helloo", updatedCharacterData.image);
       updateCharacter(updatedCharacterData);
-      console.log("hello", updatedCharacterData.image);
     }
     setCharacterData(updatedCharacterData);
   };
@@ -70,12 +67,11 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
       setIsNew(true)
       // addCharacter(newCharacterTemplate);
       setCharacterData(newCharacterTemplate);
-      setNeedsAdding(true);
     }
   }, [characterData, characterId, addCharacter]);
   
   useEffect(() => {
-    if (characterData.image !== 'EmptyImageIcon.png') {
+    if (characterData && characterData.image !== 'EmptyImageIcon.png') {
         getCharacterPhoto(characterData).then(url => {
             setImagePreview(url)
         }).catch(error => {

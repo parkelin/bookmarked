@@ -115,6 +115,13 @@ export const CharacterProvider = ({ children }) => {
         uid: currentUser.uid,
       });
       console.log("Character added successfully.");
+      characterData = {
+          id: docId.id,
+          name: characterData.name,
+          image: characterData.image || "EmptyImageIcon.png",
+          caption: characterData.caption || "",
+          description: characterData.description || "",
+      }
       setCharacters((prevCharacters) => [
         ...prevCharacters,
         {
