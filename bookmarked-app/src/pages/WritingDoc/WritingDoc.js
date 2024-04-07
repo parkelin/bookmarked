@@ -69,6 +69,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     handleCloseShortcut();
   };
 
+  
+
   const handleCheckInconsistencies = () => {
     // Implement logic to check inconsistencies here
     if (editorContent.trim() !== "") {
@@ -123,6 +125,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
           <TextEditor
             isEditorMoved={isEditorMoved}
             onClickFindShortcut={handleOpenShortcut}
+            highlightedText={highlightedText}
             setHighlightedText={setHighlightedText}
             onClickCreateShortcut={handleCreateShortcut}
             setEditorContent={setEditorContent}

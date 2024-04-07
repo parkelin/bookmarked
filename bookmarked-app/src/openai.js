@@ -1,0 +1,31 @@
+import axios from 'axios' 
+
+const getInconsistency = async (payload) => {
+
+    const apiKey = "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";
+    const apiMsg = "Find the inconsistencies in this text:" + payload.highlightedText;
+
+    axios.post('https://api.openai.com/v1/chat/completions', {
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: apiMsg}],
+        temperature: 0.7
+    }, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        }
+    })
+    .then(response => {
+        console.log(response.data.choices[0].message);
+
+    })
+    .catch(error => {
+        if (error.response && error.response.data) {
+            console.error('Error:', error.response.data);
+        } else {
+            console.error('Error occurred:', error.message);
+        }
+    });
+}
+
+export default getInconsistency;
