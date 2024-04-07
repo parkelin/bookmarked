@@ -90,13 +90,13 @@ const { editorContent} = useEditor();
       console.log("payload: ", payload);
 
       // Send the payload to the backend and wait for the response
-      const response = await getInconsistency(payload);
-
+      const response = await getInconsistency(payload)
+      console.log("response from texteditor.js: ", response);
       // Process the response (e.g., alert the user, display a modal, etc.)
       if (response) {
-          console.log("Response from backend:", response.message);
-          if (response.message !== "None found") // Replace 
-            handleCheckInconsistencies(highlightedText);
+          console.log("Response from backend:", response);
+          // if (response.message === "None Found") // Replace 
+          handleCheckInconsistencies(response);
       }
 
   };

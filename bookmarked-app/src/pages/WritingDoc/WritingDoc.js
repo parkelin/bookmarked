@@ -23,6 +23,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
   const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+  const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
 
   const { saveEditorContent } = useEditor();
@@ -71,16 +72,11 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
 
   
 
-  const handleCheckInconsistencies = () => {
-    // Implement logic to check inconsistencies here
-    if (editorContent.trim() !== "") {
+  const handleCheckInconsistencies = (responseMessage) => {
       toggleNavbar();
       moveEditor();
+      setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
-    } else {
-      // TODO no consistency/no text in editor
-
-    }
   };
 
   // Function to close inconsistency popup
@@ -109,6 +105,15 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               Inconsistency Check
             </button>
           </div> */}
+          
+          {showInconsistencyPopup && (
+            <InconsistencyPopup
+              handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
+              editorContent={editorContent}
+              gptResponse={gptResponse}
+            />
+          )}
+
           <div className="navbar-text-regular">
             <button
               className="save-button"
@@ -118,13 +123,6 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               <AiOutlineSave size={"24px"} />
             </button>
           </div>
-
-          {showInconsistencyPopup && (
-            <InconsistencyPopup
-              handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
-              editorContent={editorContent}
-            />
-          )}
 
           <TextEditor
             isEditorMoved={isEditorMoved}
