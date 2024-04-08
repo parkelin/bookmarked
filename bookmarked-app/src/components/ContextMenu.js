@@ -11,6 +11,7 @@ function ContextMenu({
   onClose,
   onClickFindShortcut,
   onClickCreateShortcut,
+  onClickCheckInconsistencies,
 }) {
   const handleFindClick = () => {
     onClickFindShortcut();
@@ -19,6 +20,11 @@ function ContextMenu({
 
   const handleCreateClick = () => {
     onClickCreateShortcut();
+    onClose();
+  };
+
+  const handleCheckInconsistenciesClick = () => {
+    onClickCheckInconsistencies();
     onClose();
   };
 
@@ -66,6 +72,7 @@ function ContextMenu({
           background: "none",
           cursor: "pointer",
         }}
+        onClick={handleCheckInconsistenciesClick} 
       >
          <MdOutlineRunningWithErrors size={"16px"} style={{marginRight: '5px'}}/>
         Check Inconsistencies

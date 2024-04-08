@@ -23,6 +23,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
   const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+  const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
 
   const { saveEditorContent } = useEditor();
@@ -30,6 +31,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const { getCharacter } = useCharacters();
+
+  const [popupTopPosition, setPopupTopPosition] = useState(0); // New state for the popup position
 
   const moveEditor = () => {
     setIsEditorMoved(!isEditorMoved);
@@ -69,21 +72,25 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     handleCloseShortcut();
   };
 
-  const handleCheckInconsistencies = () => {
-    // Implement logic to check inconsistencies here
-    if (editorContent.trim() !== "") {
-      toggleNavbar();
-      moveEditor();
+  
+
+  const handleCheckInconsistencies = (responseMessage) => {
+      // toggleNavbar();
+      // moveEditor();
+      const selection = window.getSelection();
+      if (selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const rect = range.getBoundingClientRect();
+          setPopupTopPosition(rect.top + window.scrollY - 10); // Adjust '-10' as needed for exact alignment
+      }
+      setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
-    } else {
-      // TODO no consistency/no text in editor
-    }
   };
 
   // Function to close inconsistency popup
   const handleCloseInconsistencyPopup = () => {
-    toggleNavbar();
-    moveEditor();
+    // toggleNavbar();
+    // moveEditor();
     setShowInconsistencyPopup(false);
   };
 
@@ -99,12 +106,23 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
         <InfoPopup />
 
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
+
         <div className="main-content">
           {/* <div className="inconsistency-button-container">
             <button className="inconsistency-button" onClick = {handleCheckInconsistencies}>
               Inconsistency Check
             </button>
           </div> */}
+          
+          {showInconsistencyPopup && (
+            <InconsistencyPopup
+              handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
+              editorContent={editorContent}
+              gptResponse={gptResponse}
+              topPosition={popupTopPosition}
+            />
+          )}
+
           <div className="navbar-text-regular">
             <button
               className="save-button"
@@ -114,20 +132,18 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               <AiOutlineSave size={"24px"} />
             </button>
           </div>
-          {showInconsistencyPopup && (
-            <InconsistencyPopup
-              handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
-              editorContent={editorContent}
-            />
-          )}
+
           <TextEditor
             isEditorMoved={isEditorMoved}
             onClickFindShortcut={handleOpenShortcut}
+            highlightedText={highlightedText}
             setHighlightedText={setHighlightedText}
             onClickCreateShortcut={handleCreateShortcut}
             setEditorContent={setEditorContent}
+            handleCheckInconsistencies={handleCheckInconsistencies}
           />
         </div>
+
         {isLoading && (
           <div className="shortcut-rounded-rectangle">
             <div className="loading-dots">
@@ -137,12 +153,14 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             </div>
           </div>
         )}
+
         {isShortcutOpened && (
           <CharacterShortcut
             characterData={currentCharacterData}
             handleCloseShortcut={handleCloseShortcut}
           />
         )}
+
         {isEmptyShortcutOpened && (
           <div className="shortcut-rounded-rectangle">
             <button
@@ -167,6 +185,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             </h1>
           </div>
         )}
+
         {isCreateShortcutOpened && (
           <EditCharacter
             handleCancel={handleCloseShortcut}

@@ -1,12 +1,13 @@
+import { useCallback, useState } from "react";
 import { useCallback, useState, useRef, useEffect} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./WritingDoc.css";
 import ContextMenu from "../../components/ContextMenu";
 import { useEditor } from "../../context/EditorContext"; 
+import getInconsistency from "../../openai.js"
+import { useCharacters } from '../../context/CharacterContext';
 import debounce from 'lodash/debounce'; // Import debounce function
-
-// elin todo: potentially pull higlighted text to send in as input into chatgpt
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -23,9 +24,11 @@ const TOOLBAR_OPTIONS = [
 export default function TextEditor({
   isEditorMoved,
   onClickFindShortcut,
+  highlightedText,
   setHighlightedText,
   onClickCreateShortcut,
-  setEditorContent 
+  setEditorContent,
+  handleCheckInconsistencies
 }) {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
@@ -36,7 +39,7 @@ export default function TextEditor({
 
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
-
+    
     wrapper.innerHTML = "";
     const editor = document.createElement("div");
     wrapper.append(editor);
@@ -52,7 +55,7 @@ export default function TextEditor({
       console.log(editorContent);
       quill.setText(editorContent);
     }
-
+    
     quill.on("selection-change", function (range) {
       if (range) {
         const highlightedSelection = quill.getText(range.index, range.length);
@@ -65,9 +68,10 @@ export default function TextEditor({
         setShowContextMenu(false);
       }
     });
-
+    
     editor.addEventListener("contextmenu", handleRightClick);
     editor.addEventListener("mousedown", handleMouseDown);
+    quill.on("text-change", function () {
 
     // Debounced text change handler
     const handleTextChangeDebounced = debounce(() => {
@@ -82,6 +86,11 @@ export default function TextEditor({
       handleTextChangeDebounced();
       updateCursorPosition(quill.getSelection());
     });
+  }, [setEditorContent, setHighlightedText, editorContent]);
+  
+  
+  // ELIN CODE
+  const { characters } = useCharacters();
 
   }, [setEditorContent, setHighlightedText, editorContent, saveEditorContent]);
 
@@ -98,15 +107,26 @@ export default function TextEditor({
     cursorPositionRef.current = selection;
   };
 
-  // elin code
-  // Assuming your ContextMenu component can accept an onClickSendToChatGPT prop:
   const handleSendToChatGPT = async () => {
-    // This is where you would make an API call to your backend, which then calls the OpenAI API.
-    console.log("Sending highlighted text to ChatGPT:", highlightedText);
 
-    // Simulated API response handling
-    // const response = await sendHighlightedTextToYourBackend(highlightedText);
-    // console.log("ChatGPT response:", response);
+      // Payload including the highlighted text and character profiles
+      const payload = {
+          highlightedText: highlightedText, // highlightedText should be the state or prop holding the text selected by the user
+          characters: characters,
+      };
+
+      console.log("payload: ", payload);
+
+      // Send the payload to the backend and wait for the response
+      const response = await getInconsistency(payload)
+      console.log("response from texteditor.js: ", response);
+      // Process the response (e.g., alert the user, display a modal, etc.)
+      if (response) {
+          console.log("Response from backend:", response);
+          // if (response.message === "None Found") // Replace 
+          handleCheckInconsistencies(response);
+      }
+
   };
   
   const handleRightClick = (e) => {
@@ -128,7 +148,6 @@ export default function TextEditor({
 
   const editorClass = isEditorMoved ? "container editor-moved" : "container";
 
-
   return (
     <div className={editorClass} ref={wrapperRef}>
       {showContextMenu && (
@@ -138,7 +157,7 @@ export default function TextEditor({
           onClose={handleCloseContextMenu}
           onClickFindShortcut={onClickFindShortcut}
           onClickCreateShortcut={onClickCreateShortcut}
-          onClickSendToChatGPT={handleSendToChatGPT} // elin
+          onClickCheckInconsistencies={handleSendToChatGPT} // elin
         />
       )}
     </div>
