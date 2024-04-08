@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { useCallback, useState, useRef, useEffect} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./WritingDoc.css";
@@ -6,6 +7,7 @@ import ContextMenu from "../../components/ContextMenu";
 import { useEditor } from "../../context/EditorContext"; 
 import getInconsistency from "../../openai.js"
 import { useCharacters } from '../../context/CharacterContext';
+import debounce from 'lodash/debounce'; // Import debounce function
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -28,10 +30,13 @@ export default function TextEditor({
   setEditorContent,
   handleCheckInconsistencies
 }) {
-const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
-const [showContextMenu, setShowContextMenu] = useState(false);
-const { editorContent} = useEditor(); 
-  
+  const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const { editorContent, saveEditorContent} = useEditor(); 
+  const [highlightedText, setInternalHighlightedText] = useState(""); // elin
+  const editorRef = useRef(null);
+  const cursorPositionRef = useRef(null); // Reference to store cursor position
+
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
     
@@ -42,7 +47,10 @@ const { editorContent} = useEditor();
       theme: "snow",
       modules: { toolbar: TOOLBAR_OPTIONS },
     });
-    
+
+    editorRef.current = quill;
+    console.log("set selction 1");
+
     if (editorContent) {
       console.log(editorContent);
       quill.setText(editorContent);
@@ -63,21 +71,41 @@ const { editorContent} = useEditor();
     
     editor.addEventListener("contextmenu", handleRightClick);
     editor.addEventListener("mousedown", handleMouseDown);
-    
     quill.on("text-change", function () {
+
+    // Debounced text change handler
+    const handleTextChangeDebounced = debounce(() => {
       const editorContent = quill.getText();
       setEditorContent(editorContent); // Update editor content
+      // Save editor content to database
+      saveEditorContent(editorContent);
+      updateCursorPosition(quill.getSelection());
+    }, 1000); // Adjust debounce delay as needed
+
+    quill.on("text-change", () => {
+      handleTextChangeDebounced();
+      updateCursorPosition(quill.getSelection());
     });
-    
   }, [setEditorContent, setHighlightedText, editorContent]);
   
   
   // ELIN CODE
   const { characters } = useCharacters();
 
-  // useEffect(() => {
-  //   console.log(characters);
-  // }, [characters]);
+  }, [setEditorContent, setHighlightedText, editorContent, saveEditorContent]);
+
+  useEffect(() => {
+    // Focus the editor after content is saved
+    editorRef.current.focus();
+    if (cursorPositionRef.current !== null) {
+      editorRef.current.setSelection(cursorPositionRef.current.index, cursorPositionRef.current.length);
+    }
+
+  }, [editorContent]);
+
+  const updateCursorPosition = (selection) => {
+    cursorPositionRef.current = selection;
+  };
 
   const handleSendToChatGPT = async () => {
 

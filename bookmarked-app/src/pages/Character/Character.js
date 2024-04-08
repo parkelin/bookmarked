@@ -14,7 +14,7 @@ import { CgTrashEmpty } from "react-icons/cg";
 const Character = ({ navBarisOpen, toggleNavBar }) => {
   let { characterId } = useParams();
 
-  const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter } =
+  const { addCharacter, getCharacterWithId, removeCharacter, updateCharacter, getCharacterPhoto } =
     useCharacters();
 
   const [isNew, setIsNew] = useState(false)
@@ -73,15 +73,17 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
       setNeedsAdding(true);
     }
   }, [characterData, characterId, addCharacter]);
-
-  useEffect(() => {
-    // Set image preview when characterData changes
-    if (characterData && characterData.image != null) {
-      setImagePreview(characterData.image);
-      // console.log("Image preview set:", require(`../../images/${characterData.image}`));
-    }
-  }, [characterData]);
   
+  useEffect(() => {
+    if (characterData && characterData.image !== 'EmptyImageIcon.png') {
+        getCharacterPhoto(characterData).then(url => {
+            setImagePreview(url)
+        }).catch(error => {
+            console.error("Error fetching character photo URL:", error);
+        });
+    }
+}, [characterData, getCharacterPhoto]);
+
 
   if (!characterData) {
     return (
@@ -178,9 +180,6 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             </div>
           </div>
         )}
-        <div className="divider" />
-        <h2 id="connections-title">Connections</h2>
-        <div className="divider" />
       </div>
     </div>
   );
