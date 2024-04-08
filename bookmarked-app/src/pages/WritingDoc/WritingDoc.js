@@ -32,6 +32,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
 
   const { getCharacter } = useCharacters();
 
+  const [popupTopPosition, setPopupTopPosition] = useState(0); // New state for the popup position
+
   const moveEditor = () => {
     setIsEditorMoved(!isEditorMoved);
   };
@@ -73,16 +75,22 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   
 
   const handleCheckInconsistencies = (responseMessage) => {
-      toggleNavbar();
-      moveEditor();
+      // toggleNavbar();
+      // moveEditor();
+      const selection = window.getSelection();
+      if (selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const rect = range.getBoundingClientRect();
+          setPopupTopPosition(rect.top + window.scrollY - 10); // Adjust '-10' as needed for exact alignment
+      }
       setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
   };
 
   // Function to close inconsistency popup
   const handleCloseInconsistencyPopup = () => {
-    toggleNavbar();
-    moveEditor();
+    // toggleNavbar();
+    // moveEditor();
     setShowInconsistencyPopup(false);
   };
 
@@ -111,6 +119,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
               editorContent={editorContent}
               gptResponse={gptResponse}
+              topPosition={popupTopPosition}
             />
           )}
 
