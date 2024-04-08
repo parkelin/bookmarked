@@ -1,4 +1,3 @@
-import { useCallback, useState } from "react";
 import { useCallback, useState, useRef, useEffect} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
@@ -33,10 +32,11 @@ export default function TextEditor({
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
   const { editorContent, saveEditorContent} = useEditor(); 
-  const [highlightedText, setInternalHighlightedText] = useState(""); // elin
+  // const [highlightedText, setInternalHighlightedText] = useState(""); // elin
   const editorRef = useRef(null);
   const cursorPositionRef = useRef(null); // Reference to store cursor position
-
+  const { characters } = useCharacters();
+  
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
     
@@ -87,10 +87,6 @@ export default function TextEditor({
       updateCursorPosition(quill.getSelection());
     });
   }, [setEditorContent, setHighlightedText, editorContent]);
-  
-  
-  // ELIN CODE
-  const { characters } = useCharacters();
 
   }, [setEditorContent, setHighlightedText, editorContent, saveEditorContent]);
 
