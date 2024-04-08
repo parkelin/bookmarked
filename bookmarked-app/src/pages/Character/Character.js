@@ -27,7 +27,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
   const [needsAdding, setNeedsAdding] = useState(false)
   const [imagePreview, setImagePreview] = useState("");
 
-  const handleUpdateChanges = async () => {
+  const handleUpdateChanges = async (changedPhoto) => {
     const updatedCharacterData = {
       id: characterId,
       name: characterName,
@@ -40,9 +40,10 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
     if (needsAdding) {
       addCharacter(updatedCharacterData);
     } else {
-      console.log("helloo", updatedCharacterData.image);
-      updateCharacter(updatedCharacterData);
-      console.log("hello", updatedCharacterData.image);
+      // console.log("helloo", updatedCharacterData.image);
+      console.log(`handleUpdateChanges: ${changedPhoto}`)
+      updateCharacter(updatedCharacterData, changedPhoto);
+      // console.log("hello", updatedCharacterData.image);
     }
     setCharacterData(updatedCharacterData);
   };

@@ -18,12 +18,13 @@ const EditCharacter = ({
   setImagePreview,
   isNew,
 }) => {
-  // const [imagePreview, setImagePreview] = useState(""); // State to hold image preview
+  const [changedPhoto, setChangedPhoto] = useState(false); // State to hold image preview
   const fileInputRef = useRef(null);
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
+      setChangedPhoto(true)
       setCharacterImage(file); // Update character image state
       const imageUrl = URL.createObjectURL(file); // Get image URL for preview
       setImagePreview(imageUrl); // Update image preview
@@ -37,7 +38,7 @@ const EditCharacter = ({
           <Link
             to={"/glossary"}
             className="edit-button"
-            onClick={handleUpdateChanges}
+            onClick={() => handleUpdateChanges(changedPhoto)}
             style={{
               border: "none",
               color: "#000",
@@ -50,7 +51,7 @@ const EditCharacter = ({
         ) : (
           <button
             className="edit-button"
-            onClick={handleUpdateChanges}
+            onClick={() => handleUpdateChanges(changedPhoto)}
             style={{
               border: "none",
               color: "#000",
