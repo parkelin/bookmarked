@@ -45,14 +45,23 @@ const InfoPopup = () => {
             src={require("../images/DropdownMenuExample.png")}
             alt="Demo example"
           />
-          <p className="info-caption2">
+          <p className="info-caption">
             We'll match your characters precisely to their profile name.
             Don't worry <br /> about capitalizations!
           </p>
           <img
-          className="demo-image2"
+          className="demo-image"
           src={require("../images/CharacterShortcutExample.png")}
           alt={"Character shortcut example"}
+          />
+          <p className="info-caption">
+            Test your writing with the inconsistency checker to find 
+            errors efficiently. 
+          </p>
+          <img
+          className="demo-image3"
+          src={require("../images/InconsistencyExample.png")}
+          alt={"inconsistency checker example"}
           />
         </div>
       )}
