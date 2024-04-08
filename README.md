@@ -30,6 +30,8 @@ npm install node-fetch
 
 # ChatGPT API
 npm install openai@^4.0.0
+# Lodash for auto-save
+npm install lodash
 
 # React Icons 
 npm install react-icons --save\
