@@ -154,7 +154,7 @@ export const CharacterProvider = ({ children }) => {
     setShowConfirmed(false);
   };
 
-  const updateCharacter = async (updatedCharacter) => {
+  const updateCharacter = async (updatedCharacter, needsToUpdatePhoto) => {
     // update in database
     const user = currentUser;
     if (user) {
@@ -173,7 +173,8 @@ export const CharacterProvider = ({ children }) => {
           character.id === updatedCharacter.id ? updatedCharacter : character
         )
       );
-      if (updatedCharacter.image !== "EmptyImageIcon.png")
+      console.log(`needs updating: ${needsToUpdatePhoto}`)
+      if (needsToUpdatePhoto && updatedCharacter.image !== "EmptyImageIcon.png")
         handleUploadPhotoToStorage(user.uid, updatedCharacter);
     }
   };
