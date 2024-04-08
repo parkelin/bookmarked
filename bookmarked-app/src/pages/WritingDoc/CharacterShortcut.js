@@ -73,7 +73,6 @@ const CharacterShortcut = ({ handleCloseShortcut, characterData }) => {
           {characterData.description}
         </p>
       </div>
-      <div className="divider-small" />
     </div>
   );
 };

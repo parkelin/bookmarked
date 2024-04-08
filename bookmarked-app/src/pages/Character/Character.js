@@ -75,7 +75,7 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
   }, [characterData, characterId, addCharacter]);
   
   useEffect(() => {
-    if (characterData.image !== 'EmptyImageIcon.png') {
+    if (characterData && characterData.image !== 'EmptyImageIcon.png') {
         getCharacterPhoto(characterData).then(url => {
             setImagePreview(url)
         }).catch(error => {
@@ -180,9 +180,6 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
             </div>
           </div>
         )}
-        <div className="divider" />
-        <h2 id="connections-title">Connections</h2>
-        <div className="divider" />
       </div>
     </div>
   );
