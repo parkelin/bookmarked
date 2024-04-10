@@ -57,7 +57,8 @@ export default function TextEditor({
     }
     
     quill.on("selection-change", function (range) {
-      if (range) {
+      if (range && range.length>1) {
+        console.log("range", range)
         const highlightedSelection = quill.getText(range.index, range.length);
         setHighlightedText(highlightedSelection);
         console.log("selection change:", highlightedSelection); 
@@ -127,8 +128,12 @@ export default function TextEditor({
   
   const handleRightClick = (e) => {
     e.preventDefault();
-    setShowContextMenu(true);
-    setContextMenuPos({ x: e.clientX, y: e.clientY });
+    const quill = editorRef.current;
+    const range = quill.getSelection();
+    if (range && range.length > 0) {
+      setShowContextMenu(true);
+      setContextMenuPos({ x: e.clientX, y: e.clientY });
+    }
   };
 
   const handleMouseDown = (e) => {
