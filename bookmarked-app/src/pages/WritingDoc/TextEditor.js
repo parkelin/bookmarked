@@ -127,12 +127,22 @@ export default function TextEditor({
   };
   
   const handleRightClick = (e) => {
-    e.preventDefault();
     const quill = editorRef.current;
-    const range = quill.getSelection();
-    if (range && range.length > 0) {
-      setShowContextMenu(true);
-      setContextMenuPos({ x: e.clientX, y: e.clientY });
+    const editorBound = quill.root.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    if (
+      mouseX >= editorBound.left && mouseX <= editorBound.right &&
+      mouseY <= editorBound.bottom &&  mouseY >= editorBound.top
+    ) {
+      e.preventDefault();
+      const range = quill.getSelection();
+      if (range && range.length > 0) {
+        setShowContextMenu(true);
+        setContextMenuPos({ x: e.clientX, y: e.clientY });
+      }
+    } else {
+      setShowContextMenu(false);
     }
   };
 
