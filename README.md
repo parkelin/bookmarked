@@ -54,5 +54,5 @@ git push ## it give u an error about setting an upstream, just do what it says (
 
 
 # using chatgpt api
-npm install axios
+npm install axios\
 npm install dotenv (if ur using a .env file)
