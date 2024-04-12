@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./Character.css"
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { CgCheck, CgAdd } from "react-icons/cg";
 import { Link } from "react-router-dom";
@@ -112,7 +113,7 @@ const EditCharacter = ({
         </div>
         <div className="character-description-section">
           <textarea
-            className="character-description"
+            className="character-description-input"
             value={description}
             placeholder="Enter description"
             onChange={(e) => setDescription(e.target.value)}
