@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import TutorialPopup from './TutorialPopup';
+import WritingDocTutorial from './WritingDocTutorial';
+import RightClickTutorial from './RightClickTutorial';
 import "../pages/Tutorial/Tutorial.css";
 
 const TutorialOverview = () => {
@@ -7,7 +9,7 @@ const TutorialOverview = () => {
         navbar: false,
         doc: false,
         info: false, 
-        save: false
+        save: false,
     });
 
     const openPopup = (popup) => {
@@ -17,6 +19,7 @@ const TutorialOverview = () => {
     const closePopups = (popup) => {
         setPopups({...popups, [popup]: false});
     }
+
     return (
         <div>
         <button className="b-navbar but" onClick={() => openPopup('navbar')}>i</button>
@@ -27,15 +30,12 @@ const TutorialOverview = () => {
             <TutorialPopup
                 content="This is your navigation bar. The writing Document is where you write, check for writing inconsistencies,
                 and access character previews. The Glossary is a list of all character profiles that you have created. Create, edit, or delete
-                new chaaracters in full screen."
+                new characters in full screen."
                 onClose={() => closePopups('navbar')}
             />
         )}
         {popups.doc && (
-            <TutorialPopup
-                content="Begin your storytelling journey here. As you create characters, explore new worlds, and build your novel,
-                consider using our built-in features to track and strengthen your world building with a simple highlight and right click on 
-                your text."
+            <WritingDocTutorial
                 onClose={() => closePopups('doc')}
             />
         )}
@@ -49,7 +49,7 @@ const TutorialOverview = () => {
         {popups.save && (
             <TutorialPopup
                 content="Click this button to save your work at anytime."
-                onClose={() => closePopups('info')}
+                onClose={() => closePopups('save')}
             />
         )}
         </div>
