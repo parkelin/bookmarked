@@ -1,13 +1,12 @@
 import React from 'react';
 import "../pages/Tutorial/Tutorial.css";
 
-const TutorialPopup = ({ title, content, onClose }) => {
+const TutorialPopup = ({ content, onClose }) => {
     return (
         <div className="p-tutorial">
             <div className="content">
-                <h2>{title}</h2>
                 <p>{content}</p>
-                <button onClick={onClose}>X</button>
+                <button className="b-x" onClick={onClose}>X</button>
             </div>
         </div>
     )

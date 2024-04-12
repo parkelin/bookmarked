@@ -3,70 +3,53 @@ import TutorialPopup from './TutorialPopup';
 import "../pages/Tutorial/Tutorial.css";
 
 const TutorialOverview = () => {
-    const [showNavbarPopup, setShowNavbarPopup] = useState(false);
-    const [showDocPopup, setShowDocPopup] = useState(false);
-    const [showInfoPopup, setShowInfoPopup] = useState(false);
-    const [showSavePopup, setShowSavePopup] = useState(false);
+    const [popups, setPopups] = useState({
+        navbar: false,
+        doc: false,
+        info: false, 
+        save: false
+    });
 
-    const openNavbarPopup = () => {
-        setShowNavbarPopup(true);
-    }
-    const closeNavbarPopup = () => {
-        setShowNavbarPopup(false);
-    }
-
-    const openDocPopup = () => {
-        setShowDocPopup(true);
-    }
-    const closeDocPopup = () => {
-        setShowDocPopup(false);
+    const openPopup = (popup) => {
+        setPopups({...popups, [popup]: true});
     }
 
-    const openInfoPopup = () => {
-        setShowInfoPopup(true);
-    }
-    const closeInfoPopup = () => {
-        setShowInfoPopup(false);
-    }
-
-    const openSavePopup = () => {
-        setShowSavePopup(true);
-    }
-    const closeSavePopup = () => {
-        setShowSavePopup(false);
+    const closePopups = (popup) => {
+        setPopups({...popups, [popup]: false});
     }
     return (
         <div>
-        <button className="b-navbar but" onClick={openNavbarPopup}>i</button>
-        <button className="b-doc but" onClick={openDocPopup}>i</button>
-        <button className="b-info but" onClick={openInfoPopup}>i</button>
-        <button className="b-save but" onClick={openSavePopup}>i</button>
-        {showNavbarPopup && (
+        <button className="b-navbar but" onClick={() => openPopup('navbar')}>i</button>
+        <button className="b-doc but" onClick={() => openPopup('doc')}>i</button>
+        <button className="b-info but" onClick={() => openPopup('info')}>i</button>
+        <button className="b-save but" onClick={() => openPopup('save')}>i</button>
+        {popups.navbar && (
             <TutorialPopup
-                title="navbar"
-                content="hellp"
-                onClose={closeNavbarPopup}
+                content="This is your navigation bar. The writing Document is where you write, check for writing inconsistencies,
+                and access character previews. The Glossary is a list of all character profiles that you have created. Create, edit, or delete
+                new chaaracters in full screen."
+                onClose={() => closePopups('navbar')}
             />
         )}
-        {showDocPopup && (
+        {popups.doc && (
             <TutorialPopup
-                title="navbar"
-                content="hellp"
-                onClose={closeDocPopup}
+                content="Begin your storytelling journey here. As you create characters, explore new worlds, and build your novel,
+                consider using our built-in features to track and strengthen your world building with a simple highlight and right click on 
+                your text."
+                onClose={() => closePopups('doc')}
             />
         )}
-        {showInfoPopup && (
+        {popups.info && (
             <TutorialPopup
-                title="navbar"
-                content="hellp"
-                onClose={closeInfoPopup}
+                content="Don't worry if you can't remember everything! There will be an info button on the Writing Document page that is
+                accessible at all times. This popup will summarize all of the features with pictures for your reference."
+                onClose={() => closePopups('info')}
             />
         )}
-        {showSavePopup && (
+        {popups.save && (
             <TutorialPopup
-                title="navbar"
-                content="hellp"
-                onClose={closeSavePopup}
+                content="Click this button to save your work at anytime."
+                onClose={() => closePopups('info')}
             />
         )}
         </div>

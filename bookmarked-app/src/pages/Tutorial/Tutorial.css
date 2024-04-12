@@ -20,12 +20,6 @@
     pointer-events: none;
 }
 
-.button-i {
-    position: relative; 
-    z-index: 3;
-    
-}
-
 .p-welcome {
     position: absolute;
     z-index: 3;
@@ -35,14 +29,15 @@
     width: 300px;
     padding: 20px;
     background-color: white;
-    border-radius: 8px; 
+    border-radius: 3px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .but {
     position: absolute;
     z-index: 3;
-    
+    border-radius: 50%;
+    border: none;
 }
 
 .b-navbar {
@@ -58,13 +53,11 @@
 .b-info {
     top: 2.5%;
     left: 91%;
-
 }
 
 .b-save {
     top:2.5%;
     left: 94%;
-
 }
 
 .p-tutorial {
@@ -76,7 +69,7 @@
     width: 300px;
     padding: 20px;
     background-color: white;
-    border-radius: 8px; 
+    border-radius: 3px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -85,4 +78,47 @@
     position: absolute;
     top:90%;
     left: 90%;
+    background-color: white; 
+    color: black; 
+    padding: 6px 14px; 
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+.b-x {
+    position: absolute;
+    top: 5px; 
+    right: 5px; 
+    width: 20px; 
+    height: 20px; 
+    background-color: transparent; 
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+}
+
+.b-continue {
+    background-color: black; 
+    color: white; 
+    padding: 8px 16px;
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+.b-continue:hover {
+    background-color: #333; 
+}
+
+.b-leave {
+    background-color: white;
+    color: black; 
+    padding: 6px 14px;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
