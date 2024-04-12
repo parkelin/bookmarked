@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { auth } from "../../firebase-config";
+import { useHistory, Link } from "react-router-dom";
+import { auth, database } from "../../firebase-config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import logoNoTitle from "../../images/bookmarked-logo-notitle.png";
 import googleLogo from "../../images/GoogleLoginLogo.png";
+import {doc, setDoc, getDoc} from "firebase/firestore";
 import "./Welcome.css";
 
 export default function Welcome() {
@@ -59,7 +60,23 @@ export default function Welcome() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        history.push("/writingdoc");
+        const user = result.user;
+        const tutorialRef = doc(database, "tutorial", user.uid);
+        console.log(`login ${user.uid}`);
+        getDoc(tutorialRef).then((doc) => {
+          if (doc.exists()) {
+            history.push("/writingdoc");
+          } else {
+            console.log("new user");
+            setDoc(tutorialRef, { uid: user.uid })
+              .then(() => {
+                history.push("/newusertutorial");
+              })
+              .catch((error) => {
+                console.error("Error setting document:", error);
+              });
+          }
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -74,6 +91,11 @@ export default function Welcome() {
       >
         Welcome, Author!
       </h1>
+      <Link to="/newusertutorial">
+        <button> new user tutorial </button>
+      </Link>
+      
+
       <h1
         className="arrow"
         style={{
@@ -116,6 +138,7 @@ export default function Welcome() {
               <div className="loading-dot"></div>
             </div>
           </>
+
         )}
       </div>
 

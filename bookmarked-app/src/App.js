@@ -8,6 +8,7 @@ import Welcome from "./pages/Welcome/Welcome.js";
 import Character from "./pages/Character/Character.js";
 import Glossary from "./pages/Glossary/Glossary.js";
 import WritingDoc from "./pages/WritingDoc/WritingDoc.js";
+import NewUserTutorial from "./pages/Tutorial/NewUserTutorial.js";
 
 export default function App() {
   const [navbarIsOpen, setNavbarIsOpen] = useState(true);
@@ -68,6 +69,11 @@ export default function App() {
                       toggleNavBar={toggleNavbar}
                     />
                   )}
+                  />
+
+                <ProtectedRoute 
+                  exact path="/newusertutorial"
+                  component={NewUserTutorial}
                 />
               </Switch>
             </div>
