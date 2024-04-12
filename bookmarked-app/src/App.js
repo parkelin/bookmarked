@@ -72,7 +72,7 @@ export default function App() {
                   />
 
                 <ProtectedRoute 
-                  exact path="/newusertutorial"
+                  exact path="/tutorial"
                   component={NewUserTutorial}
                 />
               </Switch>

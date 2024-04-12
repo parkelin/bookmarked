@@ -7,7 +7,7 @@ import './Tutorial.css';
 const NewUserTutorial = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [showWelcome, setShowWelcome] = useState(true);
-    const [showQuit, setShowQuit] = useState(true);
+    const [showQuit, setShowQuit] = useState(false);
     const history = useHistory();
 
     const handleContinue = () => {
@@ -33,7 +33,7 @@ const NewUserTutorial = () => {
             )}
             {showQuit && (
                 <button className="b-exit" onClick={handleExit}>
-                    Exit
+                    Exit tutorial
                 </button>
             )}
             <div className="page-overlay"></div> 

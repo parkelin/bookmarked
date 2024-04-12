@@ -1,88 +1,148 @@
 .page-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 60vw;
-    background-image: url('../../images/tutorial.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
+  position: relative;
+  width: 100vw;
+  height: 60vw;
+  background-image: url("../../images/tutorial.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .page-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 2; 
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .button-i {
-    position: relative; 
-    z-index: 3;
-    
+  position: relative;
+  z-index: 3;
 }
 
 .p-welcome {
-    position: absolute;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 417px;
+  height: 127px;
+  background: #ffffff;
+  box-shadow: 0px 2px 15px rgba(198, 198, 198, 0.25);
+  border-radius: 4px;
 }
 
 .but {
-    position: absolute;
-    z-index: 3;
-    
+  position: absolute;
+  z-index: 3;
 }
 
 .b-navbar {
-    top: 10%;
-    left: 15%;
+  top: 10%;
+  left: 14%;
 }
 
 .b-doc {
-    top: 15%;
-    left: 82%;
+  top: 15%;
+  left: 82%;
 }
 
 .b-info {
-    top: 2.5%;
-    left: 91%;
-
+  top: 7%;
+  left: 92.3%;
 }
 
 .b-save {
-    top:2.5%;
-    left: 94%;
-
+  top: 7%;
+  left: 94.5%;
 }
 
 .p-tutorial {
-    position: absolute;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 3;
+  /* top: 50%;
+  left: 50%; */
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .b-exit {
-    z-index:3;
-    position: absolute;
-    top:90%;
-    left: 90%;
+  z-index: 3;
+  position: absolute;
+  top: 83%;
+  left: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans';
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 750;
+  width: 160px;
+  height: 45px;
+  background: #333333;
+  border-radius: 6px;
+}
+
+.text-welcome-tutorial-1 {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  color: #333333;
+  margin: 0%;
+}
+.text-welcome-tutorial-2 {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  color: #333333;
+  margin: 0%;
+}
+.continue-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 12px;
+  width: 126px;
+  height: 25px;
+  font-family: "DM Sans";
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  top: 25px;
+  left: 200px;
+  background: #333333;
+  border-radius: 4px;
+}
+.exit-button-welcome-popup {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 45px;
+  height: 26px;
+  font-family: "DM Sans";
+  font-size: 10.5px;
+  font-weight: 550;
+  background-color: white;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  top: -2px;
+  left: 340px;
 }

@@ -70,7 +70,7 @@ export default function Welcome() {
             console.log("new user");
             setDoc(tutorialRef, { uid: user.uid })
               .then(() => {
-                history.push("/newusertutorial");
+                history.push("/tutorial");
               })
               .catch((error) => {
                 console.error("Error setting document:", error);
@@ -91,7 +91,7 @@ export default function Welcome() {
       >
         Welcome, Author!
       </h1>
-      <Link to="/newusertutorial">
+      <Link to="/tutorial">
         <button> new user tutorial </button>
       </Link>
       

@@ -3,11 +3,11 @@ import React from 'react';
 const WelcomeMessage = ({ onClose, onContinue}) => {
     return (
         <div className="p-welcome">
-            <h2>Welcome</h2>
-            <p>would you like to continue?</p>
+            <p className='text-welcome-tutorial-1'>Welcome to Bookmarked!</p>
+            <p className='text-welcome-tutorial-2'>Let’s have a look around.</p>
             <div className="popup-options">
-                <button onClick={onContinue}>Continue</button>
-                <button onClick={onClose}>Exit</button>
+                <button className='continue-button'onClick={onContinue}>Continue to tutorial</button>
+                <button className='exit-button-welcome-popup' onClick={onClose}>Leave</button>
             </div>
         </div>
     )
