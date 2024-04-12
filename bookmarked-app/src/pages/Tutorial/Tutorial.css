@@ -70,10 +70,12 @@
   /* top: 50%;
   left: 50%; */
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 422px;
+  height: 240px;
   padding: 20px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 4px;
+  border: solid 2px #dd8cbd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -86,7 +88,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   color: #ffffff;
   font-size: 20px;
   font-weight: 750;
@@ -94,6 +96,7 @@
   height: 45px;
   background: #333333;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .text-welcome-tutorial-1 {
@@ -130,8 +133,9 @@
   left: 200px;
   background: #333333;
   border-radius: 4px;
+  cursor: pointer;
 }
-.exit-button-welcome-popup {
+.leave-button-welcome-popup {
   display: flex;
   align-items: center;
   position: relative;
@@ -145,24 +149,55 @@
   border-radius: 4px;
   top: -2px;
   left: 340px;
+  cursor: pointer;
 }
+.content {
+  font-family: "DM Sans";
+  white-space: pre-line;
+}
+.b-x {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.special-small-text {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #333333;
+}
+.try-it-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "DM Sans";
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  width: 60px;
+  height: 25px;
+  left: 325px;
+  top: 25px;
+  cursor: pointer;
 
+  background: #dd8cbd;
+  border-radius: 4px;
+}
 /* .b-save {
     top:2.5%;
     left: 94%;
-}
-
-.p-tutorial {
-    position: absolute;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 3px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .b-exit {
@@ -177,18 +212,6 @@
     border-radius: 4px; 
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.b-x {
-    position: absolute;
-    top: 5px; 
-    right: 5px; 
-    width: 20px; 
-    height: 20px; 
-    background-color: transparent; 
-    border: none; 
-    outline: none; 
-    cursor: pointer;
 }
 
 .b-continue {

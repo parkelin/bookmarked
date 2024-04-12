@@ -42,14 +42,6 @@ export default function App() {
                     />
                   )}
                 />
-
-                {/* protectedRoute affecting shortcuts */}
-                {/* <Route exact path="/writingdoc">
-                  <WritingDoc
-                    navbarIsOpen={navbarIsOpen}
-                    toggleNavbar={toggleNavbar}
-                  />
-                </Route> */}
                 <ProtectedRoute
                   exact path="/writingdoc"
                   render={(props) => (
@@ -73,7 +65,11 @@ export default function App() {
 
                 <ProtectedRoute 
                   exact path="/tutorial"
-                  component={NewUserTutorial}
+                  render={(props) => (
+                    <NewUserTutorial
+                      {...props} 
+                      />
+                  )}
                 />
               </Switch>
             </div>

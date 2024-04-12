@@ -1,18 +1,31 @@
-import React from 'react';
+import React from "react";
+import { CgClose } from "react-icons/cg";
 import "../pages/Tutorial/Tutorial.css";
 
 const WritingDocTutorial = ({ onClose }) => {
-    return (
-        <div className="p-tutorial">
-            <div className="content">
-                <p>Begin your storytelling journey here. As you create characters, explore new worlds, and build your novel,
-                consider using our built-in features to track and strengthen your world building with a simple highlight and right click on 
-                your text.</p>
-                <button className="b-x" onClick={onClose}>X</button>
-                <button>next</button>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div
+      className="p-tutorial"
+      style={{
+        top: "283px",
+        left: "1000px",
+      }}
+    >
+      <div className="content">
+        <p>Begin your storytelling journey here.</p>
+        <p>
+          As you craft your novel, consider using our built-in features to track
+          and strengthen your world building with a simple highlight and right
+          click* on your text.
+        </p>
+        <p className="special-small-text">*Secondary-click for Mac users.</p>
+        <button className="b-x" onClick={onClose}>
+          <CgClose size={"20px"} color="#DD8CBD" />
+        </button>
+        <button className="try-it-button">Try it</button>
+      </div>
+    </div>
+  );
+};
 
 export default WritingDocTutorial;

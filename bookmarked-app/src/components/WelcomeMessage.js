@@ -9,7 +9,7 @@ const WelcomeMessage = ({ onClose, onContinue }) => {
             <p className='text-welcome-tutorial-2'>Let’s have a look around.</p>
             <div className="popup-options">
                 <button className='continue-button'onClick={onContinue}>Continue to tutorial</button>
-                <button className='exit-button-welcome-popup' onClick={onClose}>Leave</button>
+                <button className='leave-button-welcome-popup' onClick={onClose}>Leave</button>
             </div>
         </div>
     )

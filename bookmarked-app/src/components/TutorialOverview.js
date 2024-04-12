@@ -1,190 +1,118 @@
 import React, { useState } from "react";
 import { IoIosInformationCircle } from "react-icons/io";
-import { CgClose } from "react-icons/cg";
 import TutorialPopup from "./TutorialPopup";
-import WritingDocTutorial from './WritingDocTutorial';
-import RightClickTutorial from './RightClickTutorial';
+import WritingDocTutorial from "./WritingDocTutorial";
+import RightClickTutorial from "./RightClickTutorial";
 import "../pages/Tutorial/Tutorial.css";
 
-
 const TutorialOverview = () => {
-  const [showNavbarPopup, setShowNavbarPopup] = useState(false);
-  const [navbarInfoColor, setNavbarInfoColor] = useState('#ffffff')
-  const [showDocPopup, setShowDocPopup] = useState(false);
-  const [docInfoColor, setDocInfoColor] = useState('#ffffff')
-  const [showInfoPopup, setShowInfoPopup] = useState(false);
-  const [infoColor, setInfoColor] = useState('#ffffff')
-  const [showSavePopup, setShowSavePopup] = useState(false);
-  const [saveInfoColor, setSaveInfoColor] = useState('#ffffff')
+  const [popups, setPopups] = useState({
+    navbar: false,
+    doc: false,
+    info: false,
+    save: false,
+  });
+  const [infoColor, setInfoColor] = useState({
+    navbar: "#ffffff",
+    doc: "#ffffff",
+    info: "#ffffff",
+    save: "#ffffff",
+  });
 
-  const openNavbarPopup = () => {
-    setShowNavbarPopup(true);
-    setNavbarInfoColor("#DD8CBD")
-  };
-  const closeNavbarPopup = () => {
-    setShowNavbarPopup(false);
-    setNavbarInfoColor("#ffffff")
-  };
-
-  const openDocPopup = () => {
-    setShowDocPopup(true);
-    setDocInfoColor("#DD8CBD")
-  };
-  const closeDocPopup = () => {
-    setShowDocPopup(false);
-    setDocInfoColor("#ffffff")
+  const openPopup = (popup) => {
+    setInfoColor({ ...infoColor, [popup]: "#DD8CBD" });
+    setPopups({ ...popups, [popup]: true });
   };
 
-  const openInfoPopup = () => {
-    setShowInfoPopup(true);
-    setInfoColor("#DD8CBD")
-  };
-  const closeInfoPopup = () => {
-    setShowInfoPopup(false);
-    setInfoColor("#ffffff")
+  const closePopups = (popup) => {
+    setInfoColor({ ...infoColor, [popup]: "#ffffff" });
+    setPopups({ ...popups, [popup]: false });
   };
 
-  const openSavePopup = () => {
-    setShowSavePopup(true);
-    setSaveInfoColor("#DD8CBD")
-  };
-  const closeSavePopup = () => {
-    setShowSavePopup(false);
-    setSaveInfoColor("#ffffff")
-  };
   return (
     <div>
       <button
         className="b-navbar but"
-        onClick={openNavbarPopup}
+        onClick={() => openPopup("navbar")}
         style={{
           background: "none",
           border: "none",
           cursor: "pointer",
         }}
       >
-        <IoIosInformationCircle size={"25px"} color={navbarInfoColor} />
+        <IoIosInformationCircle size={"25px"} color={infoColor.navbar} />
       </button>
       <button
         className="b-doc but"
-        onClick={openDocPopup}
+        onClick={() => openPopup("doc")}
         style={{
           background: "none",
           border: "none",
           cursor: "pointer",
         }}
       >
-        <IoIosInformationCircle size={"25px"} color={docInfoColor} />
+        <IoIosInformationCircle size={"25px"} color={infoColor.doc} />
       </button>
       <button
         className="b-info but"
-        onClick={openInfoPopup}
+        onClick={() => openPopup("info")}
         style={{
           background: "none",
           border: "none",
           cursor: "pointer",
         }}
       >
-        <IoIosInformationCircle size={"25px"} color={infoColor} />
+        <IoIosInformationCircle size={"25px"} color={infoColor.info} />
       </button>
       <button
         className="b-save but"
-        onClick={openSavePopup}
+        onClick={() => openPopup("save")}
         style={{
           background: "none",
           border: "none",
           cursor: "pointer",
         }}
       >
-        <IoIosInformationCircle size={"25px"} color={saveInfoColor} />
+        <IoIosInformationCircle size={"25px"} color={infoColor.save} />
       </button>
-      {showNavbarPopup && (
+      {popups.navbar && (
         <TutorialPopup
-          title="navbar"
-          content="hellp"
-          onClose={closeNavbarPopup}
-          marginLeft={"360px"}
-          marginTop={"200px"}
+          content={[
+            "This is your navigation bar.",
+            "The Writing Document is where you write, check for writing inconsistencies, and access character previews.",
+            "The Glossary is a list of all character profiles that you have created. Create, edit, or delete new characters in full screen.",
+          ]}
+          onClose={() => closePopups("navbar")}
+          marginLeft={"420px"}
+          marginTop={"240px"}
         />
       )}
-      {showDocPopup && (
+      {popups.doc && (
+        <WritingDocTutorial onClose={() => closePopups("doc")}/>
+      )}
+      {popups.info && (
         <TutorialPopup
-          title="navbar"
-          content="hellp"
-          onClose={closeDocPopup}
-          marginLeft={"1060px"}
-          marginTop={"245px"}
+          content={[
+            "Don't worry if you can't remember everything!",
+            "There will be an info button on the Writing Document page that is accessible at all times. This popup will summarize all of the features with pictures for your reference.",
+          ]}
+          onClose={() => closePopups("info")}
+          marginLeft={"1148px"}
+          marginTop={"192px"}
+          height={"200px"}
         />
       )}
-      {showInfoPopup && (
+      {popups.save && (
         <TutorialPopup
-          title="navbar"
-          content="hellp"
-          onClose={closeInfoPopup}
-          marginLeft={"1210px"}
-          marginTop={"175px"}
-        />
-      )}
-      {showSavePopup && (
-        <TutorialPopup
-          title="navbar"
-          content="hellp"
-          onClose={closeSavePopup}
-          marginLeft={"1240px"}
-          marginTop={"175px"}
+          content={["Save your work at anytime.", "We cannot guarantee your work will be accurately saved if you don't properly log out."]}
+          onClose={() => closePopups("save")}
+          marginLeft={"1180px"}
+          marginTop={"167px"}
+          height={"150px"}
         />
       )}
     </div>
   );
 };
-    // const [popups, setPopups] = useState({
-    //     navbar: false,
-    //     doc: false,
-    //     info: false, 
-    //     save: false,
-    // });
-
-    // const openPopup = (popup) => {
-    //     setPopups({...popups, [popup]: true});
-    // }
-
-    // const closePopups = (popup) => {
-    //     setPopups({...popups, [popup]: false});
-    // }
-
-    // return (
-    //     <div>
-    //     <button className="b-navbar but" onClick={() => openPopup('navbar')}>i</button>
-    //     <button className="b-doc but" onClick={() => openPopup('doc')}>i</button>
-    //     <button className="b-info but" onClick={() => openPopup('info')}>i</button>
-    //     <button className="b-save but" onClick={() => openPopup('save')}>i</button>
-    //     {popups.navbar && (
-    //         <TutorialPopup
-    //             content="This is your navigation bar. The writing Document is where you write, check for writing inconsistencies,
-    //             and access character previews. The Glossary is a list of all character profiles that you have created. Create, edit, or delete
-    //             new characters in full screen."
-    //             onClose={() => closePopups('navbar')}
-    //         />
-    //     )}
-    //     {popups.doc && (
-    //         <WritingDocTutorial
-    //             onClose={() => closePopups('doc')}
-    //         />
-    //     )}
-    //     {popups.info && (
-    //         <TutorialPopup
-    //             content="Don't worry if you can't remember everything! There will be an info button on the Writing Document page that is
-    //             accessible at all times. This popup will summarize all of the features with pictures for your reference."
-    //             onClose={() => closePopups('info')}
-    //         />
-    //     )}
-    //     {popups.save && (
-    //         <TutorialPopup
-    //             content="Click this button to save your work at anytime."
-    //             onClose={() => closePopups('save')}
-    //         />
-    //     )}
-    //     </div>
-    // )
 
 export default TutorialOverview;
