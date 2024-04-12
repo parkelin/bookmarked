@@ -1,6 +1,8 @@
 import React from 'react';
+import "../pages/Tutorial/Tutorial.css";
 
-const WelcomeMessage = ({ onClose, onContinue}) => {
+
+const WelcomeMessage = ({ onClose, onContinue }) => {
     return (
         <div className="p-welcome">
             <p className='text-welcome-tutorial-1'>Welcome to Bookmarked!</p>
