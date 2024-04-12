@@ -87,6 +87,10 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setShowInconsistencyPopup(true);
   };
 
+  const handleSave = () => {
+    saveEditorContent(editorContent); // Pass the current editor content to saveEditorContent
+  };
+  
   // Function to close inconsistency popup
   const handleCloseInconsistencyPopup = () => {
     // toggleNavbar();
@@ -102,10 +106,10 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   return (
     <>
       <div className="welcome">
-        <LogOutButton />
+        <LogOutButton editorContent={editorContent}/>
         <InfoPopup />
 
-        <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
+        <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} editorContent = {editorContent}/>
 
         <div className="main-content">
           {/* <div className="inconsistency-button-container">
@@ -126,7 +130,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
           <div className="navbar-text-regular">
             <button
               className="save-button"
-              onClick={() => saveEditorContent(editorContent)}
+              onClick={handleSave}
               style={{ border: "none", background: "none", cursor: "pointer" }}
             >
               <AiOutlineSave size={"24px"} />

@@ -71,24 +71,25 @@ export default function TextEditor({
     
     editor.addEventListener("contextmenu", handleRightClick);
     editor.addEventListener("mousedown", handleMouseDown);
-    quill.on("text-change", function () {
 
+    quill.on("text-change", function () {
     // Debounced text change handler
-    const handleTextChangeDebounced = debounce(() => {
-      const editorContent = quill.getText();
-      setEditorContent(editorContent); // Update editor content
-      // Save editor content to database
-      saveEditorContent(editorContent);
-      updateCursorPosition(quill.getSelection());
-    }, 1000); // Adjust debounce delay as needed
+      const handleTextChangeDebounced = debounce(() => {
+        const editorContent = quill.getText();
+        setEditorContent(editorContent); // Update editor content
+        // Save editor content to database
+        // saveEditorContent(editorContent);
+        // updateCursorPosition(quill.getSelection());
+      }, 1000); // Adjust debounce delay as needed
 
     quill.on("text-change", () => {
       handleTextChangeDebounced();
       updateCursorPosition(quill.getSelection());
     });
+
   }, [setEditorContent, setHighlightedText, editorContent]);
 
-  }, [setEditorContent, setHighlightedText, editorContent, saveEditorContent]);
+  }, [setEditorContent, setHighlightedText, editorContent]);
 
   useEffect(() => {
     // Focus the editor after content is saved
