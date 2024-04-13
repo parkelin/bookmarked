@@ -26,12 +26,13 @@ export default function TextEditor({
   highlightedText,
   setHighlightedText,
   onClickCreateShortcut,
-  setEditorContent,
+  //setEditorContent,
   handleCheckInconsistencies
 }) {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
-  const { editorContent, saveEditorContent} = useEditor(); 
+  const { editorContent} = useEditor(); 
+  const {updateEditorContent} = useEditor();
   // const [highlightedText, setInternalHighlightedText] = useState(""); // elin
   const editorRef = useRef(null);
   const cursorPositionRef = useRef(null); // Reference to store cursor position
@@ -49,10 +50,8 @@ export default function TextEditor({
     });
 
     editorRef.current = quill;
-    console.log("set selction 1");
 
     if (editorContent) {
-      console.log(editorContent);
       quill.setText(editorContent);
     }
     
@@ -73,24 +72,26 @@ export default function TextEditor({
     editor.addEventListener("contextmenu", handleRightClick);
     editor.addEventListener("mousedown", handleMouseDown);
 
-    quill.on("text-change", function () {
+    // quill.on("text-change", function () {
     // Debounced text change handler
       const handleTextChangeDebounced = debounce(() => {
-        const editorContent = quill.getText();
-        setEditorContent(editorContent); // Update editor content
+        const content = quill.getText();
+        // setContextEditorContent(content);
+        updateEditorContent(content); // Update editor content
         // Save editor content to database
         // saveEditorContent(editorContent);
-        // updateCursorPosition(quill.getSelection());
-      }, 1000); // Adjust debounce delay as needed
+       //  updateCursorPosition(quill.getSelection());
+       }, 1000); // Adjust debounce delay as needed
 
     quill.on("text-change", () => {
       handleTextChangeDebounced();
       updateCursorPosition(quill.getSelection());
+
     });
 
-  }, [setEditorContent, setHighlightedText, editorContent]);
+  }, [setHighlightedText, editorContent, updateEditorContent]);
 
-  }, [setEditorContent, setHighlightedText, editorContent]);
+  // }, [setHighlightedText, editorContent, updateEditorContent]);
 
   useEffect(() => {
     // Focus the editor after content is saved
@@ -99,7 +100,7 @@ export default function TextEditor({
       editorRef.current.setSelection(cursorPositionRef.current.index, cursorPositionRef.current.length);
     }
 
-  }, [editorContent]);
+  }, [cursorPositionRef.current]);
 
   const updateCursorPosition = (selection) => {
     cursorPositionRef.current = selection;

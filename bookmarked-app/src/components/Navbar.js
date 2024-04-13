@@ -5,12 +5,13 @@ import {Link } from 'react-router-dom';
 import './Navbar.css';
 import { useEditor } from "../context/EditorContext"; 
 
-const Navbar = ({ isOpen, toggleNavbar, editorContent}) => {
+const Navbar = ({ isOpen, toggleNavbar}) => {
 
-    const { saveEditorContent } = useEditor();
+    const { editorContent, saveEditorContent } = useEditor();
 
     const handleNavigateToGlossary = () => {
-        saveEditorContent(editorContent); // Save the editor content before navigating to the glossary
+        saveEditorContent(editorContent);
+        console.log("save in navbar", editorContent); // Save the editor content before navigating to the glossary
       };
 
     return (
