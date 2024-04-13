@@ -3,8 +3,16 @@
 import React from 'react';
 import {Link } from 'react-router-dom';
 import './Navbar.css';
+import { useEditor } from "../context/EditorContext"; 
 
-const Navbar = ({ isOpen, toggleNavbar }) => {
+const Navbar = ({ isOpen, toggleNavbar}) => {
+
+    const { editorContent, saveEditorContent } = useEditor();
+
+    const handleNavigateToGlossary = () => {
+        saveEditorContent(editorContent);
+        console.log("save in navbar", editorContent); // Save the editor content before navigating to the glossary
+      };
 
     return (
         <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
@@ -14,7 +22,7 @@ const Navbar = ({ isOpen, toggleNavbar }) => {
             {isOpen && (
                 <div>
                     <div><Link to="/writingdoc" className="navbar-text-regular">Writing Document</Link></div>
-                    <div><Link to="/glossary" className="navbar-text-regular">Glossary</Link></div>
+                    <div><Link to="/glossary" className="navbar-text-regular" onClick={handleNavigateToGlossary}>Glossary</Link></div>
                     {/* <div><Link to="/loading" className="text">Map Maker</Link></div>
                     <div><Link to="/loading" className="text">Plot Planner</Link></div> */}
                 </div>

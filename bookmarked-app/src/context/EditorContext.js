@@ -63,6 +63,10 @@ export const EditorProvider = ({ children }) => {
     setEditorContent("");
   };
 
+  const updateEditorContent = (content) => {
+    setEditorContent(content);
+  };
+
   const deleteEditorContent = async () => {
     if (currentUser) {
       const querySnapshot = await getDocs(query(collection(database, 'writingdoc'), where('uid', '==', currentUser.uid)));
@@ -76,7 +80,7 @@ export const EditorProvider = ({ children }) => {
   };
 
   return (
-    <EditorContext.Provider value={{ editorContent, saveEditorContent, clearEditorContent, deleteEditorContent }}>
+    <EditorContext.Provider value={{ editorContent, saveEditorContent, clearEditorContent, deleteEditorContent, updateEditorContent }}>
       {children}
     </EditorContext.Provider>
   );
