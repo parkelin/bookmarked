@@ -2,14 +2,21 @@ import React from "react";
 import "../pages/Tutorial/Tutorial.css";
 import { CgClose } from "react-icons/cg";
 
-const TutorialPopup = ({ content, onClose, marginTop, marginLeft, height, smallText }) => {
+const TutorialPopup = ({
+  content,
+  onClose,
+  marginTop,
+  marginLeft,
+  height,
+  smallText,
+}) => {
   return (
     <div
       className="p-tutorial"
       style={{
         top: marginTop,
         left: marginLeft,
-        height: height
+        height: height,
       }}
     >
       {/* <div className="content">
@@ -20,9 +27,10 @@ const TutorialPopup = ({ content, onClose, marginTop, marginLeft, height, smallT
         {content.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
+        {smallText && <p className="special-small-text">{smallText}</p>}
       </div>
       <button className="b-x" onClick={onClose}>
-        <CgClose size={"20px"} color="#DD8CBD"/>
+        <CgClose size={"20px"} color="#DD8CBD" />
       </button>
     </div>
   );

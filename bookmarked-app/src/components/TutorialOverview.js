@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IoIosInformationCircle } from "react-icons/io";
 import TutorialPopup from "./TutorialPopup";
 import WritingDocTutorial from "./WritingDocTutorial";
-import RightClickTutorial from "./RightClickTutorial";
 import "../pages/Tutorial/Tutorial.css";
 
 const TutorialOverview = () => {

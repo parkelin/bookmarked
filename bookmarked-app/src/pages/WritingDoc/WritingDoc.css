@@ -20,6 +20,8 @@ body {
     border: none; 
     display: flex;
     justify-content: center;
+    z-index: 3;
+
 }
 
 .container .ql-toolbar.ql-snow {
@@ -28,7 +30,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color:  #f3f3f3;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
 }
 

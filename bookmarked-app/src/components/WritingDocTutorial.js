@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 import { CgClose } from "react-icons/cg";
 import "../pages/Tutorial/Tutorial.css";
 
 const WritingDocTutorial = ({ onClose }) => {
+  const history = useHistory()
   return (
     <div
       className="p-tutorial"
@@ -22,7 +24,7 @@ const WritingDocTutorial = ({ onClose }) => {
         <button className="b-x" onClick={onClose}>
           <CgClose size={"20px"} color="#DD8CBD" />
         </button>
-        <button className="try-it-button">Try it</button>
+        <button className="try-it-button" onClick={() => history.push('/tutorial/doc')}>Try it</button>
       </div>
     </div>
   );
