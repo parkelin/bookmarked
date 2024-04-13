@@ -4,9 +4,9 @@ import { useAuth } from "../context/AuthContext"
 import '../App.css'
 import { useEditor } from "../context/EditorContext";
 
-const LogOutButton = ({editorContent}) => {
+const LogOutButton = () => {
     const { handleSignOut } = useAuth();
-    const { saveEditorContent } = useEditor();
+    const { editorContent, saveEditorContent } = useEditor();
 
     const handleLogout = async () => {
         try {

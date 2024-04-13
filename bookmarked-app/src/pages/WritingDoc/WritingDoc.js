@@ -22,11 +22,11 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
-  const [editorContent, setEditorContent] = useState(""); // State to store current editor content
+  // const [editorContent, setEditorContent] = useState(""); // State to store current editor content
   const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
 
-  const { saveEditorContent } = useEditor();
+  const { editorContent, saveEditorContent } = useEditor();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,7 +88,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   };
 
   const handleSave = () => {
-    saveEditorContent(editorContent); // Pass the current editor content to saveEditorContent
+    saveEditorContent(editorContent);
+    console.log("save button 1:", editorContent); // Pass the current editor content to saveEditorContent
   };
   
   // Function to close inconsistency popup
@@ -106,10 +107,10 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   return (
     <>
       <div className="welcome">
-        <LogOutButton editorContent={editorContent}/>
+        <LogOutButton/>
         <InfoPopup />
 
-        <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} editorContent = {editorContent}/>
+        <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar}/>
 
         <div className="main-content">
           {/* <div className="inconsistency-button-container">
@@ -143,7 +144,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             highlightedText={highlightedText}
             setHighlightedText={setHighlightedText}
             onClickCreateShortcut={handleCreateShortcut}
-            setEditorContent={setEditorContent}
+            // setEditorContent={setEditorContent}
             handleCheckInconsistencies={handleCheckInconsistencies}
           />
         </div>
