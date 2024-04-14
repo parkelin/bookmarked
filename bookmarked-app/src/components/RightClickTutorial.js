@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { IoIosInformationCircle } from "react-icons/io";
