@@ -91,8 +91,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setShowInconsistencyPopup(true);
   };
   
-  const handleSave = () => {
-      saveEditorContent(editorContent);
+  const handleSave = async() => {
+      await saveEditorContent(editorContent);
       setShowSaveConfirmation(true);
       setTimeout(() => setShowSaveConfirmation(false), 3000); // Hide confirmation after 3 seconds
       console.log("save button 1:", editorContent);

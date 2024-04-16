@@ -4,6 +4,7 @@ import { auth } from "../../firebase-config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import logoNoTitle from "../../images/bookmarked-logo-notitle.png";
 import googleLogo from "../../images/GoogleLoginLogo.png";
+import { IoIosArrowUp } from "react-icons/io";
 import "./Welcome.css";
 
 export default function Welcome() {
@@ -82,8 +83,9 @@ export default function Welcome() {
           transition: "opacity 0.5s linear",
         }}
       >
-        {" "}
-        ^{" "}
+
+      <IoIosArrowUp className="arrow-up" style={{ opacity: loadingOpacity }}/>
+      
       </h1>
 
       <div className="login-section">
