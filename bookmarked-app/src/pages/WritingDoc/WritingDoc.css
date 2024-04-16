@@ -60,6 +60,7 @@ body {
     max-height: 170px; /* Adjust based on your needs */
     overflow-y: auto; /* Enables vertical scrolling if content exceeds max-height */
     padding: 10px; /* Optional, for padding inside the container */
+    padding-right: -5%;
   }
 
 .inconsistency-popout {
@@ -68,7 +69,7 @@ body {
     width: 260px; /* Consider max-width for smaller devices */
     height: 180px;
     left: calc(100% - 280px); /* Adjust so it doesn't overflow the screen */
-    padding-right: 3%;
+    padding-right: 1%;
     top: 80px;
     background: white;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
