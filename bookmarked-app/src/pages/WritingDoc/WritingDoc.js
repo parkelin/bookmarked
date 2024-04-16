@@ -25,9 +25,12 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
-  // const [editorContent, setEditorContent] = useState(""); // State to store current editor content
   const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
+
+//   const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
+//   const [editorContent, setEditorContent] = useState("");
+//   const { saveEditorContent } = useEditor();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -87,9 +90,8 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
   };
-
+  
   const handleSave = () => {
-
       saveEditorContent(editorContent);
       setShowSaveConfirmation(true);
       setTimeout(() => setShowSaveConfirmation(false), 3000); // Hide confirmation after 3 seconds
