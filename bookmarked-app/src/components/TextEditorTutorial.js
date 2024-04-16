@@ -11,11 +11,11 @@ const TextEditorTutorial = () => {
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const quillRef = useRef(null);
 
-  const handleChange = (content, delta, source, editor) => {
+  const handleChange = (content) => {
     setText(content);
   };
 
-  const handleSelectionChange = (range, oldRange, source) => {
+  const handleSelectionChange = (range) => {
     if (range && range.length > 0) {
       const quill = quillRef.current.getEditor();
       const bounds = quill.getBounds(range.index, range.length);
@@ -31,7 +31,6 @@ const TextEditorTutorial = () => {
     const quill = quillRef.current.getEditor();
     const range = quill.getSelection();
     if (range && range.length > 0) {
-      const bounds = quill.getBounds(range.index);
       setShowContextMenu(true);
       setContextMenuPos({ x: event.clientX, y: event.clientY });
     }

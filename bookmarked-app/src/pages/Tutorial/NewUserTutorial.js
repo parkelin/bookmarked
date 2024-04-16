@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory} from 'react-router-dom';
 import WelcomeMessage from '../../components/WelcomeMessage';
 import TutorialOverview from '../../components/TutorialOverview';
@@ -10,6 +10,9 @@ const NewUserTutorial = ({ welcomeScreen }) => {
     const [showQuit, setShowQuit] = useState(true);
     const history = useHistory();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     const handleContinue = () => {
         setShowWelcome(false);
