@@ -22,11 +22,12 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
-  // const [editorContent, setEditorContent] = useState(""); // State to store current editor content
   const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
 
-  const { editorContent, saveEditorContent } = useEditor();
+  const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
+  const [editorContent, setEditorContent] = useState("");
+  const { saveEditorContent } = useEditor();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -87,9 +88,14 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setShowInconsistencyPopup(true);
   };
 
-  const handleSave = () => {
-    saveEditorContent(editorContent);
-    console.log("save button 1:", editorContent); // Pass the current editor content to saveEditorContent
+  const handleSave = async () => {
+    try {
+      await saveEditorContent(editorContent);
+      setShowSaveConfirmation(true);
+      setTimeout(() => setShowSaveConfirmation(false), 3000); // Hide confirmation after 3 seconds
+    } catch (error) {
+      console.error('Failed to save content:', error);
+    }
   };
   
   // Function to close inconsistency popup
@@ -136,6 +142,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             >
               <AiOutlineSave size={"24px"} />
             </button>
+            {showSaveConfirmation && (
+              <div className="save-confirmation">Changes saved successfully!</div>
+            )}
           </div>
 
           <TextEditor
