@@ -6,6 +6,10 @@ const getInconsistency = async (payload) => {
     const apiKey = process.env.REACT_APP_OPENAI_KEY;
 
     const apiMsg = `I will give you a block of narrative input. \
+                    It will consist of story writing and character descriptions \
+                    I am looking for inconsistencies across any of the text \
+                    An inconsistency can consist of text that contradicts another sentence within the plot \
+                    An inconsistency can consist of text that contradicts a character description and attribute \
                     If there are no inconsistencies in the input, respond with only the phrase "None Found". \
                     Else, respond with any inconsistencies found in less than 100 words. \
                     Here is the text: ${payload.highlightedText}`;
