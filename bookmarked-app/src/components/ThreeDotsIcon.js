@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react'
 import { useCharacters} from '../context/CharacterContext';
 import { Link, useHistory } from "react-router-dom";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import '../pages/Glossary/Glossary.css'
 
 const ThreeDotsIcon = ({id}) => {
@@ -43,9 +44,9 @@ const ThreeDotsIcon = ({id}) => {
 
     return (
         <div className="three-dots">
-            <img src={require(`../images/ThreeDots.png`)}
-                 alt={"three dots icon"}
-                 onClick={handleIconClick}
+            <BsThreeDotsVertical size={"23px"}
+                onClick={handleIconClick}
+                style={{ cursor: 'pointer' }}
             />
             {isOpen && (
                 <div className="dropdown-container">
