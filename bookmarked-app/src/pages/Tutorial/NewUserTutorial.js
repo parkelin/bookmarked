@@ -4,9 +4,9 @@ import WelcomeMessage from '../../components/WelcomeMessage';
 import TutorialOverview from '../../components/TutorialOverview';
 import './Tutorial.css';
 
-const NewUserTutorial = () => {
+const NewUserTutorial = ({ welcomeScreen }) => {
     const [showPopup, setShowPopup] = useState(true);
-    const [showWelcome, setShowWelcome] = useState(false);
+    const [showWelcome, setShowWelcome] = useState(welcomeScreen);
     const [showQuit, setShowQuit] = useState(true);
     const history = useHistory();
 

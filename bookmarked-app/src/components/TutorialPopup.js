@@ -3,6 +3,7 @@ import "../pages/Tutorial/Tutorial.css";
 import { CgClose } from "react-icons/cg";
 
 const TutorialPopup = ({
+  header,
   content,
   onClose,
   marginTop,
@@ -19,11 +20,8 @@ const TutorialPopup = ({
         height: height,
       }}
     >
-      {/* <div className="content">
-                <p>{content}</p>
-                <button className="b-x" onClick={onClose}>X</button>
-            </div> */}
       <div className="content">
+        {header && <p className="popup-heading-bold">{header}</p>}
         {content.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}

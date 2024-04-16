@@ -76,8 +76,8 @@ const TutorialOverview = () => {
       </button>
       {popups.navbar && (
         <TutorialPopup
+          header={"This is your navigation bar."}
           content={[
-            "This is your navigation bar.",
             "The Writing Document is where you write, check for writing inconsistencies, and access character previews.",
             "The Glossary is a list of all character profiles that you have created. Create, edit, or delete new characters in full screen.",
           ]}
@@ -91,8 +91,8 @@ const TutorialOverview = () => {
       )}
       {popups.info && (
         <TutorialPopup
+          header={ "Don't worry if you can't remember everything!"}
           content={[
-            "Don't worry if you can't remember everything!",
             "There will be an info button on the Writing Document page that is accessible at all times. This popup will summarize all of the features with pictures for your reference.",
           ]}
           onClose={() => closePopups("info")}
@@ -103,7 +103,8 @@ const TutorialOverview = () => {
       )}
       {popups.save && (
         <TutorialPopup
-          content={["Save your work at anytime.", "We cannot guarantee your work will be accurately saved if you don't properly log out."]}
+          header={"Save your work at anytime."}
+          content={["We cannot guarantee your work will be accurately saved if you don't properly log out."]}
           onClose={() => closePopups("save")}
           marginLeft={"1180px"}
           marginTop={"167px"}

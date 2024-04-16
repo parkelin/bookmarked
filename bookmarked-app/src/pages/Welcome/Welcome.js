@@ -54,7 +54,7 @@ export default function Welcome() {
   const welcomeOpacity = Math.max(1 - scrollPosition / 400, 0); // Fades out as you scroll
   const loadingOpacity = Math.min(scrollPosition / 1000, 1); // Fades in as you scroll down
 
-  // Login
+  // Login, prompt tutorial if new user
   const signInWithGoogle = () => {
     setShowLogin(false);
     const provider = new GoogleAuthProvider();
@@ -62,7 +62,7 @@ export default function Welcome() {
       .then((result) => {
         const user = result.user;
         const tutorialRef = doc(database, "tutorial", user.uid);
-        console.log(`login ${user.uid}`);
+        // console.log(`login ${user.uid}`);
         getDoc(tutorialRef).then((doc) => {
           if (doc.exists()) {
             history.push("/writingdoc");
@@ -70,7 +70,7 @@ export default function Welcome() {
             console.log("new user");
             setDoc(tutorialRef, { uid: user.uid })
               .then(() => {
-                history.push("/tutorial");
+                history.push("/tutorial/welcome");
               })
               .catch((error) => {
                 console.error("Error setting document:", error);
@@ -91,11 +91,6 @@ export default function Welcome() {
       >
         Welcome, Author!
       </h1>
-      <Link to="/tutorial">
-        <button> new user tutorial </button>
-      </Link>
-      
-
       <h1
         className="arrow"
         style={{

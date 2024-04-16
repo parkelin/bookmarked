@@ -14,7 +14,7 @@ const WritingDocTutorial = ({ onClose }) => {
       }}
     >
       <div className="content">
-        <p>Begin your storytelling journey here.</p>
+        <p style={{ fontWeight: '650' }}>Begin your storytelling journey here.</p>
         <p>
           As you craft your novel, consider using our built-in features to track
           and strengthen your world building with a simple highlight and right

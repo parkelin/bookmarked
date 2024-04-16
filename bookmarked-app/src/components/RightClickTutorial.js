@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { CgClose } from "react-icons/cg";
 import { IoIosInformationCircle } from "react-icons/io";
 import "../pages/Tutorial/Tutorial.css";
 import TextEditorTutorial from "./TextEditorTutorial";
@@ -8,9 +7,13 @@ import TutorialPopup from "./TutorialPopup";
 
 const RightClickTutorial = () => {
   const history = useHistory();
-  const [infoColor, setInfoColor] = useState("#ffffff");
-  const [openInfoPopup, setOpenInfoPopup] = useState(false);
+  const [infoColor, setInfoColor] = useState("#DD8CBD");
+  const [openInfoPopup, setOpenInfoPopup] = useState(true);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const handleOpenPopup = () => {
     setOpenInfoPopup(true);
     setInfoColor("#DD8CBD");

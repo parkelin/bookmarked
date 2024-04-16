@@ -9,6 +9,7 @@ Writing - Create a character while writing by highlighting the text, right click
 
 # Writing Doc
 npm install quill\
+npm install react-quill\
 npm install @types/quill\
 background-color: #f3f3f3\
 https://quilljs.com/docs/quickstart

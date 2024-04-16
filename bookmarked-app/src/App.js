@@ -58,7 +58,7 @@ export default function App() {
                     path="/glossary/:characterId"
                     render={(props) => (
                       <Character
-                        {...props} // Pass down route props (match, location, history)
+                        {...props} 
                         navBarisOpen={navbarIsOpen}
                         toggleNavBar={toggleNavbar}
                       />
@@ -66,8 +66,13 @@ export default function App() {
                   />
                   <ProtectedRoute
                     exact
-                    path="/tutorial"
-                    render={(props) => <NewUserTutorial {...props} />}
+                    path="/tutorial/welcome"
+                    render={(props) => <NewUserTutorial {...props} welcomeScreen={true}/>}
+                  />
+                  <ProtectedRoute
+                    exact
+                    path="/tutorial/"
+                    render={(props) => <NewUserTutorial {...props} welcomeScreen={false}/>}
                   />
                   <ProtectedRoute
                     exact
