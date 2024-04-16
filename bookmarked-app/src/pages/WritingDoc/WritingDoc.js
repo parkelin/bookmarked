@@ -15,6 +15,9 @@ import InfoPopup from "../../components/InfoPopup";
 import { useEditor } from "../../context/EditorContext";
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
+  const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
+  const { editorContent, saveEditorContent } = useEditor();
+
   const [isEditorMoved, setIsEditorMoved] = useState(false);
   const [isShortcutOpened, setIsShortcutOpened] = useState(false);
   const [isEmptyShortcutOpened, setIsEmptyShortcutOpened] = useState(false);
@@ -25,8 +28,6 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   // const [editorContent, setEditorContent] = useState(""); // State to store current editor content
   const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
-
-  const { editorContent, saveEditorContent } = useEditor();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,9 +89,12 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   };
 
   const handleSave = () => {
-    saveEditorContent(editorContent);
-    console.log("save button 1:", editorContent); // Pass the current editor content to saveEditorContent
-  };
+
+      saveEditorContent(editorContent);
+      setShowSaveConfirmation(true);
+      setTimeout(() => setShowSaveConfirmation(false), 3000); // Hide confirmation after 3 seconds
+      console.log("save button 1:", editorContent);
+    };
   
   // Function to close inconsistency popup
   const handleCloseInconsistencyPopup = () => {
@@ -136,6 +140,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
             >
               <AiOutlineSave size={"24px"} />
             </button>
+            {showSaveConfirmation && (
+              <div className="save-confirmation">Changes saved successfully!</div>
+            )}
           </div>
 
           <TextEditor
