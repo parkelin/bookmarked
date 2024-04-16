@@ -15,6 +15,9 @@ import InfoPopup from "../../components/InfoPopup";
 import { useEditor } from "../../context/EditorContext";
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
+  const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
+  const { editorContent, saveEditorContent } = useEditor();
+
   const [isEditorMoved, setIsEditorMoved] = useState(false);
   const [isShortcutOpened, setIsShortcutOpened] = useState(false);
   const [isEmptyShortcutOpened, setIsEmptyShortcutOpened] = useState(false);
@@ -25,9 +28,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [gptResponse, setGPTResponse] = useState("");
   const [infoShowing, setInfoShowing] = useState(false);
 
-  const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
-  const [editorContent, setEditorContent] = useState("");
-  const { saveEditorContent } = useEditor();
+//   const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
+//   const [editorContent, setEditorContent] = useState("");
+//   const { saveEditorContent } = useEditor();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -87,16 +90,13 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
       setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
   };
-
-  const handleSave = async () => {
-    try {
-      await saveEditorContent(editorContent);
+  
+  const handleSave = () => {
+      saveEditorContent(editorContent);
       setShowSaveConfirmation(true);
       setTimeout(() => setShowSaveConfirmation(false), 3000); // Hide confirmation after 3 seconds
-    } catch (error) {
-      console.error('Failed to save content:', error);
-    }
-  };
+      console.log("save button 1:", editorContent);
+    };
   
   // Function to close inconsistency popup
   const handleCloseInconsistencyPopup = () => {
