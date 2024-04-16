@@ -62,13 +62,13 @@ export const CharacterProvider = ({ children }) => {
     const response = await fetch(blobUrl);
     const blob = await response.blob();
     return blob;
-  }
+  };
 
   const handleUploadPhotoToStorage = async (uid, character) => {
     // Create a storage reference
     const imageRef = ref(storage, `user_photos/${uid}/${character.id}`);
-    console.log(`attempting to upload ${character.image}`)
-    const blob = await getBlobFromUrl(character.image)
+    console.log(`attempting to upload ${character.image} at ${imageRef}`);
+    const blob = await getBlobFromUrl(character.image);
     uploadBytes(imageRef, blob)
       .then((snapshot) => {
         // Once the upload is complete, get the download URL
@@ -91,7 +91,7 @@ export const CharacterProvider = ({ children }) => {
         return;
       }
       const uid = currentUser.uid;
-      console.log(`user uid: ${currentUser.uid}`)
+      console.log(`user uid: ${currentUser.uid}`);
       const imageRef = ref(storage, `user_photos/${uid}/${character.id}`);
       getDownloadURL(imageRef)
         .then((url) => {
@@ -114,19 +114,17 @@ export const CharacterProvider = ({ children }) => {
         image: characterData.image,
         uid: currentUser.uid,
       });
+      const newCharacter = {
+        id: docId.id,
+        name: characterData.name,
+        image: characterData.image || "EmptyImageIcon.png",
+        caption: characterData.caption || "",
+        description: characterData.description || "",
+      };
       console.log("Character added successfully.");
-      setCharacters((prevCharacters) => [
-        ...prevCharacters,
-        {
-          id: docId.id,
-          name: characterData.name,
-          image: characterData.image || "EmptyImageIcon.png",
-          caption: characterData.caption || "",
-          description: characterData.description || "",
-        },
-      ]);
+      setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
       if (characterData.image !== "EmptyImageIcon.png")
-        handleUploadPhotoToStorage(currentUser.uid, characterData);
+        handleUploadPhotoToStorage(currentUser.uid, newCharacter);
     } else {
       console.error("No user logged in.");
     }
@@ -173,7 +171,7 @@ export const CharacterProvider = ({ children }) => {
           character.id === updatedCharacter.id ? updatedCharacter : character
         )
       );
-      console.log(`needs updating: ${needsToUpdatePhoto}`)
+      console.log(`needs updating: ${needsToUpdatePhoto}`);
       if (needsToUpdatePhoto && updatedCharacter.image !== "EmptyImageIcon.png")
         handleUploadPhotoToStorage(user.uid, updatedCharacter);
     }
