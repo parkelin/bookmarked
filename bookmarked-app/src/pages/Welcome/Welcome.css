@@ -100,3 +100,15 @@
   width: 80px;
   height: 80px;
   }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  .arrow-up {
+    font-size: 97px;
+    margin-top: 170%;
+    animation: fadeInOut 2s infinite; /* Animation lasts 3 seconds and repeats indefinitely */
+    transform: rotate(180deg);
+  }
