@@ -37,7 +37,7 @@ const InconsistencyPopup = ({ handleCloseInconsistencyPopup, editorContent, gptR
                 <div className="inconsistency-popup-text" style={{ marginTop: "20px" }}>
                     <h1 className="inconsistency-header" style={{ color: "#D7504D" }} > Inconsistencies Found. </h1>
                     {/* <h3 className="caption-small"> <b>Current Text</b>: {editorContent}</h3>  */}
-                    <h3 className="caption-small"> <b>Inconsistencies</b>: {gptResponse} </h3>
+                    <div className="inconsistency-caption"> <b>Inconsistencies</b>: {gptResponse} </div>
                 </div>
                 }
             </div>

@@ -176,9 +176,11 @@ body {
     padding-left: 5%;
 }
 
-.caption-small {
+.inconsistency-caption {
     max-width: 200px;
     font-size: 12px;
+    padding-left: 8%;
+    padding-top: 3%;
 }
 
 /* .inconsistency-name-small {
