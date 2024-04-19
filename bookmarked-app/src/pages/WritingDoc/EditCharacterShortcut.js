@@ -13,11 +13,10 @@ const EditCharacterShortcut = ({
 
   const [isUpdating, setIsUpdating] = useState(false);
   const [id, setId] = useState("NewCharacter");
-  const [image, setImage] = useState("EmptyImageIcon.png");
   const [name, setName] = useState(highlightedText);
   const [caption, setCaption] = useState("");
   const [description, setDescription] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
+  const [imagePreview, setImagePreview] = useState("EmptyImageIcon.png");
 
   // special case for already existing character with this name
   useEffect(() => {
@@ -28,6 +27,7 @@ const EditCharacterShortcut = ({
       setCaption(character.caption);
       setDescription(character.description);
       setName(character.name);
+      setImagePreview(character.image)
     }
 
     if (character !== undefined && character.image !== 'EmptyImageIcon.png') {
@@ -44,12 +44,16 @@ const EditCharacterShortcut = ({
     const updatedCharacterData = {
       id: id,
       name: name,
-      image: image,
+      image: imagePreview,
       caption: caption,
       description: description,
     };
-    if (isUpdating) await updateCharacter(updatedCharacterData);
-    else await addCharacter(updatedCharacterData);
+  
+    if (isUpdating) {
+      await updateCharacter(updatedCharacterData, false); // Assuming no new image to update
+    } else {
+      await addCharacter(updatedCharacterData);
+    }
     handleFinishChangesClick();
   };
 
