@@ -13,8 +13,8 @@ const EditCharacter = ({
   description,
   setDescription,
   handleUpdateChanges,
-  characterImage, // New prop for managing character image
-  setCharacterImage, // New function to update character image
+  characterImage, 
+  setCharacterImage, 
   imagePreview,
   setImagePreview,
   isNew,
@@ -89,7 +89,7 @@ const EditCharacter = ({
             />
              <div
               className="upload-icon"
-              onClick={() => fileInputRef.current.click()} // Use ref to trigger file input click
+              onClick={() => fileInputRef.current.click()} 
             >
               <CgAdd size={24} />
             </div>

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { CiMaximize1 } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
 import "../Character/Character.css";
 import "./WritingDoc.css";
@@ -36,7 +34,7 @@ const CharacterShortcut = ({ handleCloseShortcut, characterData }) => {
       >
         <CgClose size={"23px"} />
       </button>
-      <Link className="full-screen" to={`/glossary/${characterData.id}`}>
+      {/* <Link className="full-screen" to={`/glossary/${characterData.id}`}>
         <CiMaximize1
           size={"21px"}
           style={{
@@ -46,7 +44,7 @@ const CharacterShortcut = ({ handleCloseShortcut, characterData }) => {
             cursor: "pointer",
           }}
         />
-      </Link>
+      </Link> */}
       <div className="small-character-main-info">
         <div className="small-rounded-rectangle">
           {characterData.image === "EmptyImageIcon.png" ? (
