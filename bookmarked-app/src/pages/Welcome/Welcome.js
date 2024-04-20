@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { auth } from "../../firebase-config";
+import { useHistory, Link } from "react-router-dom";
+import { auth, database } from "../../firebase-config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import logoNoTitle from "../../images/bookmarked-logo-notitle.png";
 import googleLogo from "../../images/GoogleLoginLogo.png";
+import {doc, setDoc, getDoc} from "firebase/firestore";
 import { IoIosArrowUp } from "react-icons/io";
 import "./Welcome.css";
 
@@ -54,13 +55,29 @@ export default function Welcome() {
   const welcomeOpacity = Math.max(1 - scrollPosition / 400, 0); // Fades out as you scroll
   const loadingOpacity = Math.min(scrollPosition / 1000, 1); // Fades in as you scroll down
 
-  // Login
+  // Login, prompt tutorial if new user
   const signInWithGoogle = () => {
     setShowLogin(false);
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        history.push("/writingdoc");
+        const user = result.user;
+        const tutorialRef = doc(database, "tutorial", user.uid);
+        // console.log(`login ${user.uid}`);
+        getDoc(tutorialRef).then((doc) => {
+          if (doc.exists()) {
+            history.push("/writingdoc");
+          } else {
+            console.log("new user");
+            setDoc(tutorialRef, { uid: user.uid })
+              .then(() => {
+                history.push("/tutorial/welcome");
+              })
+              .catch((error) => {
+                console.error("Error setting document:", error);
+              });
+          }
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -118,6 +135,7 @@ export default function Welcome() {
               <div className="loading-dot"></div>
             </div>
           </>
+
         )}
       </div>
 

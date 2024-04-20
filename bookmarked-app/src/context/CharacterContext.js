@@ -161,7 +161,7 @@ export const CharacterProvider = ({ children }) => {
         Name: updatedCharacter.name,
         Caption: updatedCharacter.caption,
         Description: updatedCharacter.description,
-        image: updatedCharacter.image,
+        image: updatedCharacter.image
       });
       console.log("update completed", updateCharacter.image);
 

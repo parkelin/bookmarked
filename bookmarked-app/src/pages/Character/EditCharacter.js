@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./Character.css"
 import RoundedRectangle from "../../components/RoundedRectangle";
 import { CgCheck, CgAdd } from "react-icons/cg";
 import { Link } from "react-router-dom";
@@ -12,8 +13,8 @@ const EditCharacter = ({
   description,
   setDescription,
   handleUpdateChanges,
-  characterImage, // New prop for managing character image
-  setCharacterImage, // New function to update character image
+  characterImage, 
+  setCharacterImage, 
   imagePreview,
   setImagePreview,
   isNew,
@@ -88,7 +89,7 @@ const EditCharacter = ({
             />
              <div
               className="upload-icon"
-              onClick={() => fileInputRef.current.click()} // Use ref to trigger file input click
+              onClick={() => fileInputRef.current.click()} 
             >
               <CgAdd size={24} />
             </div>
@@ -112,7 +113,7 @@ const EditCharacter = ({
         </div>
         <div className="character-description-section">
           <textarea
-            className="character-description"
+            className="character-description-input"
             value={description}
             placeholder="Enter description"
             onChange={(e) => setDescription(e.target.value)}

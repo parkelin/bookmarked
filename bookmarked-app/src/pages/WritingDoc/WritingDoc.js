@@ -105,7 +105,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     setShowInconsistencyPopup(false);
   };
 
-  // load in the top of the page - elin
+  // load in the top of the page
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

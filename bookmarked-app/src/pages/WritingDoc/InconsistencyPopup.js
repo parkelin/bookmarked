@@ -18,7 +18,7 @@ const InconsistencyPopup = ({ handleCloseInconsistencyPopup, editorContent, gptR
                     border: "none",
                     color: "#000",
                     background: "none",
-                    cursor: "pointer",
+                    cursor: "pointer", 
                     marginTop: "5px",
                     left: "88%",
                     zIndex: 1000,

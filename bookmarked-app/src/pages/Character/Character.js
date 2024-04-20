@@ -36,6 +36,14 @@ const Character = ({ navBarisOpen, toggleNavBar }) => {
       description: description,
     };
 
+    // empty character, do not create
+    if (characterName === "" && 
+        caption === "" && 
+        description === "" &&
+        !changedPhoto) {
+          return
+      }
+
     setIsEditing(false);
     if (needsAdding) {
       addCharacter(updatedCharacterData);

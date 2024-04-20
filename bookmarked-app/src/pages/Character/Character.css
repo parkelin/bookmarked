@@ -56,7 +56,9 @@ h1 {
 }
 .caption-small {
     font-family: 'DM Sans';
+    font-size: 20px !important;
     margin-left: 20px;
+    padding: none;
     font-weight: 400;   
     font-size: 20px;
 }
@@ -78,7 +80,18 @@ h1 {
 }
 .character-description {
     width: 1000px;
-    max-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #000000;
+}
+.character-description-input {
+    width: 1000px;
+    height: 400px;
     overflow-y: auto;
     font-family: 'DM Sans';
     font-style: normal;
