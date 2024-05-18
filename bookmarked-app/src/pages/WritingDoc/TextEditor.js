@@ -29,6 +29,7 @@ export default function TextEditor({
   //setEditorContent,
   handleCheckInconsistencies
 }) {
+  const disableAI = true
   const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
   const { editorContent} = useEditor(); 
@@ -107,7 +108,9 @@ export default function TextEditor({
   };
 
   const handleSendToChatGPT = async () => {
-
+      if (disableAI) {
+        handleCheckInconsistencies("");
+      } else {
       // Payload including the highlighted text and character profiles
       const payload = {
           highlightedText: highlightedText, // highlightedText should be the state or prop holding the text selected by the user
@@ -125,7 +128,7 @@ export default function TextEditor({
           // if (response.message === "None Found") // Replace 
           handleCheckInconsistencies(response);
       }
-
+    }
   };
   
   const handleRightClick = (e) => {

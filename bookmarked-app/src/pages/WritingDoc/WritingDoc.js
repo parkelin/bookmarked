@@ -13,6 +13,7 @@ import { AiOutlineSave } from "react-icons/ai";
 import InfoPopup from "../../components/InfoPopup";
 
 import { useEditor } from "../../context/EditorContext";
+import InconsistencyBetaPopup from "./InconsistencyBetaPopup";
 
 function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
@@ -25,8 +26,9 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
   const [highlightedText, setHighlightedText] = useState("");
   const [currentCharacterData, setCurrentCharacterData] = useState(undefined);
   const [showInconsistencyPopup, setShowInconsistencyPopup] = useState(false); // Added state for inconsistency popup
+  const [showInconsistencyBetaPopup, setShowInconsistencyBetaPopup] = useState(false); // Added state for inconsistency popup
   const [gptResponse, setGPTResponse] = useState("");
-  const [infoShowing, setInfoShowing] = useState(false);
+
 
 //   const [showSaveConfirmation, setShowSaveConfirmation] = useState(false);
 //   const [editorContent, setEditorContent] = useState("");
@@ -87,8 +89,13 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
           const rect = range.getBoundingClientRect();
           setPopupTopPosition(rect.top + window.scrollY - 10); // Adjust '-10' as needed for exact alignment
       }
+      if (responseMessage.length === 0) {
+        // disabled AI
+        setShowInconsistencyBetaPopup(true);
+      } else {
       setGPTResponse(responseMessage);
       setShowInconsistencyPopup(true);
+      }
   };
   
   const handleSave = async() => {
@@ -103,6 +110,7 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
     // toggleNavbar();
     // moveEditor();
     setShowInconsistencyPopup(false);
+    setShowInconsistencyBetaPopup(false);
   };
 
   // load in the top of the page
@@ -131,6 +139,13 @@ function WritingDoc({ navbarIsOpen, toggleNavbar }) {
               editorContent={editorContent}
               gptResponse={gptResponse}
               topPosition={popupTopPosition}
+            />
+          )}
+
+          {showInconsistencyBetaPopup && (
+            <InconsistencyBetaPopup
+            handleCloseInconsistencyPopup={handleCloseInconsistencyPopup}
+            topPosition={popupTopPosition} 
             />
           )}
 
