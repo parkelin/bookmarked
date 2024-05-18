@@ -12,3 +12,9 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 - 'Create Character' to create characters during the writing process
 - Ability to edit and delete details about characters at any point
 - Inconsistency checker powered by the Chat GPT API
+
+# How we Built it
+
+# Challenges
+
+# Accomplishments
