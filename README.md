@@ -20,8 +20,16 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # How we Built it
 
-Bookmarked was built with React and Node.js as a final project for our Human-Computer Interaction Class at UT Austin. We used Firebase for data storage and the OpenAI API to check writing inconsistencies.
+<img width="495" alt="Screenshot 2024-05-18 at 11 48 24 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/e3cfed2b-9e1d-46f2-a63e-6e4952c48314">
+
+
+Bookmarked was built with React and Node.js. We used Firebase Firestore for data storage, so users would be able to save their writing and characters and access them at any future point. We also used Firebase for authentication and image storage. In addition, we used OpenAI API to check writing inconsistencies and the Quill library to create the interface for the writing document
 
 # Challenges
 
-# Accomplishments
+Some issues we ran into while developing bookmarked had to do with making sure out auto saving feature was working well with real time writing without inconsistencies in syncing current text to data storage. To remedy this, we ended up limiting auto saving to be during page navigation and logging out of the application only, with users being responsible for saving at other times. We also had to iterate on the Chat GPT prompt engineering to ensure that the text was being properly evaluated for writing inconsistencies and compared to all previous brainstorming, which required very precise wording. Some other feature debugging involved making sure that we were able to upload images from a local device that would be saved and fetched properly from the database. 
+
+We conducting user interviews to test the experience of using Bookmarked and noticed that some of the features were not located in intuitive locations for users to access, so we devised a solution through creating a first-time user tutorial that explained how to use Bookmarked's features to the users' best advantage. 
+
+
+
