@@ -5,25 +5,18 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # Features!
 
-<img width="200" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a">
+<img width="400" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a">
+<img width="400" alt="Screenshot 2024-05-18 at 11 37 34 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/1e2ce73f-cdc9-4bb9-9111-64f429ba0f15">
+<img width="400" alt="Screenshot 2024-05-18 at 11 38 18 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/8f738ffb-4250-4cbf-8345-92c1687280d6">
+<img width="400" alt="Screenshot 2024-05-18 at 11 38 55 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/9dc32c81-ab90-48eb-9f5e-01b330cae31c">
+<img width="400" alt="Screenshot 2024-05-18 at 11 40 45 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/c606920a-6910-4cfb-bf47-b146188d0cdb">
 
 - Walkthrough tutorial for first time users
-  
-<img width="1162" alt="Screenshot 2024-05-18 at 11 37 34 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/1e2ce73f-cdc9-4bb9-9111-64f429ba0f15">
-
 - Writing Document to track writing process
-
-<img width="979" alt="Screenshot 2024-05-18 at 11 38 18 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/8f738ffb-4250-4cbf-8345-92c1687280d6">
-
 - Glossary to store information about characters/details
-
-<img width="427" alt="Screenshot 2024-05-18 at 11 38 55 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/9dc32c81-ab90-48eb-9f5e-01b330cae31c">
-
 - 'Find Character' to access details about a character at any point during the writing process
 - 'Create Character' to create characters during the writing process
 - Ability to edit and delete details about characters at any point
-  <img width="953" alt="Screenshot 2024-05-18 at 11 40 45 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/c606920a-6910-4cfb-bf47-b146188d0cdb">
-
 - Inconsistency checker powered by the Chat GPT API
 
 # How we Built it
