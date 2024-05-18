@@ -5,7 +5,8 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # Features!
 
-<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a"> 
+<img width="200" height="100" alt="Screenshot 2024-05-18 at 12 29 03 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/8e52dc02-2f31-4261-89a5-4365d02ae0d8">
+<img width="200" height="100" alt="Screenshot 2024-05-18 at 12 29 46 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/306b5cca-5ef4-41a2-8594-73375a5df737">
 <img width="200" height="100" alt="Screenshot 2024-04-15 at 9 43 35 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/3253266b-bbf3-4df9-a46a-1d5db58908dc">
 <img width="200" height="100" alt="Screenshot 2024-04-15 at 9 43 04 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/78090372-e801-4751-a36b-a6b53b50b9fc">
 <img width="200" height="100" alt="Screenshot 2024-04-15 at 9 51 24 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/e1996eca-80ea-43b0-b562-39d0126d5179">
