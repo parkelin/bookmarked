@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# bookmarked
+The Canvas for Storytellers
+# Features
+Account Workspace - Personalized boomarked space using Google Authentification and Google Firestore Database\
+Glossary - Character tracking with built in create, edit, and delete options\
+Writing - Preview your characters by highlighting the text, right clicking, and choosing 'Find Character Page'\
+Writing - Create a character while writing by highlighting the text, right clicking, and choosing 'Create Character Page'\
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Writing Doc
+npm install quill\
+npm install react-quill\
+npm install @types/quill\
+background-color: #f3f3f3\
+https://quilljs.com/docs/quickstart
 
-In the project directory, you can run:
+font: DM Sans
+# react-router-dom
+v5
 
-### `npm start`
+# Google Firebase
+npm install firebase 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Google Firebase Cloud Functions (ChatGPT API)
+npm install -g firebase-tools\
+firebase login\
+firebase init functions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In functions folder:
+npm install node-fetch
 
-### `npm test`
+# ChatGPT API
+npm install openai@^4.0.0
+# Lodash for auto-save
+npm install lodash
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# React Icons 
+npm install react-icons --save\
+Find Icons Here:\
+https://react-icons.github.io/react-icons/
 
-### `npm run build`
+# Branch instructions:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Pulling eachother's branch
+git fetch\
+git checkout branch_name
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Pushing Code
+git branch branchname\
+git checkout branchname\
+git branch ##just to check that ur on the right branch\
+git pull origin main ##might have to resolve conflicts\
+git add, commit, etc. \
+git push ## it give u an error about setting an upstream, just do what it says (i think like git push --set-upstream origin/branchname
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# using chatgpt api
+npm install axios\
+npm install dotenv (if ur using a .env file)
