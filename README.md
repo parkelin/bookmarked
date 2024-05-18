@@ -15,6 +15,8 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # How we Built it
 
+Bookmarked was built with React and Node.js as a final project for our Human-Computer Interaction Class at UT Austin. We used Firebase for data storage and the OpenAI API to check writing inconsistencies.
+
 # Challenges
 
 # Accomplishments
