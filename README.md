@@ -5,7 +5,7 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # Features!
 
-<img width="1469" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a">
+<img width="200" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a">
 
 - Walkthrough tutorial for first time users
   
