@@ -5,10 +5,15 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # Features!
 
-<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a">
-<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 37 34 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/1e2ce73f-cdc9-4bb9-9111-64f429ba0f15">
-<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 38 18 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/8f738ffb-4250-4cbf-8345-92c1687280d6">
-<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 40 45 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/c606920a-6910-4cfb-bf47-b146188d0cdb">
+<img width="200" height="100" alt="Screenshot 2024-05-18 at 11 36 52 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/d470647d-4354-442a-936d-54da1d28d78a"> 
+
+
+
+
+<img width="1440" alt="Screenshot 2024-04-15 at 9 43 35 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/3253266b-bbf3-4df9-a46a-1d5db58908dc">
+<img width="1440" alt="Screenshot 2024-04-15 at 9 43 04 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/78090372-e801-4751-a36b-a6b53b50b9fc">
+<img width="1440" alt="Screenshot 2024-04-15 at 9 51 24 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/e1996eca-80ea-43b0-b562-39d0126d5179">
+<img width="1016" alt="Screenshot 2024-04-28 at 9 19 58 PM" src="https://github.com/parkelin/bookmarked/assets/84208868/2348dc6f-40cd-4d70-a9f4-80e3500082ea">
 
 - Walkthrough tutorial for first time users
 - Writing Document to track writing process
