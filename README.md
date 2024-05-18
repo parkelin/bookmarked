@@ -5,6 +5,9 @@ Bookmarked is a tool for writers to bring together their brainstorming, world bu
 
 # Features!
 
+  <img width="358" alt="Screenshot 2024-05-18 at 11 35 18 AM" src="https://github.com/parkelin/bookmarked/assets/96144192/cdd1110d-2533-479e-9717-f9cd41a4cc0e">
+
+
 - Walkthrough tutorial for first time users
 - Writing Document to track writing process
 - Glossary to store information about characters/details
