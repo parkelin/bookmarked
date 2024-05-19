@@ -31,7 +31,7 @@ Bookmarked was built with React and Node.js. We used Firebase Firestore for data
 
 Some issues we ran into while developing bookmarked had to do with making sure out auto saving feature was working well with real time writing without inconsistencies in syncing current text to data storage. To remedy this, we ended up limiting auto saving to be during page navigation and logging out of the application only, with users being responsible for saving at other times. We also had to iterate on the Chat GPT prompt engineering to ensure that the text was being properly evaluated for writing inconsistencies and compared to all previous brainstorming, which required very precise wording. Some other feature debugging involved making sure that we were able to upload images from a local device that would be saved and fetched properly from the database. 
 
-We conducting user interviews to test the experience of using Bookmarked and noticed that some of the features were not located in intuitive locations for users to access, so we devised a solution through creating a first-time user tutorial that explained how to use Bookmarked's features to the users' best advantage. 
+We conducted user interviews to test the experience of using Bookmarked and noticed that some of the features were not located in intuitive locations for users to access, so we devised a solution through creating a first-time user tutorial that explained how to use Bookmarked's features to the users' best advantage. 
 
 
 
